@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FFOrderVC">
+            <connections>
+                <outlet property="orderTable" destination="nT1-oS-E0I" id="aAH-h9-J1E"/>
+                <outlet property="tipView" destination="Ufc-7W-Uj4" id="NgX-h9-5D0"/>
+                <outlet property="tipViewLeftMargin" destination="p8m-2P-DvN" id="GHX-hx-mQp"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U4X-Hh-Pj8">
+                    <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgh-kn-0qf">
+                            <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="全部">
+                                <color key="titleColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="2jk-ck-8HX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fP-DF-1sY">
+                            <rect key="frame" x="75" y="0.0" width="75" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="待审核">
+                                <color key="titleColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="nqi-W7-WpO"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgA-0o-Rqi">
+                            <rect key="frame" x="150" y="0.0" width="74.5" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="待完成">
+                                <color key="titleColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="fdv-6t-2Ms"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMi-rh-8vs">
+                            <rect key="frame" x="224.5" y="0.0" width="75" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="已完成">
+                                <color key="titleColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="gnb-fi-EXC"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-7W-Uj4">
+                            <rect key="frame" x="0.0" y="38" width="75" height="2"/>
+                            <color key="backgroundColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="I5x-oA-fyv"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OB2-xl-MAk">
+                            <rect key="frame" x="299.5" y="0.0" width="75.5" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="已关闭">
+                                <color key="titleColor" red="0.10980392160000001" green="0.10980392160000001" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <state key="selected">
+                                <color key="titleColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="Xjx-5H-Ewd"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="OB2-xl-MAk" firstAttribute="width" secondItem="NMi-rh-8vs" secondAttribute="width" id="5KW-4g-jd5"/>
+                        <constraint firstItem="hgA-0o-Rqi" firstAttribute="leading" secondItem="1fP-DF-1sY" secondAttribute="trailing" id="5w0-93-Qw5"/>
+                        <constraint firstItem="OB2-xl-MAk" firstAttribute="leading" secondItem="NMi-rh-8vs" secondAttribute="trailing" id="B3l-qb-RF1"/>
+                        <constraint firstAttribute="bottom" secondItem="OB2-xl-MAk" secondAttribute="bottom" id="CYd-zz-dpu"/>
+                        <constraint firstItem="NMi-rh-8vs" firstAttribute="width" secondItem="hgA-0o-Rqi" secondAttribute="width" id="Ekh-If-Jmb"/>
+                        <constraint firstAttribute="bottom" secondItem="hgA-0o-Rqi" secondAttribute="bottom" id="Ewi-f6-WE0"/>
+                        <constraint firstItem="Bgh-kn-0qf" firstAttribute="top" secondItem="U4X-Hh-Pj8" secondAttribute="top" id="FT8-CG-jy7"/>
+                        <constraint firstItem="NMi-rh-8vs" firstAttribute="top" secondItem="U4X-Hh-Pj8" secondAttribute="top" id="HKU-th-0t8"/>
+                        <constraint firstItem="1fP-DF-1sY" firstAttribute="width" secondItem="Bgh-kn-0qf" secondAttribute="width" id="J9u-Jo-0Ly"/>
+                        <constraint firstItem="1fP-DF-1sY" firstAttribute="leading" secondItem="Bgh-kn-0qf" secondAttribute="trailing" id="K4o-BW-RzJ"/>
+                        <constraint firstItem="Bgh-kn-0qf" firstAttribute="leading" secondItem="U4X-Hh-Pj8" secondAttribute="leading" id="K8x-yQ-pjg"/>
+                        <constraint firstItem="hgA-0o-Rqi" firstAttribute="top" secondItem="U4X-Hh-Pj8" secondAttribute="top" id="NkG-pr-Dgp"/>
+                        <constraint firstItem="hgA-0o-Rqi" firstAttribute="leading" secondItem="1fP-DF-1sY" secondAttribute="trailing" id="NsJ-o3-Ldl"/>
+                        <constraint firstAttribute="bottom" secondItem="Bgh-kn-0qf" secondAttribute="bottom" id="OqG-XH-3cb"/>
+                        <constraint firstItem="Ufc-7W-Uj4" firstAttribute="width" secondItem="Bgh-kn-0qf" secondAttribute="width" id="XRJ-30-aPx"/>
+                        <constraint firstAttribute="bottom" secondItem="1fP-DF-1sY" secondAttribute="bottom" id="ZCu-G4-rGd"/>
+                        <constraint firstAttribute="bottom" secondItem="NMi-rh-8vs" secondAttribute="bottom" id="a07-RI-Rn4"/>
+                        <constraint firstAttribute="bottom" secondItem="Ufc-7W-Uj4" secondAttribute="bottom" id="hOR-9J-E5T"/>
+                        <constraint firstItem="NMi-rh-8vs" firstAttribute="leading" secondItem="hgA-0o-Rqi" secondAttribute="trailing" id="iGz-RV-E6a"/>
+                        <constraint firstItem="OB2-xl-MAk" firstAttribute="top" secondItem="U4X-Hh-Pj8" secondAttribute="top" id="kSh-5Z-vJB"/>
+                        <constraint firstAttribute="trailing" secondItem="OB2-xl-MAk" secondAttribute="trailing" id="kgx-TH-E33"/>
+                        <constraint firstItem="1fP-DF-1sY" firstAttribute="top" secondItem="U4X-Hh-Pj8" secondAttribute="top" id="mgJ-Rh-oCf"/>
+                        <constraint firstItem="Ufc-7W-Uj4" firstAttribute="leading" secondItem="U4X-Hh-Pj8" secondAttribute="leading" id="p8m-2P-DvN"/>
+                        <constraint firstAttribute="height" constant="40" id="rfy-u8-yFZ"/>
+                        <constraint firstItem="hgA-0o-Rqi" firstAttribute="width" secondItem="1fP-DF-1sY" secondAttribute="width" id="tXx-Ft-Pvi"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nT1-oS-E0I">
+                    <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="LtM-dg-OdD"/>
+                        <outlet property="delegate" destination="-1" id="KwS-7X-DdV"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="U4X-Hh-Pj8" secondAttribute="trailing" id="37W-PQ-1Ys"/>
+                <constraint firstItem="U4X-Hh-Pj8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ByI-xt-jyn"/>
+                <constraint firstItem="nT1-oS-E0I" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="UxI-Oi-zOg"/>
+                <constraint firstAttribute="bottom" secondItem="nT1-oS-E0I" secondAttribute="bottom" id="e91-HK-mnB"/>
+                <constraint firstItem="U4X-Hh-Pj8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="pmi-9D-fIg"/>
+                <constraint firstItem="nT1-oS-E0I" firstAttribute="top" secondItem="U4X-Hh-Pj8" secondAttribute="bottom" id="rCU-Yr-JRi"/>
+                <constraint firstAttribute="trailing" secondItem="nT1-oS-E0I" secondAttribute="trailing" id="uEG-iE-cLI"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

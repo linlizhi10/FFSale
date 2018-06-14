@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FFMoneyListVC">
+            <connections>
+                <outlet property="contentScroll" destination="HcH-mp-GqU" id="sUG-CV-RGn"/>
+                <outlet property="coverView" destination="0bW-Nt-iHL" id="fX9-wk-stI"/>
+                <outlet property="listTable" destination="EKu-Dk-RZ4" id="ub8-Yl-rSd"/>
+                <outlet property="typeBtn" destination="TWb-9d-QIs" id="2F0-10-PIe"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWb-9d-QIs">
+                    <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                    <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="m7p-wc-OsT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <inset key="titleEdgeInsets" minX="-40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="imageEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="返利" image="icon-syfn-down">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="typeAction:" destination="-1" eventType="touchUpInside" id="5wT-Gw-2yt"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-Dk-RZ4">
+                    <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="0Gn-75-Lif"/>
+                        <outlet property="delegate" destination="-1" id="Pn3-YQ-G4V"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="TWb-9d-QIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="1IY-wU-Buy"/>
+                <constraint firstItem="TWb-9d-QIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FJ4-m5-iD8"/>
+                <constraint firstAttribute="bottom" secondItem="EKu-Dk-RZ4" secondAttribute="bottom" id="Ku5-1M-2Rd"/>
+                <constraint firstAttribute="trailing" secondItem="TWb-9d-QIs" secondAttribute="trailing" id="b0A-Id-1iQ"/>
+                <constraint firstItem="EKu-Dk-RZ4" firstAttribute="top" secondItem="TWb-9d-QIs" secondAttribute="bottom" id="bvL-Vx-rQ0"/>
+                <constraint firstItem="EKu-Dk-RZ4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="chH-bb-0uw"/>
+                <constraint firstAttribute="trailing" secondItem="EKu-Dk-RZ4" secondAttribute="trailing" id="riB-Fc-g1b"/>
+            </constraints>
+        </view>
+        <view contentMode="scaleToFill" id="0bW-Nt-iHL">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9m-Nj-Qcz">
+                    <rect key="frame" x="0.0" y="300" width="375" height="367"/>
+                    <color key="backgroundColor" red="0.12856217619999999" green="0.12856217619999999" blue="0.12856217619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HcH-mp-GqU">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="tNG-Wd-WSr"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="HcH-mp-GqU" secondAttribute="trailing" id="2W6-Zd-8Wf"/>
+                <constraint firstItem="HcH-mp-GqU" firstAttribute="top" secondItem="0bW-Nt-iHL" secondAttribute="top" id="69Z-EM-0J4"/>
+                <constraint firstItem="HcH-mp-GqU" firstAttribute="leading" secondItem="0bW-Nt-iHL" secondAttribute="leading" id="IBq-n3-z7v"/>
+                <constraint firstAttribute="bottom" secondItem="o9m-Nj-Qcz" secondAttribute="bottom" id="dhl-b5-X6F"/>
+                <constraint firstItem="o9m-Nj-Qcz" firstAttribute="top" secondItem="HcH-mp-GqU" secondAttribute="bottom" id="hFT-pf-WWQ"/>
+                <constraint firstAttribute="trailing" secondItem="o9m-Nj-Qcz" secondAttribute="trailing" id="tcK-6D-FN9"/>
+                <constraint firstItem="o9m-Nj-Qcz" firstAttribute="leading" secondItem="0bW-Nt-iHL" secondAttribute="leading" id="wDF-pe-bTB"/>
+            </constraints>
+            <point key="canvasLocation" x="1150.5" y="422.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-syfn-down" width="14" height="14"/>
+    </resources>
+</document>

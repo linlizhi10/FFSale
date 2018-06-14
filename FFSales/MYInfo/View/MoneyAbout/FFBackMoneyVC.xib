@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FFBackMoneyVC">
+            <connections>
+                <outlet property="moneyTable" destination="Ldc-xc-Ci4" id="fbk-gI-7ct"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ldc-xc-Ci4">
+                    <rect key="frame" x="10" y="64" width="355" height="563"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="OhV-p9-CHo"/>
+                        <outlet property="delegate" destination="-1" id="qYM-Gn-LLX"/>
+                    </connections>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orl-Tg-zli">
+                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="查看返利明细">
+                        <color key="titleColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="checkAll:" destination="-1" eventType="touchUpInside" id="xu6-Ll-Qvm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Ldc-xc-Ci4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="3jb-W5-STr"/>
+                <constraint firstAttribute="trailing" secondItem="Ldc-xc-Ci4" secondAttribute="trailing" constant="10" id="7Mh-rh-7Jv"/>
+                <constraint firstAttribute="trailing" secondItem="Orl-Tg-zli" secondAttribute="trailing" id="csi-pl-GHE"/>
+                <constraint firstItem="Ldc-xc-Ci4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="dPD-Tz-YJr"/>
+                <constraint firstItem="Orl-Tg-zli" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fDP-lZ-zPv"/>
+                <constraint firstAttribute="bottom" secondItem="Orl-Tg-zli" secondAttribute="bottom" id="sak-XQ-s6T"/>
+                <constraint firstAttribute="bottom" secondItem="Ldc-xc-Ci4" secondAttribute="bottom" constant="40" id="usm-uj-hYw"/>
+                <constraint firstItem="Orl-Tg-zli" firstAttribute="top" secondItem="Ldc-xc-Ci4" secondAttribute="bottom" id="zaI-fp-y81"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

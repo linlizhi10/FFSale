@@ -190,7 +190,7 @@
     for (UIView *obj in _contentScroll.subviews) {
         if ([obj isKindOfClass:[UIButton class]]) {
             UIButton *btnT = (UIButton *)obj;
-            btn.backgroundColor = RGBCOLORV(0xF2F2F2);
+            btnT.backgroundColor = RGBCOLORV(0xF2F2F2);
             btnT.selected = NO;
         }
         

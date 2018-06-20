@@ -144,14 +144,16 @@
             if (error) {
                 NSLog(@"error is %@",error.description);
             }else{
-//                [self performSelectorOnMainThread:@selector(resetImageFrameObject:) withObject:@{@"imageV":imageV,@"image":image,@"heightTemp":[NSString stringWithFormat:@"%.0f",heightTemp]} waitUntilDone:NO];
+
                 imageV.frame = CGRectMake(0, heightTemp, SCREEN_WIDTH, SCREEN_WIDTH*(image.size.height / image.size.width));
                 heightTemp = imageV.frame.origin.y + imageV.frame.size.height;
+                [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, imageV.frame.origin.y + imageV.frame.size.height)];
+
             }
 
         }];
         [_contentScroll addSubview:imageV];
-        [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, imageV.frame.origin.y + imageV.frame.size.height)];
+//        [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, imageV.frame.origin.y + imageV.frame.size.height)];
     }
     
 }
@@ -204,6 +206,10 @@
     CGFloat heightTemp = [[dic objectForKey:@"heightTemp"] floatValue];
         imageV.frame = CGRectMake(0, heightTemp, SCREEN_WIDTH, SCREEN_WIDTH*(image.size.height / image.size.width));
         heightTemp = imageV.frame.origin.y + imageV.frame.size.height;
+    [_contentScroll addSubview:imageV];
+
+    [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, imageV.frame.origin.y + imageV.frame.size.height)];
+
 }
 - (IBAction)factoryA:(id)sender {
     [[UIApplication sharedApplication].keyWindow addSubview:_coverView];

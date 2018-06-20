@@ -21,11 +21,11 @@
 #import "FFOrderVC.h"
 #import "DicBtn.h"
 #import "FFAllCategoryVC.h"
-@interface DDHomeVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate>
+@interface DDHomeVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *goodsListC;
 
 @property (strong, nonatomic) IBOutlet UIView *secondHeader;
-
+@property (strong, nonatomic) FFHomeBAModel *modelBA;
 @property (weak, nonatomic) FFCHeaderView *headerV;
 @property (assign, nonatomic) int pageSize;
 @property (assign, nonatomic) int currentPage;
@@ -48,6 +48,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _modelBA = [[FFHomeBAModel  alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReqeust) name:@"refreshHome" object:nil];
     [_goodsListC registerNib:[UINib nibWithNibName:@"FFCHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];
     [_goodsListC registerNib:[UINib nibWithNibName:@"FFSHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sHeaderView"];
 
@@ -70,12 +72,11 @@
     _pageSize = 20;
     _arrLike = [[NSMutableArray alloc] init];
     _goodsListC.scrollsToTop = YES;
-    [self bannerGet];
-    [self brandRequestType:@"1"];
-    [self brandRequestType:@"2"];
-    [self recentlyRequest];
-    [self likeRequest];
+    [self dataReqeust];
     
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshHome" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -196,8 +197,28 @@
 
 }
 
+- (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index{
+    FFHomeBModel *brand = _modelBA.list[index];
+    if ([brand.type isEqualToString:@"brand"]) {
+        FFProductListVC *productV = [[FFProductListVC alloc] initWithId:brand.value strain:nil brandA:_brandA strainA:nil];
+        productV.title = brand.levelName;
+        productV.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:productV animated:YES];
+    }else{
+        FFProductListVC *productV = [[FFProductListVC alloc] initWithId:nil strain:brand.value brandA:nil strainA:_strainA];
+        productV.title = brand.levelName;
+        productV.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:productV animated:YES];
+    }
+   
+}
+
 - (void)dataReqeust{
-    
+    [self bannerGet];
+    [self brandRequestType:@"1"];
+    [self brandRequestType:@"2"];
+    [self recentlyRequest];
+    [self likeRequest];
 }
 - (void)likeRequest{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -223,6 +244,8 @@
             }
             [_goodsListC reloadData];
         }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             [WToast showWithTextCenter:result.message];
         }
     }];
@@ -244,6 +267,8 @@
             [_goodsListC reloadData];
 
         }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             [WToast showWithTextCenter:result.message];
         }
     }];
@@ -302,6 +327,8 @@
             [_goodsListC reloadData];
             
         }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             [WToast showWithTextCenter:result.message];
         }
     }];
@@ -321,6 +348,7 @@
             NSMutableArray *arrTemp = [[NSMutableArray alloc] init];
             for (int i =0; i < model.list.count; i++) {
                 FFHomeBModel *modelT = model.list[i];
+                _modelBA = model;
 //                UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
                 [arrTemp addObject:modelT.img];
 //                btn.frame = CGRectMake(0 + (SCREEN_WIDTH) * i, 0, SCREEN_WIDTH, 200);
@@ -330,10 +358,13 @@
 //                [btn sd_setImageWithURL:[NSURL URLWithString:@"http://uatimage.dusto.cn/uat/804029/ce863827693249d1bcc8a28a49f1efc4.jpg"] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"goodDefault"]];
 
             }
+            _headerV.headImageView.delegate = self;
             _headerV.headImageView.imageURLStringsGroup = arrTemp;
             [_goodsListC reloadData];
             
         }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             [WToast showWithTextCenter:result.message];
         }
     }];

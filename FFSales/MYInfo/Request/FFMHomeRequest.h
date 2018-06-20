@@ -12,3 +12,18 @@
 @property (nonatomic, copy) NSString *accessToken; //
 
 @end
+@interface FFMPersonInfoRequest : Request
+@property (nonatomic, copy) NSString *accessToken; //
+@property (nonatomic, copy) NSString *custId; //
+
+@end
+@interface FFInvoiceRequest : Request
+@property (nonatomic, copy) NSString *accessToken; //
+
+@end
+
+@interface FFTaskRequest : Request
+@property (nonatomic, copy) NSString *accessToken; //
+@property (nonatomic, assign) int taskListType; //
+
+@end

@@ -113,7 +113,7 @@
 
 #pragma mark --public--
 - (void)showLoginViewWithBlock:(LoginCallBackBlock)_callBack{ 
-    DDLoginVC *sub1 = [[DDLoginVC alloc] initWithSource:1];
+    DDLoginVC *sub1 = [[DDLoginVC alloc] initWithSource:1 block:_callBack];
     sub1.title = @"登录";
     FIGestureNavViewController * nav = [[FIGestureNavViewController alloc]initWithRootViewController:sub1];
     [self presentViewController:nav animated:YES completion:^{

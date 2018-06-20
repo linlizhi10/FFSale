@@ -8,7 +8,7 @@
 
 #import "Request.h"
 #import "DDStringUtil.h"
-
+#import "MainTab.h"
 @implementation Request
 
 +(id)Request{
@@ -98,9 +98,9 @@
     
     //AFPropertyListRequestSerializer    PList(是一种特殊的XML,解析起来相对容易)
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain", nil];
     
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
 
     //**HTTPS请求专属**
 //    manager.securityPolicy = securityPolicy;
@@ -134,18 +134,12 @@
         }
         NSLog(@"\n----RequestURL GET URL \n%@\n  -----------",str);
     }
-    //NSLog(@"\n----self.httpHeaderFields : %@",self.httpHeaderFields);
 #endif
-    //请求正文
+    __block Request *ws = self;    //请求正文
     if ([self.METHOD isEqualToString:@"GET"]) {
         [manager GET:url parameters:self.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"res is ---->%@",responseObject);
-            NetworkModel *nm = [[NetworkModel alloc] initWithJsonData:responseObject];
-            if ([nm.status isEqualToString:@"0"]) {
-                _callBack(YES,nm);
-            }else{
-                _callBack(NO,nm);
-            }
+            [ws sucessDataDeal:responseObject CallBack:_callBack];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error is %@",error);
             NetworkModel *nm = [[NetworkModel alloc] init];
@@ -160,12 +154,8 @@
             
             [manager POST:url parameters:self.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 NSLog(@"res is ---->%@",responseObject);
-                NetworkModel *nm = [[NetworkModel alloc] initWithJsonData:responseObject];
-                if ([nm.status isEqualToString:@"0"]) {
-                    _callBack(YES,nm);
-                }else{
-                    _callBack(NO,nm);
-                }
+                [ws sucessDataDeal:responseObject CallBack:_callBack];
+
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 //
                 NSLog(@"error is %@",error);
@@ -177,12 +167,8 @@
     }else if ([self.METHOD isEqualToString:@"PUT"]){
         [manager PUT:url parameters:self.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"res is ---->%@",responseObject);
-            NetworkModel *nm = [[NetworkModel alloc] initWithJsonData:responseObject];
-            if ([nm.status isEqualToString:@"0"]) {
-                _callBack(YES,nm);
-            }else{
-                _callBack(NO,nm);
-            }
+            [ws sucessDataDeal:responseObject CallBack:_callBack];
+
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error is %@",error);
             NetworkModel *nm = [[NetworkModel alloc] init];
@@ -191,7 +177,23 @@
         }];
     }
 }
-
+- (void)sucessDataDeal:(id)responseObject CallBack:(RequestCallBackBlock)_callBack{
+    NetworkModel *nm = [[NetworkModel alloc] initWithJsonData:responseObject];
+    if ([nm.status isEqualToString:@"0"]) {
+        _callBack(YES,nm);
+    }else{
+        _callBack(NO,nm);
+        if ([nm.status isEqualToString:@"401"]) {
+            [self tokenFailed];
+        }
+    }
+}
+- (void)tokenFailed{
+    [[MainTab shareInstance] showLoginViewWithBlock:^(BOOL isLoginSuccess) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshHome" object:nil];
+    }];
+    
+}
 
 //token失效跳转
 //- (void)tokenFaildMethodTipsMessage:(NSString *)message{
@@ -284,9 +286,7 @@
         }
         else{
             if ([dic objectForKey:@"status"] && [dic objectForKey:@"status"] != [NSNull null]) {
-                if ([[dic objectForKey:@"status"] isEqualToString:@"S000000"]) {
-                    self.status = @"0";
-                }else{
+                
                     if ([dic objectForKey:@"message"]) {
                         self.status = [dic objectForKey:@"status"];
 
@@ -294,7 +294,7 @@
                         self.status = @"0";
 
                     }
-                }
+                
             }else{
                 self.status = @"0";
             }

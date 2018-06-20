@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^LoginCallBackBlock)(BOOL isLoginSuccess);
 
 @interface DDLoginVC : UIViewController
-- (instancetype)initWithSource:(int)source;
+- (instancetype)initWithSource:(int)source block:(LoginCallBackBlock)block;
 @end

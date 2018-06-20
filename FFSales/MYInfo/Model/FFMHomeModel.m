@@ -11,3 +11,24 @@
 @implementation FFMHomeModel
 
 @end
+@implementation FFMidentificationModel
+
+@end
+@implementation FFMBaseModel
+
+@end
+@implementation FFMInvoiceModel
+
+@end
+@implementation FFMBrandModel
++ (NSDictionary *)objectClassInArray{
+    return @{@"brandNames" : [NSString class]
+             };
+}
+@end
+@implementation FFMUserModel
++ (NSDictionary *)objectClassInArray{
+    return @{@"brandAreas" : [FFMBrandModel class]
+             };
+}
+@end

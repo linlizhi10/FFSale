@@ -7,6 +7,7 @@
 //
 
 #import "DDMyHome.h"
+#import "FFRankClassVC.h"
 #import "FFMoneyListVC.h"
 #import "FIMyInfoCell.h"
 #import "FIMyIfoViewModel.h"
@@ -18,7 +19,10 @@
 #import "FFOtherMoneyVC.h"
 #import "FFHistoryVC.h"
 #import "FFUseMoney.h"
+#import "FFMyinfoDetailVC.h"
 #import "FFBackMoneyVC.h"
+#import "FFInvoiceVC.h"
+#import "FFGetGoodsVC.h"
 @interface DDMyHome ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 @property (nonatomic, strong) NSMutableArray *arrData;
 @property (weak, nonatomic) IBOutlet UITableView *contentTable;
@@ -42,20 +46,24 @@
 - (IBAction)useAmountAction:(id)sender;
 - (IBAction)preAction:(id)sender;
 - (IBAction)backAmountAction:(id)sender;
+- (IBAction)personInfo:(id)sender;
 
 @end
 
 @implementation DDMyHome
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self myHomeRequest];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的";
     _customerTel = @"400-8188-2539";
-
+    _model= [[FFMHomeModel alloc] init];
     _arrData = [[NSMutableArray alloc] initWithArray:[FIMyIfoViewModel infoContentArray]];
     [_contentTable registerNib:[UINib nibWithNibName:@"FIMyInfoCell" bundle:nil] forCellReuseIdentifier:@"FIMyInfoCell"];
     [self setNavi];
-    [self myHomeRequest];
+//    [self myHomeRequest];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -100,7 +108,37 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    switch (indexPath.row) {
+        case 1:
+        {
+            FFRankClassVC *orderVC= [[FFRankClassVC alloc] init];
+            orderVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:orderVC animated:YES];
+        }
+            break;
+        case 2:
+        {
+            
+            [self callAction:nil];
+        }
+            break;
+        case 3:
+            {
+                FFInvoiceVC *orderVC= [[FFInvoiceVC alloc] init];
+                orderVC.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:orderVC animated:YES];
+            }
+            break;
+        case 4:
+        {
+            FFGetGoodsVC *orderVC= [[FFGetGoodsVC alloc] init];
+            orderVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:orderVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -214,6 +252,14 @@
     FFBackMoneyVC *orderVC= [[FFBackMoneyVC alloc] init];
     orderVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:orderVC animated:YES];
+}
+
+- (IBAction)personInfo:(id)sender {
+    FFMyinfoDetailVC *detail= [[FFMyinfoDetailVC alloc] initWithNo:_model.custId];
+    detail.hidesBottomBarWhenPushed = YES;
+
+    [self.navigationController pushViewController:detail animated:YES];
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

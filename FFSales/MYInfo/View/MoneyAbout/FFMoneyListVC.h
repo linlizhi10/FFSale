@@ -9,5 +9,6 @@
 #import "DDCommonNaviVC.h"
 
 @interface FFMoneyListVC : DDCommonNaviVC
+- (instancetype)initWithType:(int )index ;
 
 @end

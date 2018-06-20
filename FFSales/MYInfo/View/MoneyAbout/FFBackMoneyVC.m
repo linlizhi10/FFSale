@@ -10,6 +10,7 @@
 #import "BackCell.h"
 #import "FFMoneyRequest.h"
 #import "MoneyModel.h"
+#import "FFMoneyListVC.h"
 @interface FFBackMoneyVC ()
 @property (weak, nonatomic) IBOutlet UITableView *moneyTable;
 - (IBAction)checkAll:(id)sender;
@@ -113,5 +114,7 @@
     }];
 }
 - (IBAction)checkAll:(id)sender {
+    FFMoneyListVC *listVC = [[FFMoneyListVC alloc] initWithType:9];
+    [self.navigationController pushViewController:listVC animated:YES];
 }
 @end

@@ -27,15 +27,16 @@
 - (IBAction)forgetPassWordBtnAction:(id)sender;
 - (IBAction)securityFlagAction:(id)sender;
 @property (nonatomic, strong) DataManager *dataM;
-
+@property (copy, nonatomic) LoginCallBackBlock _callBack;
 
 @end
 
 @implementation DDLoginVC
-- (instancetype)initWithSource:(int)source{
+- (instancetype)initWithSource:(int)source block:(id)block{
     self = [super init];
     if (self) {
         _source = source;
+        __callBack = block;
     }
     return self;
 }
@@ -48,7 +49,7 @@
 
 #if DEBUG
         _password.text = @"1234";
-        _account.text = @"13932485784";
+        _account.text = @"13830488662";
 #endif
     
     _loginBtn.layer.cornerRadius = 2;
@@ -111,7 +112,9 @@
 
             [self dataSavePhone:_account.text userId:_account.text fastLogin:NO];
 
-            
+            if (__callBack) {
+                self._callBack(YES);
+            }
             if ([PCCircleViewConst getGestureCloseFlag] == YES) {
                 if (_source == 1) {
                     [self dismissViewControllerAnimated:YES completion:nil];
@@ -175,6 +178,8 @@
     }
     
 }
+
+
 - (IBAction)forgetPassWordBtnAction:(id)sender {
     [self.navigationController pushViewController:[DDForgetPasswordVC new] animated:YES];
 }

@@ -19,3 +19,36 @@
     [super startCallBack:_callBack];
 }
 @end
+@implementation FFMPersonInfoRequest
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = [NSString stringWithFormat:@"/custInfos/%@",self.custId];
+    self.METHOD = @"GET";
+    self.params = @{@"accessToken":self.accessToken?:@""
+                    
+                    }
+    ;
+    [super startCallBack:_callBack];
+}
+@end
+@implementation FFInvoiceRequest
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = @"/custInfos/invoice";
+    self.METHOD = @"GET";
+    self.params = @{@"accessToken":self.accessToken?:@""
+                    
+                    }
+    ;
+    [super startCallBack:_callBack];
+}
+@end
+@implementation FFTaskRequest
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = @"/custInfos/taskList";
+    self.METHOD = @"GET";
+    self.params = @{@"accessToken":self.accessToken?:@"",
+                    @"taskListType":@(_taskListType)
+                    }
+    ;
+    [super startCallBack:_callBack];
+}
+@end

@@ -11,7 +11,9 @@
 #import "MoneyModel.h"
 #import "FFMoneyRequest.h"
 #import "DDStringUtil.h"
-@interface FFMoneyListVC ()
+@interface FFMoneyListVC ()<UITableViewDelegate,UITableViewDataSource>{
+    int _index;
+}
 @property (weak, nonatomic) IBOutlet UITableView *listTable;
 @property (weak, nonatomic) IBOutlet UIButton *typeBtn;
 - (IBAction)typeAction:(id)sender;
@@ -25,7 +27,14 @@
 @end
 
 @implementation FFMoneyListVC
-
+- (instancetype)initWithType:(int )index {
+    self = [super init];
+    if (self) {
+        _index = index;
+    }
+    return self;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"返利";
@@ -44,14 +53,21 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [btn setTitleColor:RGBCOLORV(0x333333) forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:13];
-//        btn.layer.borderWidth = 0.5;
+        btn.tag = i;
         [btn setTitle:arrB[i] forState:UIControlStateNormal];
         [btn addTarget:self
                 action:@selector(orderClick:) forControlEvents:UIControlEventTouchUpInside];
-        if (i == 0) {
+        if (i == _index) {
             btn.backgroundColor = [UIColor redColor];
             btn.selected = YES;
+            if (i > 0) {
+                _fundType = [NSString stringWithFormat:@"0%d",_index];
+
+            }
+            [_typeBtn setTitle:btn.currentTitle forState:UIControlStateNormal];
         }
+        
+        
         [_contentScroll addSubview:btn];
     }
     _coverView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-300);
@@ -131,6 +147,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 60;
+}
+- (CGFloat )tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 1;
 }
 
 - (void)dataLoad{

@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWb-9d-QIs">
-                    <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                     <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="m7p-wc-OsT"/>
@@ -40,7 +40,7 @@
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EKu-Dk-RZ4">
-                    <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="0Gn-75-Lif"/>
@@ -50,7 +50,7 @@
             </subviews>
             <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="TWb-9d-QIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="1IY-wU-Buy"/>
+                <constraint firstItem="TWb-9d-QIs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="1IY-wU-Buy"/>
                 <constraint firstItem="TWb-9d-QIs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="FJ4-m5-iD8"/>
                 <constraint firstAttribute="bottom" secondItem="EKu-Dk-RZ4" secondAttribute="bottom" id="Ku5-1M-2Rd"/>
                 <constraint firstAttribute="trailing" secondItem="TWb-9d-QIs" secondAttribute="trailing" id="b0A-Id-1iQ"/>

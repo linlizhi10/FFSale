@@ -98,6 +98,7 @@
     FFCreaditDVC *detailVC = [[FFCreaditDVC alloc] initWithNo: model.accountId]  ;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     return 126;
@@ -135,7 +136,7 @@
                 }
                 [_creaditTable reloadData];
             }else{
-                //                [MBProgressHUD showError:result.message toView:self.view];
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [WToast showWithTextCenter:result.message];
             }
     }];

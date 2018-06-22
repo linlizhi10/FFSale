@@ -92,6 +92,8 @@
             if (isSuccess) {
                 
             }else{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+
                 [WToast showWithTextCenter:result.message];
 
             }

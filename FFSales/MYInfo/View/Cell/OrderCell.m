@@ -74,7 +74,7 @@
     }else{
     
     if ([orInfo.status isEqualToString:@"02"] || [orInfo.status isEqualToString:@"03"] ) {
-        _state.text = [NSString stringWithFormat:@"已发货%.2f/%.2f",orInfo.sendQty,orInfo.qty];
+        _state.text = [NSString stringWithFormat:@"已发货%.2f吨/%.2f吨",orInfo.sendQty,orInfo.qty];
         _state.textColor = [UIColor darkGrayColor];
         _TransBtn.hidden = NO;
 

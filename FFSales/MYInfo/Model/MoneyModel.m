@@ -100,3 +100,12 @@
              };
 }
 @end
+@implementation CustomerMoneyItemModel
+
+@end
+@implementation CustomerMoney
++ (NSDictionary *)objectClassInArray{
+    return @{@"list" : [CustomerMoneyItemModel class]
+             };
+}
+@end

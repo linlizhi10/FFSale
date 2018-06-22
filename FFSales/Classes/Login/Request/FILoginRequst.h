@@ -15,20 +15,16 @@
 @end
 
 #pragma mark - fast login
-@interface FIFastLoginRequst : Request
-@property (nonatomic, copy) NSString *userName; //用户名
-@property (nonatomic, copy) NSString *password; //用户密码
-@property (nonatomic, copy) NSString *verifyCode; //验证码 非必传参数
+@interface FIInfoCheckRequst : Request
+@property (nonatomic, copy) NSString *mobile; //
+
 @end
 
 #pragma mark - register
-@interface FIRegisterRequst : Request
-@property (nonatomic, copy) NSString *phone; //用户名
+@interface FINoLoginRequst : Request
+@property (nonatomic, copy) NSString *agentNumber; //用户名
 @property (nonatomic, copy) NSString *password; //用户密码
-@property (nonatomic, copy) NSString *verifyCode; //验证码
-//客户类型 customer：客户，shop：商家
-@property (nonatomic, copy) NSString *userType;
-@property (nonatomic, copy) NSString *inviteCode; //邀请码 非必传参数
+
 @end
 
 #pragma mark - reset password

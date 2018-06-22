@@ -25,13 +25,14 @@
 @interface OrderInfo : NSObject
 @property (copy, nonatomic) NSString *orderId;
 @property (copy, nonatomic) NSString *sapCode;
-@property (copy, nonatomic) NSString *payAmout;
+@property (assign, nonatomic) float payAmout;
+
 @property (assign, nonatomic) float actualAmout;
 
 @property (assign, nonatomic) float qty;
 @property (copy, nonatomic) NSString *status;
 @property (copy, nonatomic) NSString *auditStatus;
-@property (copy, nonatomic) NSString *createTime;
+@property (assign, nonatomic) long createTime;
 @property (copy, nonatomic) NSString *custName;
 @property (assign, nonatomic) float sendQty;
 

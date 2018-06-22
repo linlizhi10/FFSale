@@ -122,3 +122,16 @@
     [super startCallBack:_callBack];
 }
 @end
+@implementation FFCustomerMoneyRequest
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = @"/custInfos/custAccounts";
+    self.METHOD = @"GET";
+    self.params = @{@"accessToken":self.accessToken?:@"",
+                    @"keyword":self.keyword?:@"",
+                    @"page":@(_page),
+                    @"size":@(_size)
+                    }
+    ;
+    [super startCallBack:_callBack];
+}
+@end

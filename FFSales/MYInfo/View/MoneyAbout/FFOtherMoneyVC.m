@@ -10,7 +10,10 @@
 #import "OtherMoneyCell.h"
 #import "MoneyModel.h"
 #import "FFMoneyRequest.h"
-@interface FFOtherMoneyVC ()
+@interface FFOtherMoneyVC (){
+    
+    NSString *_custId;
+}
 @property (weak, nonatomic) IBOutlet UIButton *cashBtn;
 @property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 @property (assign, nonatomic)  int moneyType;
@@ -29,7 +32,14 @@
 @end
 
 @implementation FFOtherMoneyVC
-
+- (instancetype)initWithNo:(NSString *)custId {
+    self = [super init];
+    if (self) {
+        _custId = custId;
+    }
+    return self;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"其他资金";
@@ -162,6 +172,8 @@
                 [_cashTable reloadData];
 
             }else{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+
                 [WToast showWithTextCenter:result.message];
             }
         }];

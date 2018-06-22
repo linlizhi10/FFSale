@@ -128,3 +128,14 @@
 @interface ListModel : Model
 @property (strong, nonatomic) NSArray<ListSubModel *> *list;
 @end
+
+@interface CustomerMoneyItemModel : Model
+@property (copy, nonatomic) NSString *custId;//
+@property (copy, nonatomic) NSString *custName;//
+@property (assign, nonatomic) float accountAvailable;
+@property (assign, nonatomic) float marginAvailable;
+@property (assign, nonatomic) float rebateAvailable;
+@end
+@interface CustomerMoney : Model
+@property (strong, nonatomic) NSArray<CustomerMoneyItemModel *> *list;
+@end

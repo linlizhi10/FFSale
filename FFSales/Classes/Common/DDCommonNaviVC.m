@@ -35,6 +35,11 @@
     
         UIButton *btn= [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 30)];
         [btn setImage:Img(@"icon-bank") forState:UIControlStateNormal];
+        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+            [btn setImage:Img(@"icon-bank-1") forState:UIControlStateNormal];
+
+            
+        }
         [btn setImageEdgeInsets:UIEdgeInsetsMake(0, -15, 0, 5)];
         [btn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         

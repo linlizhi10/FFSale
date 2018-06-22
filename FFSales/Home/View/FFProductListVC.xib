@@ -16,6 +16,7 @@
                 <outlet property="filterTable" destination="D6E-wF-8f7" id="bcC-uM-Pzp"/>
                 <outlet property="productList" destination="fbr-gf-SOf" id="vRU-Rx-TMn"/>
                 <outlet property="shadowView" destination="PQQ-bi-GEh" id="2zL-46-zf1"/>
+                <outlet property="topConstraint" destination="neE-HO-iGm" id="Fwl-Oy-wn6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

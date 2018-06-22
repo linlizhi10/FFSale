@@ -30,6 +30,7 @@
 - (IBAction)allBtnAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *shadowView;
 @property (weak, nonatomic) IBOutlet UITableView *filterTable;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @end
 
@@ -47,6 +48,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    self.title = _brand?_brand:_strain;
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+        _topConstraint.constant = 0;
+    
+    }
     [_productList registerNib:[UINib nibWithNibName:@"TableGoodsCell" bundle:nil] forCellReuseIdentifier:@"goods"];
     [_filterTable registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellReuseIdentifier:@"filter"];
 

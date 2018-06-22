@@ -79,7 +79,7 @@
             
             
         }else{
-            //                [MBProgressHUD showError:result.message toView:self.view];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];
@@ -93,6 +93,7 @@
     _inAera.text = model.base.area;
     
     _phone.text = model.base.phone;
+    
     _businessType.text = model.identification.customerService;
     _cutomerType.text = model.identification.customerType;
     _businessLevel.text = model.identification.customerLevel;
@@ -120,11 +121,19 @@
             label1.text = brand.brandNames[j];
             [_contentViewTT addSubview:label1];
         }
-        addWidth += (6 + (6+ 30) * (brand.brandNames.count/4));
+        if (brand.brandNames.count %4==0) {
+            addWidth += (6 + (6+ 30) * (brand.brandNames.count/4));
+            
+        }else{
+            addWidth += (6 + (6+ 30) * (brand.brandNames.count/4 + 1));
+            
+        }
+       
     }
     _contentViewTT.frame = CGRectMake(0, 0, SCREEN_WIDTH, 737 + model.brandAreas.count * 30 + addWidth +40);
     _topConstraint.constant = 50 + model.brandAreas.count * 30 + addWidth;
     [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, _contentViewTT.bottom)];
+    
     
     _openFlag.text = model.invoice.isInvoice;
     _type.text = model.invoice.invoiceType;

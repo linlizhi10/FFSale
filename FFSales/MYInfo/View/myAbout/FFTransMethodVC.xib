@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEB-ck-fLv">
-                    <rect key="frame" x="10" y="354" width="355" height="44"/>
+                    <rect key="frame" x="10" y="294" width="355" height="44"/>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.18823529410000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="DqN-Vg-feT"/>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyn-Jv-1Oe">
-                    <rect key="frame" x="10" y="104" width="355" height="200"/>
+                    <rect key="frame" x="10" y="44" width="355" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="汽车运输" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1G-lF-npr">
                             <rect key="frame" x="117.5" y="40" width="120" height="20"/>
@@ -157,14 +157,14 @@
                     </constraints>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-qcys" translatesAutoresizingMaskIntoConstraints="NO" id="dES-Ze-p72">
-                    <rect key="frame" x="155.5" y="74" width="64" height="64"/>
+                    <rect key="frame" x="155.5" y="10" width="64" height="64"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="64" id="Si9-gN-Sbf"/>
                         <constraint firstAttribute="height" constant="64" id="XNF-R3-lmh"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发货请拨打客服电话" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGI-Pr-06g">
-                    <rect key="frame" x="10" y="326" width="355" height="20"/>
+                    <rect key="frame" x="10" y="266" width="355" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="Jbv-Cf-d3E"/>
                     </constraints>
@@ -180,11 +180,11 @@
                 <constraint firstItem="PEB-ck-fLv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="Ohi-WO-hYj"/>
                 <constraint firstAttribute="trailing" secondItem="BGI-Pr-06g" secondAttribute="trailing" constant="10" id="XJ2-QS-y0u"/>
                 <constraint firstItem="PEB-ck-fLv" firstAttribute="top" secondItem="fyn-Jv-1Oe" secondAttribute="bottom" constant="50" id="h7P-vF-Tym"/>
-                <constraint firstItem="dES-Ze-p72" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="hsL-1K-qGU"/>
+                <constraint firstItem="dES-Ze-p72" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="hsL-1K-qGU"/>
                 <constraint firstItem="BGI-Pr-06g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="i5e-rh-O7P"/>
                 <constraint firstAttribute="trailing" secondItem="fyn-Jv-1Oe" secondAttribute="trailing" constant="10" id="lqQ-wm-mYe"/>
                 <constraint firstAttribute="trailing" secondItem="PEB-ck-fLv" secondAttribute="trailing" constant="10" id="rX8-Zk-IzD"/>
-                <constraint firstItem="fyn-Jv-1Oe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="104" id="raV-gX-yI6"/>
+                <constraint firstItem="fyn-Jv-1Oe" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="raV-gX-yI6"/>
                 <constraint firstItem="dES-Ze-p72" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wCL-cq-7Ae"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="66.5"/>

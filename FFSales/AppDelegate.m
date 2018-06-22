@@ -12,6 +12,7 @@
 #import "DataManager.h"
 #import "MainTab.h"
 #import "GestureVerifyViewController.h"
+#import "FFEmpHomeVC.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) GestureVerifyViewController *gestureVerifyVc;
 
@@ -33,8 +34,22 @@
     
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"loginStatus"] boolValue] == YES) {
-//        nav = [[UINavigationController alloc]initWithRootViewController:[DDHomeVC new]];
-        [self.window setRootViewController:[MainTab shareInstance]];
+
+        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+            FFEmpHomeVC *empHome = [[FFEmpHomeVC alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:empHome];
+            [nav.navigationBar setBarTintColor:RGBCOLORV(0x4BAE4F)];
+            nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+//            [nav.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//            [nav.navigationBar setShadowImage:[UIImage new]];
+            nav.navigationBar.translucent = NO;
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+            [self.window setRootViewController:nav];
+            
+        }else{
+            [self.window setRootViewController:[MainTab shareInstance]];
+            
+        }
 
     }else{
 //        nav = [[UINavigationController alloc]initWithRootViewController:[DDLoginVC new]];

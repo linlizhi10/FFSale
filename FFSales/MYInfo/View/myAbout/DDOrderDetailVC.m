@@ -60,6 +60,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstant;
 @property (weak, nonatomic) IBOutlet UILabel *factory;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 
 @end
 static NSString *refreshNoti = @"refreshOrderData";
@@ -77,6 +78,9 @@ static NSString *refreshNoti = @"refreshOrderData";
     [super viewDidLoad];
     self.title = @"订单详情";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+        _topConstraint.constant = 0;
+    }
     [_goodsTable registerNib:[UINib nibWithNibName:@"OrderDCell" bundle:nil] forCellReuseIdentifier:@"cellOrder"];
     _goodsTable.estimatedRowHeight = 102;
     _goodsTable.rowHeight = UITableViewAutomaticDimension;
@@ -186,7 +190,7 @@ static NSString *refreshNoti = @"refreshOrderData";
             
            
         }else{
-            //                [MBProgressHUD showError:result.message toView:self.view];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];
@@ -198,7 +202,12 @@ static NSString *refreshNoti = @"refreshOrderData";
         _trackView.hidden = YES;
         _marginConstant.constant = 10;
     }else{
-        if ([detail.status isEqualToString:@"02"] || [detail.status isEqualToString:@"03"] ) {
+        if ([detail.status isEqualToString:@"01"]) {//审核中
+            _tipsMessage.text = @"订单后台审核中";
+            _trackView.hidden = YES;
+            _marginConstant.constant = 10;
+        }
+       else if ([detail.status isEqualToString:@"02"] || [detail.status isEqualToString:@"03"] ) {
             _tipsMessage.text = [NSString stringWithFormat:@"已发货%@/%.2f",detail.sendQty,detail.qty];
             _phone.text = [NSString stringWithFormat:@"%@吨商品已发货",detail.sendQty];
 

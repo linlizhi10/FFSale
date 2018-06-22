@@ -37,6 +37,7 @@
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:_vc];
     [nav.navigationBar setBarTintColor:[UIColor whiteColor]];
     nav.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor darkTextColor],NSFontAttributeName:Font(18)};
+    
     return nav;
 }
 
@@ -72,11 +73,12 @@
 //    [self setViewControlerTarbar:sub3 andNormalImage:Img(@"icon-shanjia-wdj") andSelectImage:Img(@"icon-shanjia-dj")];
     [self setViewControlerTarbar:sub4 andNormalImage:Img(@"icon-wd-wdj") andSelectImage:Img(@"icon-wd-dj")];
 
-    
+    UINavigationController *nav3 = [self rootVc:sub4];
+    nav3.navigationBar.translucent = NO;
     NSArray *array = @[[self rootVc:sub1],
                        [self rootVc:sub2],
 //                       [self rootVc:sub3],
-                       [self rootVc:sub4]];
+                       nav3];
     [self setViewControllers:array];
     self.delegate = self;
     

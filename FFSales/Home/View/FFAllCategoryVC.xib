@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FFAllCategoryVC">
             <connections>
                 <outlet property="contentScroll" destination="jEd-Th-jTc" id="o5n-Xa-5r8"/>
+                <outlet property="contentTF" destination="WVE-3c-eOi" id="iZv-H2-vCG"/>
+                <outlet property="searchView" destination="Lx9-qs-83n" id="p4d-4h-bZm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,5 +34,57 @@
                 <constraint firstAttribute="bottom" secondItem="jEd-Th-jTc" secondAttribute="bottom" id="zEc-5c-b0v"/>
             </constraints>
         </view>
+        <view contentMode="scaleToFill" id="Lx9-qs-83n">
+            <rect key="frame" x="0.0" y="0.0" width="565" height="176"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJE-OK-3LV">
+                    <rect key="frame" x="10" y="4" width="545" height="168"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SS" translatesAutoresizingMaskIntoConstraints="NO" id="TGK-qY-cwz">
+                            <rect key="frame" x="8" y="75.5" width="16" height="17"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="2Ye-BZ-17a"/>
+                                <constraint firstAttribute="width" constant="16" id="HF0-jq-Ffp"/>
+                            </constraints>
+                        </imageView>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WVE-3c-eOi">
+                            <rect key="frame" x="32" y="75.5" width="503" height="17"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="oNj-eh-xAE"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.92989157919999998" green="0.92989157919999998" blue="0.92989157919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="WVE-3c-eOi" secondAttribute="trailing" constant="10" id="2v8-19-tP6"/>
+                        <constraint firstItem="TGK-qY-cwz" firstAttribute="leading" secondItem="ZJE-OK-3LV" secondAttribute="leading" constant="8" id="FYe-zV-ihy"/>
+                        <constraint firstItem="TGK-qY-cwz" firstAttribute="centerY" secondItem="ZJE-OK-3LV" secondAttribute="centerY" id="Ll7-0J-4nq"/>
+                        <constraint firstItem="WVE-3c-eOi" firstAttribute="centerY" secondItem="ZJE-OK-3LV" secondAttribute="centerY" id="OhZ-jf-Jej"/>
+                        <constraint firstItem="WVE-3c-eOi" firstAttribute="leading" secondItem="TGK-qY-cwz" secondAttribute="trailing" constant="8" id="Z42-Jq-meU"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="18"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ZJE-OK-3LV" firstAttribute="top" secondItem="Lx9-qs-83n" secondAttribute="top" constant="4" id="4E9-pn-G9P"/>
+                <constraint firstAttribute="trailing" secondItem="ZJE-OK-3LV" secondAttribute="trailing" constant="10" id="JNG-Zq-dr3"/>
+                <constraint firstItem="ZJE-OK-3LV" firstAttribute="leading" secondItem="Lx9-qs-83n" secondAttribute="leading" constant="10" id="baZ-JY-492"/>
+                <constraint firstAttribute="bottom" secondItem="ZJE-OK-3LV" secondAttribute="bottom" constant="4" id="ixW-8b-072"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-2.5" y="571"/>
+        </view>
     </objects>
+    <resources>
+        <image name="SS" width="16" height="17"/>
+    </resources>
 </document>

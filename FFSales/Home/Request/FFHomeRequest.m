@@ -53,3 +53,13 @@
     [super startCallBack:_callBack];
 }
 @end
+@implementation FFEMPHomeRequest
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = @"/employees/self";
+    self.METHOD = @"GET";
+    self.params = @{@"accessToken":self.accessToken?:@""
+                    }
+    ;
+    [super startCallBack:_callBack];
+}
+@end

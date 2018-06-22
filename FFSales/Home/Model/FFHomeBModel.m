@@ -37,3 +37,6 @@
              };
 }
 @end
+@implementation FFHomeEMP
+
+@end

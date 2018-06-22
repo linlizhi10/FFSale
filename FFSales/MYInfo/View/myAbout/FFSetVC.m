@@ -12,8 +12,10 @@
 #import "GestureVerifyViewController.h"
 #import "FIChangePasswordViewController.h"
 #import "MainTab.h"
+#import "DDLoginVC.h"
 #import "DataManager.h"
 @interface FFSetVC ()<UIAlertViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *gestureView;
 - (IBAction)changePassA:(id)sender;
 @property (weak, nonatomic) IBOutlet UISwitch *gestureSwitch;
 - (IBAction)cleanDiskA:(id)sender;
@@ -21,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *versionNumber;
 - (IBAction)gestureClick:(id)sender;
 - (IBAction)logOut:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *thirdConstraint;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
 
 @end
 
@@ -42,7 +47,11 @@
     self.versionNumber.text = [NSString stringWithFormat:@"%@(%@)",version,build];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(verifySuccess) name:@"verifySuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setSuccess) name:@"setSuccess" object:nil];
-    
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+        _gestureView.hidden = YES;
+        _thirdConstraint.constant = 0;
+        _heightConstraint.constant = 150;
+    }
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"verifySuccess" object:nil];
@@ -70,10 +79,18 @@
             self.cacheSize.text = [NSString stringWithFormat:@"%.2fMB",[cacheModel clearFile]];
         }
     }else{
-        [[NSUserDefaults standardUserDefaults] setObject:NO forKey:@"loginStatus"];
-        [self.navigationController popToRootViewControllerAnimated:NO];
-        [MainTab shareInstance].selectedIndex = 0;
-        [[MainTab shareInstance] showLoginViewWithBlock:nil];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"loginStatus"];
+        if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+            [self.navigationController presentViewController:[DDLoginVC new] animated:YES completion:nil];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+
+        }else{
+            [self.navigationController popToRootViewControllerAnimated:NO];
+
+            [MainTab shareInstance].selectedIndex = 0;
+            [[MainTab shareInstance] showLoginViewWithBlock:nil];
+            
+        }
     }
 }
 - (IBAction)gestureClick:(id)sender {

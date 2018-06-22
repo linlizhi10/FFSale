@@ -58,3 +58,10 @@
 @property (nonatomic, assign) int size;
 
 @end
+@interface FFCustomerMoneyRequest : Request
+@property (nonatomic, copy) NSString *keyword; //
+@property (nonatomic, copy) NSString *accessToken; //
+@property (nonatomic, assign) int page;
+@property (nonatomic, assign) int size;
+
+@end

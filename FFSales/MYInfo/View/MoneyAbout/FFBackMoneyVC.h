@@ -9,5 +9,6 @@
 #import "DDCommonNaviVC.h"
 
 @interface FFBackMoneyVC : DDCommonNaviVC
+- (instancetype)initWithNo:(NSString *)custId ;
 
 @end

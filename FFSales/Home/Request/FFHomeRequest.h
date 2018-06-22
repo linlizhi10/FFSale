@@ -28,3 +28,9 @@
 @property (nonatomic, assign) int size;
 
 @end
+
+
+@interface FFEMPHomeRequest : Request
+@property (nonatomic, copy) NSString *accessToken; //
+
+@end

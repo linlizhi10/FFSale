@@ -33,6 +33,33 @@
 		3EAC464A20D9EBE50099EBBC /* FFGoodsHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC464920D9EBE50099EBBC /* FFGoodsHistory.m */; };
 		3EAC464E20DA05BE0099EBBC /* FFGetGoodsDVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC464C20DA05BE0099EBBC /* FFGetGoodsDVC.m */; };
 		3EAC464F20DA05BE0099EBBC /* FFGetGoodsDVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC464D20DA05BE0099EBBC /* FFGetGoodsDVC.xib */; };
+		3EAC465220DA31170099EBBC /* FFInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC465120DA31170099EBBC /* FFInfo.m */; };
+		3EAC465720DA38AD0099EBBC /* FFEmpHomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC465520DA38AD0099EBBC /* FFEmpHomeVC.m */; };
+		3EAC465820DA38AD0099EBBC /* FFEmpHomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC465620DA38AD0099EBBC /* FFEmpHomeVC.xib */; };
+		3EAC465C20DA628E0099EBBC /* OrderEMPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC465A20DA628E0099EBBC /* OrderEMPCell.m */; };
+		3EAC465D20DA628E0099EBBC /* OrderEMPCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC465B20DA628E0099EBBC /* OrderEMPCell.xib */; };
+		3EAC466220DA688D0099EBBC /* MessageOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC466020DA688D0099EBBC /* MessageOrderCell.m */; };
+		3EAC466320DA688D0099EBBC /* MessageOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC466120DA688D0099EBBC /* MessageOrderCell.xib */; };
+		3EAC466720DA68A10099EBBC /* MessageOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC466520DA68A10099EBBC /* MessageOtherCell.m */; };
+		3EAC466820DA68A10099EBBC /* MessageOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC466620DA68A10099EBBC /* MessageOtherCell.xib */; };
+		3EAC466C20DA6A070099EBBC /* CustomerMCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC466A20DA6A070099EBBC /* CustomerMCell.m */; };
+		3EAC466D20DA6A070099EBBC /* CustomerMCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC466B20DA6A070099EBBC /* CustomerMCell.xib */; };
+		3EAC467620DA6D960099EBBC /* FFCustomerMVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC467420DA6D960099EBBC /* FFCustomerMVC.m */; };
+		3EAC467720DA6D960099EBBC /* FFCustomerMVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC467520DA6D960099EBBC /* FFCustomerMVC.xib */; };
+		3EAC467B20DB3F4E0099EBBC /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC467920DB3F4E0099EBBC /* CustomerCell.m */; };
+		3EAC467C20DB3F4E0099EBBC /* CustomerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC467A20DB3F4E0099EBBC /* CustomerCell.xib */; };
+		3EAC468520DB42910099EBBC /* FFCustomerListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC468320DB42910099EBBC /* FFCustomerListVC.m */; };
+		3EAC468620DB42910099EBBC /* FFCustomerListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC468420DB42910099EBBC /* FFCustomerListVC.xib */; };
+		3EAC468920DB42F20099EBBC /* FFCustomerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC468820DB42F20099EBBC /* FFCustomerRequest.m */; };
+		3EAC468C20DB43550099EBBC /* FFCustomerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC468B20DB43550099EBBC /* FFCustomerModel.m */; };
+		3EAC469020DB4AD60099EBBC /* FFCustomerDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC468E20DB4AD60099EBBC /* FFCustomerDetailVC.m */; };
+		3EAC469120DB4AD60099EBBC /* FFCustomerDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC468F20DB4AD60099EBBC /* FFCustomerDetailVC.xib */; };
+		3EAC469520DB92DE0099EBBC /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC469320DB92DE0099EBBC /* MessageCell.m */; };
+		3EAC469620DB92DE0099EBBC /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC469420DB92DE0099EBBC /* MessageCell.xib */; };
+		3EAC469B20DB98820099EBBC /* FFMessageReqeust.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC469A20DB98820099EBBC /* FFMessageReqeust.m */; };
+		3EAC469E20DB99040099EBBC /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC469D20DB99040099EBBC /* MessageModel.m */; };
+		3EAC46A220DB9B870099EBBC /* FFMessageListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC46A020DB9B870099EBBC /* FFMessageListVC.m */; };
+		3EAC46A320DB9B870099EBBC /* FFMessageListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC46A120DB9B870099EBBC /* FFMessageListVC.xib */; };
 		3EADE1C720CA15CB0079DE9C /* FFSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EADE1C520CA15CB0079DE9C /* FFSetVC.m */; };
 		3EADE1C820CA15CB0079DE9C /* FFSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EADE1C620CA15CB0079DE9C /* FFSetVC.xib */; };
 		3EADE1CB20CA1C520079DE9C /* CacheViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EADE1CA20CA1C520079DE9C /* CacheViewModel.m */; };
@@ -216,6 +243,49 @@
 		3EAC464B20DA05BE0099EBBC /* FFGetGoodsDVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGetGoodsDVC.h; sourceTree = "<group>"; };
 		3EAC464C20DA05BE0099EBBC /* FFGetGoodsDVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFGetGoodsDVC.m; sourceTree = "<group>"; };
 		3EAC464D20DA05BE0099EBBC /* FFGetGoodsDVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFGetGoodsDVC.xib; sourceTree = "<group>"; };
+		3EAC465020DA31170099EBBC /* FFInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFInfo.h; sourceTree = "<group>"; };
+		3EAC465120DA31170099EBBC /* FFInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFInfo.m; sourceTree = "<group>"; };
+		3EAC465420DA38AD0099EBBC /* FFEmpHomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFEmpHomeVC.h; sourceTree = "<group>"; };
+		3EAC465520DA38AD0099EBBC /* FFEmpHomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFEmpHomeVC.m; sourceTree = "<group>"; };
+		3EAC465620DA38AD0099EBBC /* FFEmpHomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFEmpHomeVC.xib; sourceTree = "<group>"; };
+		3EAC465920DA628E0099EBBC /* OrderEMPCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderEMPCell.h; sourceTree = "<group>"; };
+		3EAC465A20DA628E0099EBBC /* OrderEMPCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderEMPCell.m; sourceTree = "<group>"; };
+		3EAC465B20DA628E0099EBBC /* OrderEMPCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderEMPCell.xib; sourceTree = "<group>"; };
+		3EAC465F20DA688D0099EBBC /* MessageOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageOrderCell.h; sourceTree = "<group>"; };
+		3EAC466020DA688D0099EBBC /* MessageOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageOrderCell.m; sourceTree = "<group>"; };
+		3EAC466120DA688D0099EBBC /* MessageOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageOrderCell.xib; sourceTree = "<group>"; };
+		3EAC466420DA68A10099EBBC /* MessageOtherCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageOtherCell.h; sourceTree = "<group>"; };
+		3EAC466520DA68A10099EBBC /* MessageOtherCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageOtherCell.m; sourceTree = "<group>"; };
+		3EAC466620DA68A10099EBBC /* MessageOtherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageOtherCell.xib; sourceTree = "<group>"; };
+		3EAC466920DA6A070099EBBC /* CustomerMCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerMCell.h; sourceTree = "<group>"; };
+		3EAC466A20DA6A070099EBBC /* CustomerMCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerMCell.m; sourceTree = "<group>"; };
+		3EAC466B20DA6A070099EBBC /* CustomerMCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerMCell.xib; sourceTree = "<group>"; };
+		3EAC467320DA6D960099EBBC /* FFCustomerMVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFCustomerMVC.h; sourceTree = "<group>"; };
+		3EAC467420DA6D960099EBBC /* FFCustomerMVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFCustomerMVC.m; sourceTree = "<group>"; };
+		3EAC467520DA6D960099EBBC /* FFCustomerMVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFCustomerMVC.xib; sourceTree = "<group>"; };
+		3EAC467820DB3F4E0099EBBC /* CustomerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
+		3EAC467920DB3F4E0099EBBC /* CustomerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
+		3EAC467A20DB3F4E0099EBBC /* CustomerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerCell.xib; sourceTree = "<group>"; };
+		3EAC468220DB42910099EBBC /* FFCustomerListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFCustomerListVC.h; sourceTree = "<group>"; };
+		3EAC468320DB42910099EBBC /* FFCustomerListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFCustomerListVC.m; sourceTree = "<group>"; };
+		3EAC468420DB42910099EBBC /* FFCustomerListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFCustomerListVC.xib; sourceTree = "<group>"; };
+		3EAC468720DB42F20099EBBC /* FFCustomerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFCustomerRequest.h; sourceTree = "<group>"; };
+		3EAC468820DB42F20099EBBC /* FFCustomerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFCustomerRequest.m; sourceTree = "<group>"; };
+		3EAC468A20DB43550099EBBC /* FFCustomerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFCustomerModel.h; sourceTree = "<group>"; };
+		3EAC468B20DB43550099EBBC /* FFCustomerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFCustomerModel.m; sourceTree = "<group>"; };
+		3EAC468D20DB4AD60099EBBC /* FFCustomerDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFCustomerDetailVC.h; sourceTree = "<group>"; };
+		3EAC468E20DB4AD60099EBBC /* FFCustomerDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFCustomerDetailVC.m; sourceTree = "<group>"; };
+		3EAC468F20DB4AD60099EBBC /* FFCustomerDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFCustomerDetailVC.xib; sourceTree = "<group>"; };
+		3EAC469220DB92DE0099EBBC /* MessageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
+		3EAC469320DB92DE0099EBBC /* MessageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		3EAC469420DB92DE0099EBBC /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		3EAC469920DB98820099EBBC /* FFMessageReqeust.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFMessageReqeust.h; sourceTree = "<group>"; };
+		3EAC469A20DB98820099EBBC /* FFMessageReqeust.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFMessageReqeust.m; sourceTree = "<group>"; };
+		3EAC469C20DB99040099EBBC /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		3EAC469D20DB99040099EBBC /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		3EAC469F20DB9B870099EBBC /* FFMessageListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFMessageListVC.h; sourceTree = "<group>"; };
+		3EAC46A020DB9B870099EBBC /* FFMessageListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFMessageListVC.m; sourceTree = "<group>"; };
+		3EAC46A120DB9B870099EBBC /* FFMessageListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFMessageListVC.xib; sourceTree = "<group>"; };
 		3EADE1C420CA15CB0079DE9C /* FFSetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFSetVC.h; sourceTree = "<group>"; };
 		3EADE1C520CA15CB0079DE9C /* FFSetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFSetVC.m; sourceTree = "<group>"; };
 		3EADE1C620CA15CB0079DE9C /* FFSetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFSetVC.xib; sourceTree = "<group>"; };
@@ -502,6 +572,108 @@
 			path = GetGoods;
 			sourceTree = "<group>";
 		};
+		3EAC465320DA38780099EBBC /* EMP */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC465420DA38AD0099EBBC /* FFEmpHomeVC.h */,
+				3EAC465520DA38AD0099EBBC /* FFEmpHomeVC.m */,
+				3EAC465620DA38AD0099EBBC /* FFEmpHomeVC.xib */,
+			);
+			path = EMP;
+			sourceTree = "<group>";
+		};
+		3EAC465E20DA68750099EBBC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC465F20DA688D0099EBBC /* MessageOrderCell.h */,
+				3EAC466020DA688D0099EBBC /* MessageOrderCell.m */,
+				3EAC466120DA688D0099EBBC /* MessageOrderCell.xib */,
+				3EAC466420DA68A10099EBBC /* MessageOtherCell.h */,
+				3EAC466520DA68A10099EBBC /* MessageOtherCell.m */,
+				3EAC466620DA68A10099EBBC /* MessageOtherCell.xib */,
+				3EAC469220DB92DE0099EBBC /* MessageCell.h */,
+				3EAC469320DB92DE0099EBBC /* MessageCell.m */,
+				3EAC469420DB92DE0099EBBC /* MessageCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3EAC467D20DB41C40099EBBC /* CustomerInfo */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC468120DB41E50099EBBC /* Model */,
+				3EAC468020DB41DD0099EBBC /* Request */,
+				3EAC467F20DB41D70099EBBC /* Cell */,
+				3EAC467E20DB41D30099EBBC /* View */,
+			);
+			path = CustomerInfo;
+			sourceTree = "<group>";
+		};
+		3EAC467E20DB41D30099EBBC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC467320DA6D960099EBBC /* FFCustomerMVC.h */,
+				3EAC467420DA6D960099EBBC /* FFCustomerMVC.m */,
+				3EAC467520DA6D960099EBBC /* FFCustomerMVC.xib */,
+				3EAC468220DB42910099EBBC /* FFCustomerListVC.h */,
+				3EAC468320DB42910099EBBC /* FFCustomerListVC.m */,
+				3EAC468420DB42910099EBBC /* FFCustomerListVC.xib */,
+				3EAC468D20DB4AD60099EBBC /* FFCustomerDetailVC.h */,
+				3EAC468E20DB4AD60099EBBC /* FFCustomerDetailVC.m */,
+				3EAC468F20DB4AD60099EBBC /* FFCustomerDetailVC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EAC467F20DB41D70099EBBC /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC466920DA6A070099EBBC /* CustomerMCell.h */,
+				3EAC466A20DA6A070099EBBC /* CustomerMCell.m */,
+				3EAC466B20DA6A070099EBBC /* CustomerMCell.xib */,
+				3EAC467820DB3F4E0099EBBC /* CustomerCell.h */,
+				3EAC467920DB3F4E0099EBBC /* CustomerCell.m */,
+				3EAC467A20DB3F4E0099EBBC /* CustomerCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3EAC468020DB41DD0099EBBC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC468720DB42F20099EBBC /* FFCustomerRequest.h */,
+				3EAC468820DB42F20099EBBC /* FFCustomerRequest.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		3EAC468120DB41E50099EBBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC468A20DB43550099EBBC /* FFCustomerModel.h */,
+				3EAC468B20DB43550099EBBC /* FFCustomerModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3EAC469720DB98630099EBBC /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC469920DB98820099EBBC /* FFMessageReqeust.h */,
+				3EAC469A20DB98820099EBBC /* FFMessageReqeust.m */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		3EAC469820DB986C0099EBBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3EAC469C20DB99040099EBBC /* MessageModel.h */,
+				3EAC469D20DB99040099EBBC /* MessageModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3EADE1CC20CA1D420079DE9C /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +755,9 @@
 				3EAC464320D9EA3C0099EBBC /* FFGoodsHistoryCell.h */,
 				3EAC464420D9EA3C0099EBBC /* FFGoodsHistoryCell.m */,
 				3EAC464520D9EA3C0099EBBC /* FFGoodsHistoryCell.xib */,
+				3EAC465920DA628E0099EBBC /* OrderEMPCell.h */,
+				3EAC465A20DA628E0099EBBC /* OrderEMPCell.m */,
+				3EAC465B20DA628E0099EBBC /* OrderEMPCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -636,6 +811,7 @@
 		3EB84F3720BE4B820022085F /* FFSales */ = {
 			isa = PBXGroup;
 			children = (
+				3EAC467D20DB41C40099EBBC /* CustomerInfo */,
 				3EB84FB820BE4FBD0022085F /* MYInfo */,
 				3EB84FB020BE4F8A0022085F /* Message */,
 				3EB84FA920BE4F5E0022085F /* Home */,
@@ -684,6 +860,8 @@
 				3EB84F5220BE4BC70022085F /* FIUser.m */,
 				3EB84F5320BE4BC70022085F /* Model.h */,
 				3EB84F5420BE4BC70022085F /* Model.m */,
+				3EAC465020DA31170099EBBC /* FFInfo.h */,
+				3EAC465120DA31170099EBBC /* FFInfo.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -797,6 +975,7 @@
 		3EB84FAA20BE4F640022085F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3EAC465320DA38780099EBBC /* EMP */,
 				3EB84FCA20BE9B110022085F /* Cell */,
 				3EB84FAB20BE4F7D0022085F /* DDHomeVC.h */,
 				3EB84FAC20BE4F7D0022085F /* DDHomeVC.m */,
@@ -820,6 +999,9 @@
 		3EB84FB020BE4F8A0022085F /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				3EAC469820DB986C0099EBBC /* Model */,
+				3EAC469720DB98630099EBBC /* Request */,
+				3EAC465E20DA68750099EBBC /* Cell */,
 				3EB84FB120BE4F920022085F /* View */,
 			);
 			path = Message;
@@ -831,6 +1013,9 @@
 				3EB84FB320BE4FAD0022085F /* DDMessageVC.h */,
 				3EB84FB420BE4FAD0022085F /* DDMessageVC.m */,
 				3EB84FB520BE4FAD0022085F /* DDMessageVC.xib */,
+				3EAC469F20DB9B870099EBBC /* FFMessageListVC.h */,
+				3EAC46A020DB9B870099EBBC /* FFMessageListVC.m */,
+				3EAC46A120DB9B870099EBBC /* FFMessageListVC.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1088,12 +1273,15 @@
 			files = (
 				3EADE21520CE58680079DE9C /* FFTransMethodVC.xib in Resources */,
 				3EB84F7820BE4BC80022085F /* DDLoginVC.xib in Resources */,
+				3EAC465820DA38AD0099EBBC /* FFEmpHomeVC.xib in Resources */,
 				3EADE1F720CE0A0B0079DE9C /* FFOrderVC.xib in Resources */,
 				3EB84FB720BE4FAD0022085F /* DDMessageVC.xib in Resources */,
 				3EADE23720CF9F010079DE9C /* CashCell.xib in Resources */,
 				3EADE23C20CFB2CC0079DE9C /* MoneyHistoryCell.xib in Resources */,
 				3EADE21A20CE751D0079DE9C /* DDTransInfoVC.xib in Resources */,
+				3EAC466820DA68A10099EBBC /* MessageOtherCell.xib in Resources */,
 				3EB84F7A20BE4BC80022085F /* DDSetNewPassWordVC.xib in Resources */,
+				3EAC46A320DB9B870099EBBC /* FFMessageListVC.xib in Resources */,
 				3EADE20A20CE15BB0079DE9C /* DDOrderDetailVC.xib in Resources */,
 				3EB84F4520BE4B820022085F /* LaunchScreen.storyboard in Resources */,
 				3EF328BF20D1154C00A9C6A1 /* FFSubCreditVC.xib in Resources */,
@@ -1107,25 +1295,32 @@
 				3EB84F7620BE4BC80022085F /* DDForgetPasswordVC.xib in Resources */,
 				3EAC462620D8EED20099EBBC /* FFInvoiceVC.xib in Resources */,
 				3EA61ABA20C7C2AB00871858 /* FFAllCategoryVC.xib in Resources */,
+				3EAC467C20DB3F4E0099EBBC /* CustomerCell.xib in Resources */,
+				3EAC466320DA688D0099EBBC /* MessageOrderCell.xib in Resources */,
 				3ED3D23120C4D38E00C4AFE8 /* FFProductDetailVC.xib in Resources */,
 				3EB84FBE20BE4FE30022085F /* DDMyHome.xib in Resources */,
+				3EAC468620DB42910099EBBC /* FFCustomerListVC.xib in Resources */,
 				3EA61AAD20C6243900871858 /* FFSearchVC.xib in Resources */,
 				3EB84FD720BE9B120022085F /* SearchRCell.xib in Resources */,
 				3EADE1C820CA15CB0079DE9C /* FFSetVC.xib in Resources */,
 				3EADE23220CF9A500079DE9C /* CreditCell.xib in Resources */,
 				3EB84F9720BE4BFF0022085F /* address.txt in Resources */,
+				3EAC467720DA6D960099EBBC /* FFCustomerMVC.xib in Resources */,
 				3EF328D420D2513700A9C6A1 /* BackCell.xib in Resources */,
 				3EF328CA20D242FB00A9C6A1 /* FFOtherMoneyVC.xib in Resources */,
 				3EB84F4020BE4B820022085F /* Main.storyboard in Resources */,
 				3EB84FE720C0E1E70022085F /* FFGoodsCell.xib in Resources */,
 				3EF328CF20D2463100A9C6A1 /* OtherMoneyCell.xib in Resources */,
 				3EADE24120CFB6800079DE9C /* FFHistoryVC.xib in Resources */,
+				3EAC469620DB92DE0099EBBC /* MessageCell.xib in Resources */,
 				3EF328DE20D25FCD00A9C6A1 /* MoneyListCell.xib in Resources */,
 				3EF328D920D2524000A9C6A1 /* FFBackMoneyVC.xib in Resources */,
 				3EB84FC920BE98C80022085F /* Images.xcassets in Resources */,
 				3EC6361620C9042D00C01E7F /* FIMyInfoCell.xib in Resources */,
+				3EAC466D20DA6A070099EBBC /* CustomerMCell.xib in Resources */,
 				3EADE22D20CF6D6D0079DE9C /* FFUseMoney.xib in Resources */,
 				3EAC463A20D9E33A0099EBBC /* FFGetGoodsVC.xib in Resources */,
+				3EAC465D20DA628E0099EBBC /* OrderEMPCell.xib in Resources */,
 				3EB84FAF20BE4F7D0022085F /* DDHomeVC.xib in Resources */,
 				3EA61AC420C7D72800871858 /* TableGoodsCell.xib in Resources */,
 				3EA61AB220C685B200871858 /* FFProductListVC.xib in Resources */,
@@ -1139,6 +1334,7 @@
 				3EADE1FC20CE0A970079DE9C /* OrderCell.xib in Resources */,
 				3EF328C420D1FF4800A9C6A1 /* FFCreaditDVC.xib in Resources */,
 				3EADE21F20CE755D0079DE9C /* TransDetailCell.xib in Resources */,
+				3EAC469120DB4AD60099EBBC /* FFCustomerDetailVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1201,12 +1397,14 @@
 				3ED3D24E20C50BEB00C4AFE8 /* UIView+SDExtension.m in Sources */,
 				3EB84F7320BE4BC70022085F /* NSTimer+BlockTimer.m in Sources */,
 				3EC6361D20C9052800C01E7F /* FIMyIfoViewModel.m in Sources */,
+				3EAC466220DA688D0099EBBC /* MessageOrderCell.m in Sources */,
 				3EADE22220CE7D2D0079DE9C /* DDTransInfo.m in Sources */,
 				3EB84F9B20BE4BFF0022085F /* BlockButton.m in Sources */,
 				3EF328DD20D25FCD00A9C6A1 /* MoneyListCell.m in Sources */,
 				3EC6362020C9330600C01E7F /* FFMHomeRequest.m in Sources */,
 				3EAC463920D9E33A0099EBBC /* FFGetGoodsVC.m in Sources */,
 				3EB84F7920BE4BC80022085F /* DDSetNewPassWordVC.m in Sources */,
+				3EAC465C20DA628E0099EBBC /* OrderEMPCell.m in Sources */,
 				3EB84F9E20BE4BFF0022085F /* DDCommonScanVC.m in Sources */,
 				3EADE1E820CA1D550079DE9C /* PCLockLabel.m in Sources */,
 				3EB84F9C20BE4BFF0022085F /* CALayer+Anim.m in Sources */,
@@ -1216,7 +1414,10 @@
 				3EB84FA120BE4BFF0022085F /* Request.m in Sources */,
 				3EADE1E120CA1D550079DE9C /* GestureVerifyViewController.m in Sources */,
 				3ED3D25720C5404500C4AFE8 /* FFFactoryACell.m in Sources */,
+				3EAC466C20DA6A070099EBBC /* CustomerMCell.m in Sources */,
 				3EB84FC220BE75840022085F /* FIChangePasswordViewController.m in Sources */,
+				3EAC466720DA68A10099EBBC /* MessageOtherCell.m in Sources */,
+				3EAC469520DB92DE0099EBBC /* MessageCell.m in Sources */,
 				3EB84F9820BE4BFF0022085F /* AddressPickerView.m in Sources */,
 				3ED3D23420C4E42700C4AFE8 /* FFProductDetailRequest.m in Sources */,
 				3EADE1E320CA1D550079DE9C /* HomeViewController.m in Sources */,
@@ -1224,6 +1425,7 @@
 				3EA61AB120C685B200871858 /* FFProductListVC.m in Sources */,
 				3ED3D24B20C50BEB00C4AFE8 /* TAPageControl.m in Sources */,
 				3EB84FA220BE4BFF0022085F /* ViewModel.m in Sources */,
+				3EAC468520DB42910099EBBC /* FFCustomerListVC.m in Sources */,
 				3EB84F9F20BE4BFF0022085F /* DDCommonWebVC.m in Sources */,
 				3EB84F3D20BE4B820022085F /* ViewController.m in Sources */,
 				3EB84F9A20BE4BFF0022085F /* Province.m in Sources */,
@@ -1250,9 +1452,11 @@
 				3EB84FB620BE4FAD0022085F /* DDMessageVC.m in Sources */,
 				3EB84FD620BE9B110022085F /* SearchRCell.m in Sources */,
 				3EADE20F20CE51570079DE9C /* OrderDCell.m in Sources */,
+				3EAC467B20DB3F4E0099EBBC /* CustomerCell.m in Sources */,
 				3EC6361A20C9050A00C01E7F /* FIContentModel.m in Sources */,
 				3EB84F7020BE4BC70022085F /* FIUserInfoRequest.m in Sources */,
 				3EF328C920D242FB00A9C6A1 /* FFOtherMoneyVC.m in Sources */,
+				3EAC465720DA38AD0099EBBC /* FFEmpHomeVC.m in Sources */,
 				3EB84F6D20BE4BC70022085F /* FIUser.m in Sources */,
 				3EB84FC720BE765E0022085F /* CCChangePRequest.m in Sources */,
 				3EB84FA320BE4BFF0022085F /* WToast.m in Sources */,
@@ -1267,7 +1471,10 @@
 				3EADE20B20CE15BB0079DE9C /* DDOrderDetailVC.m in Sources */,
 				3EB84FA820BE4F3F0022085F /* MainTab.m in Sources */,
 				3EA61AAC20C6243900871858 /* FFSearchVC.m in Sources */,
+				3EAC469020DB4AD60099EBBC /* FFCustomerDetailVC.m in Sources */,
+				3EAC468920DB42F20099EBBC /* FFCustomerRequest.m in Sources */,
 				3EADE21420CE58680079DE9C /* FFTransMethodVC.m in Sources */,
+				3EAC468C20DB43550099EBBC /* FFCustomerModel.m in Sources */,
 				3EADE24020CFB6800079DE9C /* FFHistoryVC.m in Sources */,
 				3EADE1E420CA1D550079DE9C /* PCCircle.m in Sources */,
 				3EADE1E020CA1D550079DE9C /* CALayer+Anim.m in Sources */,
@@ -1283,8 +1490,11 @@
 				3EADE20620CE11CD0079DE9C /* DDOrderRequest.m in Sources */,
 				3EA61AB920C7C2AB00871858 /* FFAllCategoryVC.m in Sources */,
 				3EB84FA020BE4BFF0022085F /* DDStringUtil.m in Sources */,
+				3EAC469E20DB99040099EBBC /* MessageModel.m in Sources */,
+				3EAC46A220DB9B870099EBBC /* FFMessageListVC.m in Sources */,
 				3EB84F7120BE4BC70022085F /* Extention.m in Sources */,
 				3EB84FDD20BFD4580022085F /* FFCHeaderView.m in Sources */,
+				3EAC469B20DB98820099EBBC /* FFMessageReqeust.m in Sources */,
 				3EADE1EF20CA1FEA0079DE9C /* UIView+Frame.m in Sources */,
 				3EC62C7A20C8E0B800C01E7F /* FilterCell.m in Sources */,
 				3EF328C320D1FF4800A9C6A1 /* FFCreaditDVC.m in Sources */,
@@ -1292,10 +1502,12 @@
 				3EADE1CB20CA1C520079DE9C /* CacheViewModel.m in Sources */,
 				3EB84F9920BE4BFF0022085F /* City.m in Sources */,
 				3EADE1FD20CE0A970079DE9C /* OrderCell.m in Sources */,
+				3EAC465220DA31170099EBBC /* FFInfo.m in Sources */,
 				3EADE1F220CA5BC40079DE9C /* FIGestureNavViewController.m in Sources */,
 				3EB84F7720BE4BC80022085F /* DDLoginVC.m in Sources */,
 				3EADE1E620CA1D550079DE9C /* PCCircleView.m in Sources */,
 				3EB84FF020C0E8940022085F /* FFHomeBModel.m in Sources */,
+				3EAC467620DA6D960099EBBC /* FFCustomerMVC.m in Sources */,
 				3EF328E220D2612800A9C6A1 /* FFMoneyListVC.m in Sources */,
 				3EB84F4820BE4B820022085F /* main.m in Sources */,
 				3EB84F3A20BE4B820022085F /* AppDelegate.m in Sources */,

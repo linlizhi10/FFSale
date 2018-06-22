@@ -9,5 +9,6 @@
 #import "DDCommonNaviVC.h"
 
 @interface FFOtherMoneyVC : DDCommonNaviVC
+- (instancetype)initWithNo:(NSString *)custId ;
 
 @end

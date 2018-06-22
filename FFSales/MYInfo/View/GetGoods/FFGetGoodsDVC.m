@@ -56,7 +56,7 @@
             FFGoodsHistoryItem *item = [FFGoodsHistoryItem objectWithKeyValues:result.allDic];;
             [ws fillContent:item];
         }else{
-            //                [MBProgressHUD showError:result.message toView:self.view];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];

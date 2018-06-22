@@ -12,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DDLoginVC">
             <connections>
                 <outlet property="account" destination="FoZ-Fb-1MC" id="IN4-NP-NPT"/>
+                <outlet property="coverView" destination="D79-7r-PwR" id="Qh8-lv-DsH"/>
+                <outlet property="listTable" destination="DbZ-CU-WiO" id="y3i-CA-CGw"/>
                 <outlet property="loginBtn" destination="TdF-WK-9md" id="rmT-mq-0es"/>
                 <outlet property="password" destination="zna-aq-nT8" id="Ojx-vC-jlx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -170,6 +172,47 @@
                 <constraint firstAttribute="trailing" secondItem="TdF-WK-9md" secondAttribute="trailing" constant="10" id="sWD-6f-ZoT"/>
                 <constraint firstItem="D0l-dZ-Opx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="saZ-GO-w8N"/>
             </constraints>
+        </view>
+        <view contentMode="scaleToFill" id="D79-7r-PwR">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikD-bX-8uB">
+                    <rect key="frame" x="0.0" y="483.5" width="375" height="183.5"/>
+                    <color key="backgroundColor" red="0.12856217619999999" green="0.12856217619999999" blue="0.12856217619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </button>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sag-46-O7O">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
+                    <color key="backgroundColor" red="0.12856217619999999" green="0.12856217619999999" blue="0.12856217619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DbZ-CU-WiO">
+                    <rect key="frame" x="0.0" y="183.5" width="375" height="300"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="BPL-Pa-qCp"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ALE-hx-E9G"/>
+                        <outlet property="delegate" destination="-1" id="agH-qE-I7v"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ikD-bX-8uB" firstAttribute="leading" secondItem="D79-7r-PwR" secondAttribute="leading" id="0iY-3V-5yj"/>
+                <constraint firstAttribute="trailing" secondItem="ikD-bX-8uB" secondAttribute="trailing" id="Aia-a8-htf"/>
+                <constraint firstItem="sag-46-O7O" firstAttribute="leading" secondItem="D79-7r-PwR" secondAttribute="leading" id="EO6-Gr-UgT"/>
+                <constraint firstItem="sag-46-O7O" firstAttribute="top" secondItem="D79-7r-PwR" secondAttribute="top" id="G4o-lV-I8N"/>
+                <constraint firstItem="DbZ-CU-WiO" firstAttribute="centerX" secondItem="D79-7r-PwR" secondAttribute="centerX" id="GNQ-UO-EbT"/>
+                <constraint firstItem="DbZ-CU-WiO" firstAttribute="centerY" secondItem="D79-7r-PwR" secondAttribute="centerY" id="GdJ-Wq-PNC"/>
+                <constraint firstAttribute="bottom" secondItem="ikD-bX-8uB" secondAttribute="bottom" id="LkT-ti-BqH"/>
+                <constraint firstItem="ikD-bX-8uB" firstAttribute="top" secondItem="DbZ-CU-WiO" secondAttribute="bottom" id="Y4w-qb-z2X"/>
+                <constraint firstItem="DbZ-CU-WiO" firstAttribute="leading" secondItem="D79-7r-PwR" secondAttribute="leading" id="cCa-Wy-fZx"/>
+                <constraint firstAttribute="trailing" secondItem="DbZ-CU-WiO" secondAttribute="trailing" id="d4A-J8-p3v"/>
+                <constraint firstItem="DbZ-CU-WiO" firstAttribute="top" secondItem="sag-46-O7O" secondAttribute="bottom" id="eg7-ua-ILV"/>
+                <constraint firstAttribute="trailing" secondItem="sag-46-O7O" secondAttribute="trailing" id="gZT-8V-r9I"/>
+            </constraints>
+            <point key="canvasLocation" x="511" y="81"/>
         </view>
     </objects>
     <resources>

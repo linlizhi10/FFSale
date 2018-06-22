@@ -13,13 +13,17 @@
 #import "FFMoneyRequest.h"
 #import "MoneyModel.h"
 #import "FFSubCreditVC.h"
-@interface FFUseMoney ()<UITableViewDelegate,UITableViewDataSource>
+@interface FFUseMoney ()<UITableViewDelegate,UITableViewDataSource>{
+    
+    NSString *_custId;
+}
 @property (weak, nonatomic) IBOutlet UIButton *cashBtn;
 @property (weak, nonatomic) IBOutlet UIButton *checkBtn;
 @property (weak, nonatomic) IBOutlet UIButton *creaditBtn;
 @property (assign, nonatomic)  int moneyType;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tipViewLeftMargin;
 @property (strong, nonatomic) NSMutableArray *arrMMm;
+
 @property (assign, nonatomic) int pageSize;
 @property (assign, nonatomic) int currentPage;
 
@@ -31,7 +35,14 @@
 @end
 
 @implementation FFUseMoney
-
+- (instancetype)initWithNo:(NSString *)custId {
+    self = [super init];
+    if (self) {
+        _custId = custId;
+    }
+    return self;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"可用资金";
@@ -67,11 +78,14 @@
         _cashBtn.selected = YES;
         _checkBtn.selected = NO;
         _creaditBtn.selected = NO;
+        _money = nil;
+        [_cashTable reloadData];
     }else if (_moneyType == 1){
         _cashBtn.selected = NO;
         _checkBtn.selected = YES;
         _creaditBtn.selected = NO;
-
+        _money = nil;
+        [_cashTable reloadData];
     }else if (_moneyType == 2){
         _cashBtn.selected = NO;
         _checkBtn.selected = NO;
@@ -202,6 +216,7 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         FFMoneyRequest *request = [FFMoneyRequest Request];
         request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
+        request.custId = _custId;
         [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (isSuccess) {
@@ -215,6 +230,7 @@
                         return ;
                     }
                 }
+                [_cashTable reloadData];
 
             }else{
                 [WToast showWithTextCenter:result.message];
@@ -224,6 +240,8 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         FFMoneyBRequest *request = [FFMoneyBRequest Request];
         request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
+        request.custId = _custId;
+
         [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             
@@ -238,13 +256,18 @@
                         return ;
                     }
                 }
+                [_cashTable reloadData];
+
             }else{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+
                 [WToast showWithTextCenter:result.message];
             }
         }];
     }else{
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         FFMoneyCRequest *request = [FFMoneyCRequest Request];
+        request.custId = _custId;
         request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
         [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];

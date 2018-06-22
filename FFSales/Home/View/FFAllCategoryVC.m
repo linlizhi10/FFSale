@@ -9,12 +9,15 @@
 #import "FFAllCategoryVC.h"
 #import "FFHomeBModel.h"
 #import "DicBtn.h"
+#import "FFSearchVC.h"
 #import "FFProductListVC.h"
-@interface FFAllCategoryVC (){
+@interface FFAllCategoryVC ()<UITextViewDelegate>{
     NSMutableArray *_brandA;
     NSMutableArray *_strainA;
 }
+@property (weak, nonatomic) IBOutlet UITextField *contentTF;
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScroll;
+@property (strong, nonatomic) IBOutlet UIView *searchView;
 
 @end
 
@@ -32,13 +35,24 @@
     self.title = @"所有分类";
 //    self.view.backgroundColor = RGBCOLORV(0xdbdbdb);
     self.contentScroll.backgroundColor = RGBCOLORV(0xdbdbdb);
-    [self.contentScroll addSubview:[self titleView:@"所有品系" image:[UIImage imageNamed:@"img-sypx"]]];
+    UIView *viewTT = [self titleView:@"所有品系" image:[UIImage imageNamed:@"img-sypx"]];
+    
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+        _searchView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
+        [_contentScroll addSubview:_searchView];
+        viewTT.frame = CGRectMake(0, 30, SCREEN_WIDTH, 40);
+
+    }
+    
+    
+    
+    [self.contentScroll addSubview:viewTT];
     for (int i=0; i<_strainA.count; i++) {
         FFHomeBrand *modelT = _strainA[i];
         DicBtn *btn = [DicBtn buttonWithType:UIButtonTypeCustom];
         [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         btn.backgroundColor = [UIColor whiteColor];
-        btn.frame = CGRectMake(0 + (i%3)*((SCREEN_WIDTH - 0.5) / 3 + 0.25), 40 + (i/3)*(39.5+0.5), (SCREEN_WIDTH) / 3 - 0.5, 39.5);
+        btn.frame = CGRectMake(0 + (i%3)*((SCREEN_WIDTH - 0.5) / 3 + 0.25), viewTT.bottom + (i/3)*(39.5+0.5), (SCREEN_WIDTH) / 3 - 0.5, 39.5);
         [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.dic = @{@"key":modelT.brandId};
         btn.tag = 1000 + i;
@@ -47,7 +61,11 @@
         [self.contentScroll addSubview:btn];
     }
     UIView *viewT = [self titleView:@"所有品牌" image:[UIImage imageNamed:@"img-sypp"]];
-    viewT.frame = CGRectMake(0, 80 + (_strainA.count/3) * 40, SCREEN_WIDTH, 40);
+    NSInteger count = _strainA.count/3;
+    if (_strainA.count % 3>0) {
+        count +=1;
+    }
+    viewT.frame = CGRectMake(0, viewTT.bottom + count * 40, SCREEN_WIDTH, 40);
     [self.contentScroll addSubview:viewT];
     for (int i=0; i<_brandA.count; i++) {
         FFHomeBrand *modelT = _brandA[i];
@@ -70,7 +88,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    FFSearchVC *searchV = [[FFSearchVC alloc] init];
+    [self.navigationController pushViewController:searchV animated:YES];
+    return NO;
+}
 - (UIView *)titleView:(NSString *)title image:(UIImage *)image{
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 12, 16, 16)];

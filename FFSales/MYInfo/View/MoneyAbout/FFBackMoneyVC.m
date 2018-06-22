@@ -11,7 +11,10 @@
 #import "FFMoneyRequest.h"
 #import "MoneyModel.h"
 #import "FFMoneyListVC.h"
-@interface FFBackMoneyVC ()
+@interface FFBackMoneyVC (){
+    
+    NSString *_custId;
+}
 @property (weak, nonatomic) IBOutlet UITableView *moneyTable;
 - (IBAction)checkAll:(id)sender;
 @property (strong, nonatomic) NSMutableArray *arrMMm;
@@ -19,7 +22,14 @@
 @end
 
 @implementation FFBackMoneyVC
-
+- (instancetype)initWithNo:(NSString *)custId {
+    self = [super init];
+    if (self) {
+        _custId = custId;
+    }
+    return self;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"返利";
@@ -92,7 +102,13 @@
         if (isSuccess) {
             BackMoney *model = [BackMoney objectWithKeyValues:result.allDic];
             [_arrMMm addObjectsFromArray:model.list];
-            
+            if (model.list.count == 0) {
+                BackMoneyTypeModel *model1 = [[BackMoneyTypeModel alloc]init];
+                model1.serviceType = @"01";
+                model1.lockAmount = 0.00;
+                model1.availableBalance = 0.00;
+                [_arrMMm addObject:model1];
+            }
             
 //            if (model.list.count == 0) {
 //                [_moneyTable.footer endRefreshingWithNoMoreData];
@@ -108,7 +124,7 @@
             
             
         }else{
-            //                [MBProgressHUD showError:result.message toView:self.view];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];

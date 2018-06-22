@@ -7,6 +7,7 @@
 //
 
 #import "DDLoginVC.h"
+#import "FFInfo.h"
 #import "DDForgetPasswordVC.h"
 #import "FITextField.h"
 #import "Extention.h"
@@ -17,7 +18,9 @@
 #import "DDStringUtil.h"
 #import "PCCircleViewConst.h"
 #import "GestureViewController.h"
-@interface DDLoginVC (){
+#import "FilterCell.h"
+#import "FFEmpHomeVC.h"
+@interface DDLoginVC ()<UITableViewDelegate,UITableViewDataSource>{
     int _source;
 }
 @property (weak, nonatomic) IBOutlet FITextField *account;
@@ -28,11 +31,14 @@
 - (IBAction)securityFlagAction:(id)sender;
 @property (nonatomic, strong) DataManager *dataM;
 @property (copy, nonatomic) LoginCallBackBlock _callBack;
+@property (strong, nonatomic) IBOutlet UIView *coverView;
+@property (weak, nonatomic) IBOutlet UITableView *listTable;
+@property (strong, nonatomic) FFInfo *info;
 
 @end
 
 @implementation DDLoginVC
-- (instancetype)initWithSource:(int)source block:(id)block{
+- (instancetype)initWithSource:(int)source block:(LoginCallBackBlock)block{
     self = [super init];
     if (self) {
         _source = source;
@@ -43,13 +49,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    _coverView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    _info = [[FFInfo alloc] init];
+    [_listTable registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellReuseIdentifier:@"filter"];
 
     self.title = @"登录";
     _dataM = [DataManager shareDataManager];
 
 #if DEBUG
         _password.text = @"1234";
-        _account.text = @"13830488662";
+        _account.text = @"18583261790";
 #endif
     
     _loginBtn.layer.cornerRadius = 2;
@@ -75,91 +84,103 @@
 }
 - (IBAction)loginBtnAction:(id)sender {
     
-
-
     [self.view endEditing:YES];
+    //    if (![Extention phoneNumberValid:_account.text]) {
+    //        [MBProgressHUD showError:@"请输入合法手机号" toView:self.view];
+    //        return;
+    //    }
     
-//    if (![Extention phoneNumberValid:_account.text]) {
-//        [MBProgressHUD showError:@"请输入合法手机号" toView:self.view];
-//        return;
-//    }
-
     if ([[self pureString: _password.text] isEqualToString:@""]) {
-//        [MBProgressHUD showError:@"请输入正确的密码" toView:self.view];
+        //        [MBProgressHUD showError:@"请输入正确的密码" toView:self.view];
         return;
     }
+    [self infoCheck];
+    
 
-
+}
+- (void)normalLogin{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    WS(ws);
     FILoginRequst *request = [FILoginRequst Request];
     request.mobile = _account.text;
     NSString *strTemp = [NSString stringWithFormat:@"%@%@",_password.text,_account.text];
     request.password = [DDStringUtil md5Endode32:strTemp];
-//    request.password = @"168e969d48e2fe1c7a1f84f41f2cc2cd";
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        [ws dealData:result sucess:isSuccess];
+    }];
+
+}
+- (void)dealData:(NetworkModel *)result sucess:(BOOL)isSuccess{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    if (isSuccess) {
+        [[NSUserDefaults standardUserDefaults] setObject:result.allDic[@"accessToken"] forKey:@"token"];
+        [[NSUserDefaults standardUserDefaults] setObject:_account.text forKey:@"phone"];
+        
+        FIUser *userInfo = [FIUser objectWithKeyValues:result.data[@"salesInfo"]];
+        userInfo.loginStatus = YES;
+        [[FIUser shareUser] dataSet:userInfo];
+        NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
+        [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"user"];
+        [[NSUserDefaults standardUserDefaults] setObject:result.allDic[@"sourceChannel"] forKey:@"sourceChannel"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loginStatus"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        if ([result.allDic[@"sourceChannel"] isEqualToString:@"EMP"]) {
+            FFEmpHomeVC *empHome = [[FFEmpHomeVC alloc] init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:empHome];
+            [nav.navigationBar setBarTintColor:RGBCOLORV(0x4BAE4F)];
+            nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor darkTextColor] forKey:NSForegroundColorAttributeName];
+            [nav.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+            [nav.navigationBar setShadowImage:[UIImage new]];
+            nav.navigationBar.translucent = YES;
+            [self presentViewController:nav animated:NO completion:nil];
+        }else{
+        [self dataSavePhone:_account.text userId:_account.text fastLogin:NO];
+        
+        if (__callBack) {
+            self._callBack(YES);
+        }
+        
+        [self presentViewController:[MainTab shareInstance] animated:NO completion:nil];
+        }
+    }else{
+        [WToast showWithTextCenter:result.message];
+    }
+
+}
+- (void)infoCheck{
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    FIInfoCheckRequst *request = [FIInfoCheckRequst Request];
+    request.mobile = _account.text;
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         if (isSuccess) {
-            [[NSUserDefaults standardUserDefaults] setObject:result.allDic[@"accessToken"] forKey:@"token"];
-            [[NSUserDefaults standardUserDefaults] setObject:_account.text forKey:@"phone"];
-
-            FIUser *userInfo = [FIUser objectWithKeyValues:result.data[@"salesInfo"]];
-            userInfo.loginStatus = YES;
-            [[FIUser shareUser] dataSet:userInfo];
-            NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
-            [[NSUserDefaults standardUserDefaults] setObject:userData forKey:@"user"];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loginStatus"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-
-            [self dataSavePhone:_account.text userId:_account.text fastLogin:NO];
-
-            if (__callBack) {
-                self._callBack(YES);
-            }
-            if ([PCCircleViewConst getGestureCloseFlag] == YES) {
-                if (_source == 1) {
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }else{
-                    [self presentViewController:[MainTab shareInstance] animated:NO completion:nil];
-                    
-                }
+            FFInfo *info = [FFInfo objectWithKeyValues:result.allDic];
+            _info = info;
+            if (info.list.count > 1) {
+                [self addViewAction];
             }else{
-                if ([[PCCircleViewConst getGestureWithKey:gestureFinalSaveKey] length]){
-                    if (_source == 1) {
-                        [self dismissViewControllerAnimated:YES completion:nil];
-                    }else{
-                        [self presentViewController:[MainTab shareInstance] animated:NO completion:nil];
-                        
-                    }
-                }else{
-                    
-                    GestureViewController *gestureVc = [[GestureViewController alloc] initWithRegister:1];
-                    gestureVc.type = GestureViewControllerTypeSetting;
-                    WS(ws);
-                    gestureVc.finishBlock = ^{
-                        [ws presentViewController:[MainTab shareInstance] animated:YES completion:nil];
-                    };
-                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:gestureVc];
-                    [nav.navigationBar setBarTintColor:[UIColor whiteColor]];
-                    nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor darkTextColor] forKey:NSForegroundColorAttributeName];
-//                    [self.navigationController pushViewController:gestureVc animated:YES];
-                    if (_source == 1) {
-                        [self.navigationController pushViewController:gestureVc animated:YES];
-                    }else{
-                        [self presentViewController:nav animated:YES completion:nil];
-
-                    }
-//                    [self presentViewController:nav animated:YES completion:nil];
-                }
+                [self normalLogin];
             }
-            
-//            [self presentViewController:[MainTab shareInstance] animated:NO completion:nil];
-
         }else{
             [WToast showWithTextCenter:result.message];
         }
     }];
-
+    
 }
+- (void)noLogin:(NSString *)agentNumber{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    WS(ws);
+    FINoLoginRequst *request = [FINoLoginRequst Request];
+    request.agentNumber = agentNumber;
+    request.password = [DDStringUtil md5Endode32:_password.text];
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        
+        [ws dealData:result sucess:isSuccess];
+    }];}
+
 - (void)dataSavePhone:(NSString *)phone userId:(NSString *)userId fastLogin:(BOOL)fastLogin{
     NSDate *dateC = [NSDate date];
     NSInteger timeStamp = [dateC timeIntervalSince1970];
@@ -179,6 +200,35 @@
     
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return _info.list.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    FilterCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"filter"];
+    FFInfoItem *item = _info.list[indexPath.row];
+    productCell.contentLabel.text = item.name;
+    productCell.contentLabel.textColor = [UIColor darkGrayColor];
+    productCell.contentLabel.textAlignment = NSTextAlignmentCenter;
+    return productCell;
+    
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self closeAction];
+    FFInfoItem *item = _info.list[indexPath.row];
+    [self noLogin:item.agentNumber];
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+   return 40;
+}
 
 - (IBAction)forgetPassWordBtnAction:(id)sender {
     [self.navigationController pushViewController:[DDForgetPasswordVC new] animated:YES];
@@ -193,5 +243,15 @@
 
 - (NSString *)pureString:(NSString *)originalString{
     return [originalString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+- (void)addViewAction {
+    [[UIApplication sharedApplication].keyWindow addSubview:_coverView];
+    
+}
+
+- (void)closeAction {
+    [_coverView removeFromSuperview];
+    
 }
 @end

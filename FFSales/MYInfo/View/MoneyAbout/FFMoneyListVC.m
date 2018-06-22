@@ -187,7 +187,7 @@
             
             
         }else{
-            //                [MBProgressHUD showError:result.message toView:self.view];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];

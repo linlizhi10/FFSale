@@ -20,25 +20,23 @@
 }
 @end
 
-@implementation FIFastLoginRequst
+@implementation FIInfoCheckRequst
 - (void)startCallBack:(RequestCallBackBlock)_callBack{
-    self.PATH = @"api/user/login";
-    self.METHOD = @"POST";
-    self.params = @{@"phone":self.userName?:@"",
-                    @"verifyCode":(self.verifyCode?:@"")};
+    self.PATH = @"/users/infos";
+    self.METHOD = @"GET";
+    self.params = @{@"mobile":self.mobile?:@""
+                    };
     [super startCallBack:_callBack];
 }
 @end
 
-@implementation FIRegisterRequst
+@implementation FINoLoginRequst
 - (void)startCallBack:(RequestCallBackBlock)_callBack{
-    self.PATH = @"api/user/register";
+    self.PATH = @"/v2/users/accessToken";
     self.METHOD = @"POST";
-    self.params = @{@"phone":self.phone?:@"",
-                    @"password":self.password?:@"",
-                    @"verifyCode":self.verifyCode?:@"",
-                    @"userType":self.userType?:@"",
-                    @"inviteCode":(self.inviteCode?:@"")};
+    self.params = @{@"agentNumber":self.agentNumber?:@"",
+                    @"password":self.password?:@""
+                    };
     [super startCallBack:_callBack];
 }
 @end

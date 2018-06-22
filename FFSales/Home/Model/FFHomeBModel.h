@@ -26,3 +26,9 @@
 @interface FFHomeBrandA : NSObject
 @property (strong, nonatomic) NSArray<FFHomeBrand *>*list;
 @end
+@interface FFHomeEMP : NSObject
+@property (copy, nonatomic) NSString *empName; //
+@property (assign, nonatomic) long custNum; //
+@property (assign, nonatomic) long newCustNum; //
+@property (assign, nonatomic) long newOrderNum; //
+@end

@@ -19,3 +19,12 @@
              };
 }
 @end
+@implementation MessageHomeItemModel
+
+@end
+@implementation MessageHomeModel
++ (NSDictionary *)objectClassInArray{
+    return @{@"list" : [MessageHomeItemModel class]
+             };
+}
+@end

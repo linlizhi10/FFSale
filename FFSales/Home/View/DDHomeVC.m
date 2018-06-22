@@ -7,6 +7,7 @@
 //
 
 #import "DDHomeVC.h"
+#import "FFInfo.h"
 #import "SearchRCell.h"
 #import "FFCHeaderView.h"
 #import "FFSHeaderView.h"
@@ -21,6 +22,8 @@
 #import "FFOrderVC.h"
 #import "DicBtn.h"
 #import "FFAllCategoryVC.h"
+#import "FIUserInfoRequest.h"
+#import "FFGestureData.h"
 @interface DDHomeVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UITextFieldDelegate,SDCycleScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *goodsListC;
 
@@ -40,6 +43,11 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
+    }else{
+        [self gestureGet];
+
+    }
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -49,7 +57,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _modelBA = [[FFHomeBAModel  alloc] init];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataReqeust) name:@"refreshHome" object:nil];
     [_goodsListC registerNib:[UINib nibWithNibName:@"FFCHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView"];
     [_goodsListC registerNib:[UINib nibWithNibName:@"FFSHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sHeaderView"];
 
@@ -76,7 +83,6 @@
     
 }
 - (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"refreshHome" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -370,6 +376,30 @@
     }];
 
 }
+
+#pragma mark - gesture get -
+- (void)gestureGet{
+//    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    FIUserInfoRequest *request = [FIUserInfoRequest Request];
+    request.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (isSuccess) {
+            
+            FFGestureInfo *gesture = [FFGestureInfo objectWithKeyValues:result.allDic];
+            [FFGestureData insertGestureCode:gesture.code key:GestureCodeString];
+            [FFGestureData insertGestureState:gesture.state key:GestureStateString];
+            
+        }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+            [WToast showWithTextCenter:result.message];
+        }
+    }];
+    
+}
+
 
 - (NSAttributedString *)originalContent:(NSString *)str1 differentContent:(NSString *)str2{
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@",str1?:@""] attributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];

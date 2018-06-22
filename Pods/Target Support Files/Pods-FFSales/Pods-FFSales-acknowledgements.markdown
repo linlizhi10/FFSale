@@ -109,6 +109,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+## JCore
+
+Copyright jpush.cn
+
+## JPush
+
+Copyright jiguang.cn
+
 ## JSONKit-NoWarning
 
                                  Apache License
@@ -389,7 +397,7 @@ Copyright 2015 pgyer.com. All rights reserved.
 
 ## Pgyer
 
-Copyright 2015 pgyer.com. All rights reserved.
+Copyright 2017 pgyer.com. All rights reserved.
 
 
 ## Reachability

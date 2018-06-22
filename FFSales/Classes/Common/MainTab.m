@@ -14,7 +14,7 @@
 #import "DDMyHome.h"
 #import "FIGestureNavViewController.h"
 #import "FIUser.h"
-
+#import <FDFullscreenPopGesture/UINavigationController+FDFullscreenPopGesture.h>
 
 @interface MainTab ()<UITabBarDelegate,UITabBarControllerDelegate>{
     NSInteger _kLastSelectIndex;//上一次点击tab的数字，除5以外
@@ -32,7 +32,13 @@
     });
     return sharedManager;
 }
-
+- (instancetype)init{
+   self =[super init];
+    if (self) {
+        self.navigationController.navigationBarHidden = YES;
+    }
+    return self;
+}
 - (UINavigationController * )rootVc:(UIViewController *)_vc{
     UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:_vc];
     [nav.navigationBar setBarTintColor:[UIColor whiteColor]];
@@ -40,10 +46,15 @@
     
     return nav;
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+    self.fd_interactivePopDisabled = YES;
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _kLastSelectIndex = 0;
     [self.tabBar setBackgroundColor:[UIColor whiteColor]];
     self.tabBar.translucent = NO;
@@ -72,11 +83,14 @@
     [self setViewControlerTarbar:sub2 andNormalImage:Img(@"icon-xx-wdj") andSelectImage:Img(@"icon-xx-dj")];
 //    [self setViewControlerTarbar:sub3 andNormalImage:Img(@"icon-shanjia-wdj") andSelectImage:Img(@"icon-shanjia-dj")];
     [self setViewControlerTarbar:sub4 andNormalImage:Img(@"icon-wd-wdj") andSelectImage:Img(@"icon-wd-dj")];
+    UINavigationController *nav2 = [self rootVc:sub2];
+    nav2.navigationBar.translucent = NO;
 
     UINavigationController *nav3 = [self rootVc:sub4];
+    
     nav3.navigationBar.translucent = NO;
     NSArray *array = @[[self rootVc:sub1],
-                       [self rootVc:sub2],
+                       nav2,
 //                       [self rootVc:sub3],
                        nav3];
     [self setViewControllers:array];
@@ -114,13 +128,16 @@
 }
 
 #pragma mark --public--
-- (void)showLoginViewWithBlock:(LoginCallBackBlock)_callBack{ 
-    DDLoginVC *sub1 = [[DDLoginVC alloc] initWithSource:1 block:_callBack];
-    sub1.title = @"登录";
-    FIGestureNavViewController * nav = [[FIGestureNavViewController alloc]initWithRootViewController:sub1];
-    [self presentViewController:nav animated:YES completion:^{
-        //
-    }];
+- (void)showLoginViewWithBlock:(LoginCallBackBlock)_callBack{
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
+//    DDLoginVC *sub1 = [[DDLoginVC alloc] initWithSource:1 block:_callBack];
+//    sub1.title = @"登录";
+//    FIGestureNavViewController * nav = [[FIGestureNavViewController alloc]initWithRootViewController:sub1];
+//    [self presentViewController:nav animated:YES completion:^{
+//        //
+//    }];
 }
 
 - (void)showForgetViewWithBlock:(LoginCallBackBlock)_callBack{

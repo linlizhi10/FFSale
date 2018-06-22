@@ -7,6 +7,9 @@
 //
 
 #import "Request.h"
+@interface FFMessageHomeReqeust : Request
+@property (nonatomic, copy) NSString *accessToken; //
+@end
 
 @interface FFMessageReqeust : Request
 @property (nonatomic, copy) NSString *accessToken; //

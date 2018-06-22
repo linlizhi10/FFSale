@@ -14,6 +14,9 @@
 #import "MainTab.h"
 #import "DDLoginVC.h"
 #import "DataManager.h"
+#import "FIUserInfoRequest.h"
+#import "FFGestureData.h"
+
 @interface FFSetVC ()<UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *gestureView;
 - (IBAction)changePassA:(id)sender;
@@ -26,15 +29,30 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *thirdConstraint;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *gestureViewTT;
+@property (weak, nonatomic) IBOutlet UIButton *changeGestureCode;
+- (IBAction)changeGestureAction:(id)sender;
 
 @end
 
 @implementation FFSetVC
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    UserGesture *gesture = [[DataManager shareDataManager] fetchGestureByUserId:[[NSUserDefaults standardUserDefaults]stringForKey:@"phone"]];
-    _gestureSwitch.on = gesture.gestureOn;
-    
+    if (![[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"] isEqualToString:@"EMP"]) {
+
+    _gestureSwitch.on =  [FFGestureData getGetureState:GestureStateString];
+    if (_gestureSwitch.on) {
+        _gestureViewTT.hidden = NO;
+        _thirdConstraint.constant = 100;
+        _heightConstraint.constant = 250;
+        
+    }else{
+        _gestureViewTT.hidden = YES;
+        _thirdConstraint.constant = 50;
+        _heightConstraint.constant = 200;
+    }
+        
+    }
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,6 +70,7 @@
         _thirdConstraint.constant = 0;
         _heightConstraint.constant = 150;
     }
+    
 }
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"verifySuccess" object:nil];
@@ -79,18 +98,22 @@
             self.cacheSize.text = [NSString stringWithFormat:@"%.2fMB",[cacheModel clearFile]];
         }
     }else{
+        if (buttonIndex == 1) {
+
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"loginStatus"];
         if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
-            [self.navigationController presentViewController:[DDLoginVC new] animated:YES completion:nil];
+            
             [self.navigationController popToRootViewControllerAnimated:NO];
 
         }else{
             [self.navigationController popToRootViewControllerAnimated:NO];
-
             [MainTab shareInstance].selectedIndex = 0;
-            [[MainTab shareInstance] showLoginViewWithBlock:nil];
+            [[MainTab shareInstance].navigationController popToRootViewControllerAnimated:NO];
+
             
         }
+        }
+        
     }
 }
 - (IBAction)gestureClick:(id)sender {
@@ -111,12 +134,43 @@
 }
 - (void)verifySuccess{
     _gestureSwitch.on = NO;
-    [[DataManager shareDataManager] updateGestureOn:_gestureSwitch.on closeFlag:YES userId:[[NSUserDefaults standardUserDefaults]stringForKey:@"phone"]];
-    [[DataManager shareDataManager] cleanGestureWithCloseUserId:[[NSUserDefaults standardUserDefaults]stringForKey:@"phone"]];
+//    [[DataManager shareDataManager] updateGestureOn:_gestureSwitch.on closeFlag:YES userId:[[NSUserDefaults standardUserDefaults]stringForKey:@"phone"]];
+    [FFGestureData insertGestureState:@"close" key:GestureStateString];
+    [FFGestureData insertGestureCode:@"" key:GestureCodeString];
+    [FFGestureData updateCount:5 key:GestureCounteString];
+    [self gestureUpdateCode:@"" status:@"close"];
 }
 - (void)setSuccess{
     _gestureSwitch.on = YES;
-    [[DataManager shareDataManager] updateGestureOn:_gestureSwitch.on closeFlag:NO userId:[[NSUserDefaults standardUserDefaults]stringForKey:@"phone"]];
+    [FFGestureData insertGestureState:@"open" key:GestureStateString];
+    [self gestureUpdateCode:[FFGestureData getGetureCode:GestureCodeString] status:@"open"];
+}
+
+- (void)gestureUpdateCode:(NSString *)code status:(NSString *)state{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    FIGestureUpdateRequest *request = [FIGestureUpdateRequest Request];
+    request.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+    request.code = code;
+    request.state = state;
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (isSuccess) {
+            
+            
+            
+        }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [WToast showWithTextCenter:result.message];
+        }
+    }];
+    
+}
+- (IBAction)changeGestureAction:(id)sender {
+    //修改手势密码
+    GestureVerifyViewController *gestureVerifyVc = [[GestureVerifyViewController alloc] initIsToSetNewGesture:YES needCountLimit:NO];
+    [self.navigationController pushViewController:gestureVerifyVc animated:YES];
+
 }
 @end

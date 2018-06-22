@@ -32,3 +32,16 @@
 @property (strong, nonatomic) NSArray<MessageItemModel *> *list;
 
 @end
+
+
+@interface MessageHomeItemModel : NSObject
+@property (assign, nonatomic) long lastMessageDate; //
+@property (copy, nonatomic) NSString *type;//
+@property (copy, nonatomic) NSString *unReadNum;//
+@property (copy, nonatomic) NSString *lastMessage;//
+
+@end
+@interface MessageHomeModel : Model
+@property (strong, nonatomic) NSArray<MessageHomeItemModel *> *list;
+
+@end

@@ -15,4 +15,5 @@ pod 'IQKeyboardManager'
 pod 'Pgyer'
 pod 'PgyUpdate'
 pod 'FMDB'
+pod 'JPush'
 end

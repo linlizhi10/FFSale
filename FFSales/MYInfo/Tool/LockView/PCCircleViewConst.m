@@ -1,6 +1,7 @@
 
 #import "PCCircleViewConst.h"
 #import "DataManager.h"
+#import "FFGestureData.h"
 #import "FIUser.h"
 @implementation PCCircleViewConst
 
@@ -10,10 +11,11 @@
         [[NSUserDefaults standardUserDefaults] setObject:gesture forKey:key];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }else if ([key isEqualToString:gestureFinalSaveKey]){
-        DataManager *dataM = [DataManager shareDataManager];
-        NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
-
-        [dataM updateGesture:gesture userId:uid];
+//        DataManager *dataM = [DataManager shareDataManager];
+//        NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
+//
+//        [dataM updateGesture:gesture userId:uid];
+        [FFGestureData insertGestureCode:gesture key:GestureCodeString];
     }
 //    DataManager *dataM = [DataManager shareDataManager];
 //    [dataM updateGesture:gesture userId:[FIUser shareUser].uid];
@@ -25,10 +27,13 @@
     if ([key isEqualToString:gestureOneSaveKey]) {
        return [[NSUserDefaults standardUserDefaults] objectForKey:key];
     }else if ([key isEqualToString:gestureFinalSaveKey]){
-        DataManager *dataM = [DataManager shareDataManager];
-        NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
-
-        NSString *str = [dataM fetchGestureByUserId:uid].gestureWord;
+//        DataManager *dataM = [DataManager shareDataManager];
+//        NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
+//
+//        NSString *str = [dataM fetchGestureByUserId:uid].gestureWord;
+        
+        NSString *str = [FFGestureData getGetureCode:GestureCodeString];
+        
         if ([str isEqualToString:@"(null)"]) {
             str = @"";
         }else if ([str isEqualToString:@"nil"]){
@@ -41,16 +46,15 @@
     return @"";
 }
 + (BOOL)getGestureStatus{
-    DataManager *dataM = [DataManager shareDataManager];
-    NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
-
-    return [dataM fetchGestureByUserId:uid].gestureOn;
+    
+    return [FFGestureData getGetureState:GestureStateString];
 }
 + (BOOL)getGestureCloseFlag{
-    DataManager *dataM = [DataManager shareDataManager];
-    NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
-
-    return [dataM fetchGestureByUserId:uid].closeBySelf;
+//    DataManager *dataM = [DataManager shareDataManager];
+//    NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
+//
+//    return [dataM fetchGestureByUserId:uid].closeBySelf;
+    return YES;
 }
 + (UIColor *)getCircleConnectLineNormalColor{
    
@@ -86,10 +90,11 @@
     }
 }
 + (BOOL)getTrackOn{
-    DataManager *dataM = [DataManager shareDataManager];
-    NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
-
-    UserGesture *gesture = [dataM fetchGestureByUserId:uid];
-    return gesture.trackOn;
+//    DataManager *dataM = [DataManager shareDataManager];
+//    NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
+//
+//    UserGesture *gesture = [dataM fetchGestureByUserId:uid];
+//    return gesture.trackOn;
+    return YES;
 }
 @end

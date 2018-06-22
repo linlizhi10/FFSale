@@ -9,5 +9,6 @@
 #import "DDCommonNaviVC.h"
 
 @interface FFSetVC : DDCommonNaviVC
+- (void)gestureUpdateCode:(NSString *)code status:(NSString *)state;
 
 @end

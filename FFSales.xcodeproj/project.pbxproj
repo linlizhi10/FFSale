@@ -60,6 +60,8 @@
 		3EAC469E20DB99040099EBBC /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC469D20DB99040099EBBC /* MessageModel.m */; };
 		3EAC46A220DB9B870099EBBC /* FFMessageListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC46A020DB9B870099EBBC /* FFMessageListVC.m */; };
 		3EAC46A320DB9B870099EBBC /* FFMessageListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC46A120DB9B870099EBBC /* FFMessageListVC.xib */; };
+		3EAC46AB20DC908E0099EBBC /* UITabBar+badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC46AA20DC908E0099EBBC /* UITabBar+badge.m */; };
+		3EAC46AE20DCC5CD0099EBBC /* FFGestureData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC46AD20DCC5CD0099EBBC /* FFGestureData.m */; };
 		3EADE1C720CA15CB0079DE9C /* FFSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EADE1C520CA15CB0079DE9C /* FFSetVC.m */; };
 		3EADE1C820CA15CB0079DE9C /* FFSetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EADE1C620CA15CB0079DE9C /* FFSetVC.xib */; };
 		3EADE1CB20CA1C520079DE9C /* CacheViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EADE1CA20CA1C520079DE9C /* CacheViewModel.m */; };
@@ -286,6 +288,10 @@
 		3EAC469F20DB9B870099EBBC /* FFMessageListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFMessageListVC.h; sourceTree = "<group>"; };
 		3EAC46A020DB9B870099EBBC /* FFMessageListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFMessageListVC.m; sourceTree = "<group>"; };
 		3EAC46A120DB9B870099EBBC /* FFMessageListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFMessageListVC.xib; sourceTree = "<group>"; };
+		3EAC46A920DC908E0099EBBC /* UITabBar+badge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITabBar+badge.h"; sourceTree = "<group>"; };
+		3EAC46AA20DC908E0099EBBC /* UITabBar+badge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+badge.m"; sourceTree = "<group>"; };
+		3EAC46AC20DCC5CD0099EBBC /* FFGestureData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFGestureData.h; sourceTree = "<group>"; };
+		3EAC46AD20DCC5CD0099EBBC /* FFGestureData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFGestureData.m; sourceTree = "<group>"; };
 		3EADE1C420CA15CB0079DE9C /* FFSetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFSetVC.h; sourceTree = "<group>"; };
 		3EADE1C520CA15CB0079DE9C /* FFSetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFSetVC.m; sourceTree = "<group>"; };
 		3EADE1C620CA15CB0079DE9C /* FFSetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFSetVC.xib; sourceTree = "<group>"; };
@@ -360,6 +366,7 @@
 		3EADE23D20CFB6800079DE9C /* FFHistoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFHistoryVC.h; sourceTree = "<group>"; };
 		3EADE23E20CFB6800079DE9C /* FFHistoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFHistoryVC.m; sourceTree = "<group>"; };
 		3EADE23F20CFB6800079DE9C /* FFHistoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFHistoryVC.xib; sourceTree = "<group>"; };
+		3EB1B1E320DD096F008BED20 /* FFSales.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FFSales.entitlements; sourceTree = "<group>"; };
 		3EB84F3520BE4B820022085F /* FFSales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFSales.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB84F3820BE4B820022085F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3EB84F3920BE4B820022085F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -715,6 +722,8 @@
 			children = (
 				3EADE1EA20CA1DE60079DE9C /* DataManager.h */,
 				3EADE1EB20CA1DE60079DE9C /* DataManager.m */,
+				3EAC46AC20DCC5CD0099EBBC /* FFGestureData.h */,
+				3EAC46AD20DCC5CD0099EBBC /* FFGestureData.m */,
 			);
 			path = DataManager;
 			sourceTree = "<group>";
@@ -811,6 +820,7 @@
 		3EB84F3720BE4B820022085F /* FFSales */ = {
 			isa = PBXGroup;
 			children = (
+				3EB1B1E320DD096F008BED20 /* FFSales.entitlements */,
 				3EAC467D20DB41C40099EBBC /* CustomerInfo */,
 				3EB84FB820BE4FBD0022085F /* MYInfo */,
 				3EB84FB020BE4F8A0022085F /* Message */,
@@ -935,6 +945,8 @@
 				3EB84F9420BE4BFF0022085F /* ViewModel.m */,
 				3EB84F9520BE4BFF0022085F /* WToast.h */,
 				3EB84F9620BE4BFF0022085F /* WToast.m */,
+				3EAC46A920DC908E0099EBBC /* UITabBar+badge.h */,
+				3EAC46AA20DC908E0099EBBC /* UITabBar+badge.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1243,7 +1255,12 @@
 				TargetAttributes = {
 					3EB84F3420BE4B820022085F = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1408,6 +1425,7 @@
 				3EB84F9E20BE4BFF0022085F /* DDCommonScanVC.m in Sources */,
 				3EADE1E820CA1D550079DE9C /* PCLockLabel.m in Sources */,
 				3EB84F9C20BE4BFF0022085F /* CALayer+Anim.m in Sources */,
+				3EAC46AE20DCC5CD0099EBBC /* FFGestureData.m in Sources */,
 				3EADE1E520CA1D550079DE9C /* PCCircleInfoView.m in Sources */,
 				3EADE1E220CA1D550079DE9C /* GestureViewController.m in Sources */,
 				3EB84FEB20C0E7A80022085F /* FFSHeaderView.m in Sources */,
@@ -1477,6 +1495,7 @@
 				3EAC468C20DB43550099EBBC /* FFCustomerModel.m in Sources */,
 				3EADE24020CFB6800079DE9C /* FFHistoryVC.m in Sources */,
 				3EADE1E420CA1D550079DE9C /* PCCircle.m in Sources */,
+				3EAC46AB20DC908E0099EBBC /* UITabBar+badge.m in Sources */,
 				3EADE1E020CA1D550079DE9C /* CALayer+Anim.m in Sources */,
 				3EADE22620CF638F0079DE9C /* FFTrainTransVC.m in Sources */,
 				3ED3D24D20C50BEB00C4AFE8 /* SDCycleScrollView.m in Sources */,
@@ -1654,7 +1673,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = FFSales/FFSales.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 83U3LBKD74;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/map",
@@ -1665,8 +1687,9 @@
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/Required",
 				);
-				GCC_PREFIX_HEADER = /Users/lin/Desktop/FFSales/FFSales/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "/Users/lin/Desktop/未命名文件夹/FFSales/PrefixHeader.pch";
 				INFOPLIST_FILE = FFSales/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1674,8 +1697,10 @@
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/UnitedBankSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LLZC.FFSales;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ytrz.FFSales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4cb11078-8cc0-48bf-8f29-8dd71fe0653f";
+				PROVISIONING_PROFILE_SPECIFIER = "ffsale-dev";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1686,7 +1711,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = FFSales/FFSales.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/map",
@@ -1697,8 +1725,9 @@
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/QQSDK",
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/Required",
 				);
-				GCC_PREFIX_HEADER = /Users/lin/Desktop/FFSales/FFSales/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "/Users/lin/Desktop/未命名文件夹/FFSales/PrefixHeader.pch";
 				INFOPLIST_FILE = FFSales/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1706,8 +1735,10 @@
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/WeChatSDK",
 					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/UnitedBankSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = LLZC.FFSales;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ytrz.FFSales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

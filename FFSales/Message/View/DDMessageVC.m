@@ -11,6 +11,8 @@
 #import "FFMessageReqeust.h"
 #import "MessageModel.h"
 #import "FFMessageListVC.h"
+#import "DDStringUtil.h"
+#import "UITabBar+badge.h"
 @interface DDMessageVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *messageTable;
 @property (strong, nonatomic) NSMutableArray *arrMeesage;
@@ -19,15 +21,21 @@
 @end
 
 @implementation DDMessageVC
-
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self dataLoadCust];
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [self.tabBarController.tabBar hideBadgeOnItemIndex:1];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"消息";
-    _arrMeesage = [[NSMutableArray alloc] init];
     _currentPage = 1;
     _pageSize = 10;
     [_messageTable registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:@"cellMess"];
-    [self dataLoadCust];
+//    [self dataLoadCust];
 
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -37,25 +45,30 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 2;
+    return _arrMeesage.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     MessageCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"cellMess"];
+    MessageHomeItemModel *item = _arrMeesage[indexPath.row];
     NSString *image = @"icon-dd";
-    productCell.flagTitle.text = @"订单";
-    if (indexPath.row == 1) {
+
+    if ([item.type isEqualToString:@"ORDER"]) {
+        productCell.flagTitle.text = @"订单";
+    }else{
         image = @"icon-shsrxx";
         productCell.flagTitle.text = @"资金";
 
     }
+    
     productCell.flagImage.image = Img(image);
     
+    productCell.number.hidden = !(item.unReadNum.intValue > 0);
+    productCell.number.text = item.unReadNum;
+    productCell.content.text = item.lastMessage;
+    productCell.time.text = [DDStringUtil toDateTimeString:item.lastMessageDate];
     return productCell;
-    
-    
-    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -79,32 +92,34 @@
     [self.navigationController pushViewController:listVC animated:YES];
 }
 - (void)dataLoadCust{
-    
+    _arrMeesage = [[NSMutableArray alloc] init];
+
+    WS(ws);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    FFMessageReqeust *request = [FFMessageReqeust Request];
+    FFMessageHomeReqeust *request = [FFMessageHomeReqeust Request];
     request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
-    request.type = @"";
-    request.page = _currentPage;
-    request.size = _pageSize;
+    
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [_messageTable.footer endRefreshing];
         
         
         if (isSuccess) {
-            MessageModel *model = [MessageModel objectWithKeyValues:result.allDic];
+            MessageHomeModel *model = [MessageHomeModel objectWithKeyValues:result.allDic];
             [_arrMeesage addObjectsFromArray:model.list];
-            
-            
-            if (model.list.count == 0) {
-                [_messageTable.footer endRefreshingWithNoMoreData];
+            int number = 0;
+            for (MessageHomeItemModel *item in model.list) {
+                number+=item.unReadNum.intValue;
             }
-            if (_arrMeesage.count == result.totalRecord) {
-                [_messageTable.footer endRefreshingWithNoMoreData];
-                
-            }
-            if (_currentPage == [[result.allDic objectForKey:@"pages"] intValue]) {
-                [_messageTable.footer endRefreshingWithNoMoreData];
+            if (number > 0) {
+                if (number > 99) {
+                    number = 99;
+                }
+                [ws.tabBarController.tabBar showBadgeOnItemIndex:1 withNumber:number];
+
+            }else{
+                [ws.tabBarController.tabBar hideBadgeOnItemIndex:1];
+
             }
             [_messageTable reloadData];
         }else{

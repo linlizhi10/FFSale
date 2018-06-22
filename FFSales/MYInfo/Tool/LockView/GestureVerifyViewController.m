@@ -10,8 +10,13 @@
 #import "MainTab.h"
 #import "DataManager.h"
 #import "DDLoginVC.h"
+#import "FFGestureData.h"
+#import "FIUserInfoRequest.h"
 //#import <CloudPushSDK/CloudPushSDK.h>
-//#import <UINavigationController+FDFullscreenPopGesture.h>
+#import <UINavigationController+FDFullscreenPopGesture.h>
+
+typedef void (^completeBlock)(void);
+
 @interface GestureVerifyViewController ()<CircleViewDelegate>
 
 /**
@@ -87,7 +92,8 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    self.fd_interactivePopDisabled = YES;
+    self.fd_interactivePopDisabled = YES;
+
     id obj = [self.view viewWithTag:10011];
     if ([obj isKindOfClass:[UILabel class]]) {
         UILabel *phone = (UILabel *)obj;
@@ -106,7 +112,8 @@
     if (_countLimit == YES) {
         NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
 
-        UserGesture *gesture = [[DataManager shareDataManager] fetchGestureByUserId:uid];
+        UserGesture *gesture = [[UserGesture alloc] init];
+        gesture.count = (int)[FFGestureData getGestureCount:GestureCounteString];
         if (gesture.count <= 0) {
             [self.msgLabel showWarnMsgAndShake:@"密码错误,还可以输入0次"];
             PCCircleView *lockView = [self.view viewWithTag:100];
@@ -129,7 +136,7 @@
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-//    self.fd_interactivePopDisabled = NO;
+    self.fd_interactivePopDisabled = NO;
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:nil];
 }
@@ -186,10 +193,10 @@
         
         if (equal) {
             NSLog(@"验证成功");
-            NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
+//            NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
 
-            [[DataManager shareDataManager] updateCount:5 userId:uid];
-
+//            [[DataManager shareDataManager] updateCount:5 userId:uid];
+            [FFGestureData updateCount:5 key:GestureCounteString];
             
             [self.msgLabel showNormalMsg:gestureTextOldGesture];
             
@@ -213,9 +220,11 @@
             [self.msgLabel showWarnMsgAndShake:gestureTextGestureVerifyError];
             
             if (_countLimit == YES) {
-                NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
+//                NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
 
-                UserGesture *gesture = [[DataManager shareDataManager] fetchGestureByUserId:uid];
+                UserGesture *gesture = [[UserGesture alloc] init];
+                gesture.count = (int)[FFGestureData getGestureCount:GestureCounteString];
+                
                 
                 if (gesture.count >= 1) {
                     gesture.count -= 1;
@@ -227,8 +236,9 @@
                 }
 //                NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
 
-                [[DataManager shareDataManager] updateCount:gesture.count userId:uid];
-               
+//                [[DataManager shareDataManager] updateCount:gesture.count userId:uid];
+                [FFGestureData updateCount:gesture.count key:GestureCounteString];
+                
                 if (gesture.count == 0) {
                     UIView *view = [self.view viewWithTag:100];
                     view.userInteractionEnabled = NO;
@@ -244,15 +254,23 @@
 - (void)forgetAction{
     //忘记手势密码
     [self pushSDKBindAccount];
-    NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
 
-    [[DataManager shareDataManager] cleanGestureUserId:uid];
-    [FIUser clearUerInfo];
-    [self.view removeFromSuperview];
-    NSInteger selectIndex = [MainTab shareInstance].selectedIndex;
-    UINavigationController *nav = [MainTab shareInstance].viewControllers[selectIndex];
-    [nav popToRootViewControllerAnimated:YES];
-    [[MainTab shareInstance] showLoginViewWithBlock:nil];
+    [FFGestureData insertGestureState:@"close" key:GestureStateString];
+    [FFGestureData insertGestureCode:@"" key:GestureCodeString];
+    [FFGestureData updateCount:5 key:GestureCounteString];
+    __block GestureVerifyViewController *ws = self;
+    [self gestureUpdateCode:@"" status:@"close" comleteBlock:^{
+        [FIUser clearUerInfo];
+        [ws.view removeFromSuperview];
+        NSInteger selectIndex = [MainTab shareInstance].selectedIndex;
+        UINavigationController *nav = [MainTab shareInstance].viewControllers[selectIndex];
+//        UINavigationController *nav = [MainTab shareInstance].viewControllers[0];
+        [nav popToRootViewControllerAnimated:YES];
+        [MainTab shareInstance].selectedIndex = 0;
+
+        [[MainTab shareInstance] showLoginViewWithBlock:nil];
+    }];
+    
 }
 
 #pragma mark -
@@ -267,12 +285,27 @@
 - (void)exchangeUser{
     //切换用户
     [self pushSDKBindAccount];
+//    [FFGestureData insertGestureState:@"close" key:GestureStateString];
+//    [FFGestureData insertGestureCode:@"" key:GestureCodeString];
+//    [FFGestureData updateCount:5 key:GestureCounteString];
+//    __block GestureVerifyViewController *ws = self;
     [FIUser clearUerInfo];
     [self.view removeFromSuperview];
     NSInteger selectIndex = [MainTab shareInstance].selectedIndex;
     UINavigationController *nav = [MainTab shareInstance].viewControllers[selectIndex];
     [nav popToRootViewControllerAnimated:YES];
+    [MainTab shareInstance].selectedIndex = 0;
     [[MainTab shareInstance] showLoginViewWithBlock:nil];
+    //    [self gestureUpdateCode:@"" status:@"close" comleteBlock:^{
+//        [FIUser clearUerInfo];
+//        [ws.view removeFromSuperview];
+//        NSInteger selectIndex = [MainTab shareInstance].selectedIndex;
+//        UINavigationController *nav = [MainTab shareInstance].viewControllers[selectIndex];
+//        [nav popToRootViewControllerAnimated:YES];
+//        [[MainTab shareInstance] showLoginViewWithBlock:nil];
+//    }];
+    
+   
 
 //    [self presentLogin];
 }
@@ -286,5 +319,27 @@
 //    [nav.navigationBar setBarTintColor:[UIColor whiteColor]];
 //    nav.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor darkTextColor],NSFontAttributeName:Font(18)};
 //    [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
+- (void)gestureUpdateCode:(NSString *)code status:(NSString *)state comleteBlock:(completeBlock)_block{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    FIGestureUpdateRequest *request = [FIGestureUpdateRequest Request];
+    request.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+    request.code = code;
+    request.state = state;
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if (isSuccess) {
+            if (_block) {
+                _block();
+            }
+            
+        }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [WToast showWithTextCenter:result.message];
+        }
+    }];
+    
 }
 @end

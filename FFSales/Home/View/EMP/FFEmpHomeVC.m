@@ -30,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self hideBackBtn];
     self.navigationController.navigationBar.backgroundColor= RGBCOLORV(0x4bae4f);
     UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
     

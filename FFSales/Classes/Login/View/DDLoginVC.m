@@ -20,7 +20,10 @@
 #import "GestureViewController.h"
 #import "FilterCell.h"
 #import "FFEmpHomeVC.h"
-@interface DDLoginVC ()<UITableViewDelegate,UITableViewDataSource>{
+#import "FIUserInfoRequest.h"
+#import "FFGestureData.h"
+#import "FIGestureNavViewController.h"
+@interface DDLoginVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>{
     int _source;
 }
 @property (weak, nonatomic) IBOutlet FITextField *account;
@@ -34,6 +37,8 @@
 @property (strong, nonatomic) IBOutlet UIView *coverView;
 @property (weak, nonatomic) IBOutlet UITableView *listTable;
 @property (strong, nonatomic) FFInfo *info;
+@property (nonatomic, strong) UIAlertView *alert;
+@property (copy, nonatomic) NSString *customerTel;
 
 @end
 
@@ -48,7 +53,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
+    _customerTel = @"400-8188-2539";
+
     _coverView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _info = [[FFInfo alloc] init];
     [_listTable registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellReuseIdentifier:@"filter"];
@@ -58,7 +64,8 @@
 
 #if DEBUG
         _password.text = @"1234";
-        _account.text = @"18583261790";
+        _account.text = @"13830488662";
+    //13830488662
 #endif
     
     _loginBtn.layer.cornerRadius = 2;
@@ -69,7 +76,11 @@
 //    }
     // Do any additional setup after loading the view from its nib.
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -124,23 +135,21 @@
         [[NSUserDefaults standardUserDefaults] setObject:result.allDic[@"sourceChannel"] forKey:@"sourceChannel"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"loginStatus"];
         [[NSUserDefaults standardUserDefaults] synchronize];
-        if ([result.allDic[@"sourceChannel"] isEqualToString:@"EMP"]) {
+        if ([result.allDic[@"sourceChannel"] isEqualToString:@"EMP"]) {//业务员
             FFEmpHomeVC *empHome = [[FFEmpHomeVC alloc] init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:empHome];
-            [nav.navigationBar setBarTintColor:RGBCOLORV(0x4BAE4F)];
-            nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor darkTextColor] forKey:NSForegroundColorAttributeName];
-            [nav.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-            [nav.navigationBar setShadowImage:[UIImage new]];
-            nav.navigationBar.translucent = YES;
-            [self presentViewController:nav animated:NO completion:nil];
+            [self.navigationController pushViewController:empHome animated:YES];
+
         }else{
-        [self dataSavePhone:_account.text userId:_account.text fastLogin:NO];
+            
+            [FFGestureData updateCount:5 key:GestureCounteString];
+
+            if (__callBack) {
+                self._callBack(YES);
+            }
+           
+            [self.navigationController pushViewController:[MainTab shareInstance] animated:YES];
         
-        if (__callBack) {
-            self._callBack(YES);
-        }
-        
-        [self presentViewController:[MainTab shareInstance] animated:NO completion:nil];
+       
         }
     }else{
         [WToast showWithTextCenter:result.message];
@@ -229,16 +238,47 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
    return 40;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 1;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 1;
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSLog(@"phone");
+        NSString *telphoneStr = [NSString stringWithFormat:@"tel:%@",_customerTel];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telphoneStr]];
+        
+    }
+}
 - (IBAction)forgetPassWordBtnAction:(id)sender {
-    [self.navigationController pushViewController:[DDForgetPasswordVC new] animated:YES];
+//    [self.navigationController pushViewController:[DDForgetPasswordVC new] animated:YES];
+    NSString *str2 = [[UIDevice currentDevice] systemVersion];
+    if ([str2 compare:@"10.2" options:NSNumericSearch] == NSOrderedDescending || [str2 compare:@"10.2" options:NSNumericSearch] == NSOrderedSame)
+    {
+        NSString* PhoneStr = [NSString stringWithFormat:@"telprompt://%@",_customerTel];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:PhoneStr] options:@{} completionHandler:^(BOOL success) {
+            NSLog(@"phone success");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+        //        [MBProgressHUD hideHUDForView:self.view];
+        
+    }else{
+        if (!_alert) {
+            _alert = [[UIAlertView alloc] initWithTitle:nil message:_customerTel delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"呼叫", nil];
+        }
+        
+        [_alert show];
+    }
 }
 
 - (IBAction)securityFlagAction:(id)sender {
     _password.secureTextEntry = !_password.secureTextEntry;
     UIButton *btn = (UIButton *)sender;
-    NSString *imageName = _password.secureTextEntry?@"pic-yj-off":@"pic-yj";
-    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+//    NSString *imageName = _password.secureTextEntry?@"pic-yj-off":@"pic-yj";
+//    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
 
 - (NSString *)pureString:(NSString *)originalString{

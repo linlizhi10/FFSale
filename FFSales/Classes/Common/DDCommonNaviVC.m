@@ -59,7 +59,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)hideBackBtn{
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem = nil;
+}
 - (void)backAction{
     [self.navigationController popViewControllerAnimated:YES];
 }

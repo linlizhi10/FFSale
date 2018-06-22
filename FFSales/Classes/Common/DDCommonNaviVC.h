@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DDCommonNaviVC : UIViewController
-
+- (void)hideBackBtn;
 @end

@@ -8,9 +8,11 @@
 #import "DDLoginVC.h"
 #import "MainTab.h"
 #import "FIUser.h"
-//#import "MBProgressHUD+MJ.h"
 #import "DataManager.h"
+#import "FFGestureData.h"
 #import <UINavigationController+FDFullscreenPopGesture.h>
+#import "FFSetVC.h"
+
 @interface GestureViewController ()<UINavigationControllerDelegate, CircleViewDelegate>
 
 /**
@@ -43,7 +45,6 @@
 {
     [super viewWillAppear:animated];
     self.fd_interactivePopDisabled = YES;
-
     // 进来先清空存的第一个密码
     [PCCircleViewConst saveGesture:nil Key:gestureOneSaveKey];
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -53,6 +54,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.fd_interactivePopDisabled = NO;
+
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:nil];
 }
@@ -60,7 +62,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     [self.view setBackgroundColor:[UIColor whiteColor]];
 
     self.navigationController.delegate = self;
@@ -161,6 +163,7 @@
 }
 
 - (void)ignoreAction{
+    
     NSLog(@"跳过");
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     if (self.finishBlock) {
@@ -169,6 +172,7 @@
 #pragma mark -  8-7 跳过后不提醒
     NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
     [[DataManager shareDataManager] updateGestureOn:NO closeFlag:YES userId:uid];
+    
     NSInteger selectIndex = [MainTab shareInstance].selectedIndex;
     UINavigationController *nav = [MainTab shareInstance].viewControllers[selectIndex];
     [nav popToRootViewControllerAnimated:YES];
@@ -251,11 +255,9 @@
         [self.msgLabel showNormalMsg:gestureTextSetSuccess];
         [PCCircleViewConst saveGesture:gesture Key:gestureFinalSaveKey];
         //set open status
-        NSString *uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"phone"];
-
-        [[DataManager shareDataManager] updateGestureOn:YES closeFlag:NO userId:uid];
+        [FFGestureData insertGestureState:@"open" key:GestureStateString];
         //reset count
-        [[DataManager shareDataManager] updateCount:5 userId:uid];
+        [FFGestureData updateCount:5 key:GestureCounteString];
         if (_fromTag == 1) {
             //注册跳转
             [self presentViewController:[MainTab shareInstance] animated:NO completion:nil];
@@ -263,8 +265,23 @@
         }else if (_fromTag == 2){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"setSuccess" object:nil];
             [self.navigationController popViewControllerAnimated:YES];
+            
         }else{
-            [self.navigationController popToRootViewControllerAnimated:YES];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"setSuccess" object:nil];
+            
+            BOOL has = NO;
+            for (UIViewController *vc in self.navigationController.viewControllers) {
+                if ([vc isKindOfClass:[FFSetVC class]]) {
+                    [self.navigationController popToViewController:vc animated:YES];
+                    has = YES;
+                }
+            }
+            if (has == NO) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+
+            }
         }
     } else {
         NSLog(@"两次手势不匹配！");
@@ -335,5 +352,6 @@
         [self.navigationController setNavigationBarHidden:isLoginType animated:YES];
     }
 }
+
 
 @end

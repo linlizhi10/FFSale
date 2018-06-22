@@ -7,6 +7,16 @@
 //
 
 #import "FFMessageReqeust.h"
+@implementation FFMessageHomeReqeust
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = @"/appMessages/home";
+    self.METHOD = @"GET";
+    self.params = @{@"accessToken":self.accessToken?:@""
+                    };
+    
+    [super startCallBack:_callBack];
+}
+@end
 
 @implementation FFMessageReqeust
 - (void)startCallBack:(RequestCallBackBlock)_callBack{

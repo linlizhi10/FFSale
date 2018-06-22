@@ -16,3 +16,9 @@
 @property (strong, nonatomic) NSArray<FFInfoItem *> *list;
 
 @end
+
+@interface FFGestureInfo : Model
+@property (copy, nonatomic) NSString *code;
+@property (copy, nonatomic) NSString *state;
+
+@end

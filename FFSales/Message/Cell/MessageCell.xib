@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自然井盐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oa4-eg-4SZ">
-                        <rect key="frame" x="68" y="42" width="254" height="17"/>
+                        <rect key="frame" x="68" y="37" width="254" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdz-tM-9yy">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdz-tM-9yy">
                         <rect key="frame" x="47" y="6.5" width="16" height="16"/>
                         <color key="backgroundColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -73,7 +73,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="zkp-IL-dwY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="B2A-pu-Zwj"/>
-                    <constraint firstItem="Oa4-eg-4SZ" firstAttribute="top" secondItem="JRC-n8-1bU" secondAttribute="bottom" constant="15" id="P7i-5E-Ioo"/>
+                    <constraint firstItem="Oa4-eg-4SZ" firstAttribute="top" secondItem="JRC-n8-1bU" secondAttribute="bottom" constant="10" id="P7i-5E-Ioo"/>
                     <constraint firstAttribute="trailing" secondItem="Oa4-eg-4SZ" secondAttribute="trailing" constant="10" id="ZUC-Vp-S1b"/>
                     <constraint firstItem="Oa4-eg-4SZ" firstAttribute="leading" secondItem="JRC-n8-1bU" secondAttribute="leading" id="a5h-tI-6vM"/>
                     <constraint firstItem="ZdP-d9-TZA" firstAttribute="centerY" secondItem="JRC-n8-1bU" secondAttribute="centerY" id="a7i-vv-rzm"/>

@@ -9,5 +9,12 @@
 #import "Request.h"
 
 @interface FIUserInfoRequest : Request
+@property (nonatomic, copy) NSString *accessToken; //
+
+@end
+@interface FIGestureUpdateRequest : Request
+@property (nonatomic, copy) NSString *accessToken; //
+@property (nonatomic, copy) NSString *code; //
+@property (nonatomic, copy) NSString *state; //
 
 @end

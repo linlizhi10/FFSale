@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"发票信息";
-    
+    [self dataRequest];
 }
 
 - (void)didReceiveMemoryWarning {

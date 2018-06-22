@@ -27,7 +27,20 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pic-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Wze-M1-mJZ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LOGO-login" translatesAutoresizingMaskIntoConstraints="NO" id="CDv-nb-YRt">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2t-W1-n54">
+                    <rect key="frame" x="10" y="617" width="355" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Xag-2I-eXp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="成为我们的经销商">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="forgetPassWordBtnAction:" destination="-1" eventType="touchUpInside" id="BNB-Dm-Waa"/>
+                    </connections>
+                </button>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CDv-nb-YRt">
                     <rect key="frame" x="131.5" y="94" width="111" height="74"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="74" id="4qr-HZ-GKE"/>
@@ -120,7 +133,7 @@
                                 <constraint firstAttribute="width" constant="34" id="Fau-iZ-xuV"/>
                                 <constraint firstAttribute="height" constant="16" id="M5Y-kT-Fht"/>
                             </constraints>
-                            <state key="normal" title="Button" image="pic-yj-off"/>
+                            <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="securityFlagAction:" destination="-1" eventType="touchUpInside" id="rux-3m-L6m"/>
                             </connections>
@@ -164,8 +177,11 @@
                 <constraint firstItem="Mxf-Od-8CN" firstAttribute="centerY" secondItem="CDv-nb-YRt" secondAttribute="centerY" id="Pca-sN-ebD"/>
                 <constraint firstItem="CDv-nb-YRt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Sq4-W9-8qI"/>
                 <constraint firstAttribute="bottom" secondItem="Wze-M1-mJZ" secondAttribute="bottom" id="VKu-97-bm5"/>
+                <constraint firstItem="q2t-W1-n54" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="aKB-aM-mNO"/>
                 <constraint firstItem="TdF-WK-9md" firstAttribute="top" secondItem="D0l-dZ-Opx" secondAttribute="bottom" constant="60" id="bKa-Oj-uFa"/>
                 <constraint firstAttribute="trailing" secondItem="D0l-dZ-Opx" secondAttribute="trailing" id="jA8-Mc-xty"/>
+                <constraint firstAttribute="trailing" secondItem="q2t-W1-n54" secondAttribute="trailing" constant="10" id="m9e-oO-XDb"/>
+                <constraint firstAttribute="bottom" secondItem="q2t-W1-n54" secondAttribute="bottom" constant="20" id="mdq-jZ-UwO"/>
                 <constraint firstItem="Wze-M1-mJZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="nUu-nm-Oh8"/>
                 <constraint firstItem="D0l-dZ-Opx" firstAttribute="top" secondItem="CDv-nb-YRt" secondAttribute="bottom" constant="30" id="oH8-53-4k1"/>
                 <constraint firstItem="Wze-M1-mJZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oK5-s0-CMU"/>
@@ -216,8 +232,6 @@
         </view>
     </objects>
     <resources>
-        <image name="LOGO-login" width="111" height="74"/>
         <image name="pic-bg" width="320" height="568"/>
-        <image name="pic-yj-off" width="17" height="8"/>
     </resources>
 </document>

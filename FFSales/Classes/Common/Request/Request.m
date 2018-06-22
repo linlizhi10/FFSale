@@ -190,7 +190,6 @@
 }
 - (void)tokenFailed{
     [[MainTab shareInstance] showLoginViewWithBlock:^(BOOL isLoginSuccess) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshHome" object:nil];
     }];
     
 }

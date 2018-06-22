@@ -107,7 +107,7 @@
         }
         
     }else if ([_type isEqualToString:@"ORDER"]){
-        DDOrderDetailVC *orderDetialVC = [[DDOrderDetailVC alloc] initWithNo:itemModel.custNo audit:YES];
+        DDOrderDetailVC *orderDetialVC = [[DDOrderDetailVC alloc] initWithNo:itemModel.linkedId audit:YES];
         [self.navigationController pushViewController:orderDetialVC animated:YES];
         
     }

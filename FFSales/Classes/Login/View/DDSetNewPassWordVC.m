@@ -67,7 +67,7 @@
 - (IBAction)securityAction:(id)sender {
     _password.secureTextEntry = !_password.secureTextEntry;
     UIButton *btn = (UIButton *)sender;
-    NSString *imageName = _password.secureTextEntry?@"pic-yj-off":@"pic-yj";
-    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
+//    NSString *imageName = _password.secureTextEntry?@"pic-yj-off":@"pic-yj";
+//    [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
 @end

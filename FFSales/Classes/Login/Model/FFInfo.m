@@ -17,3 +17,6 @@
              };
 }
 @end
+@implementation FFGestureInfo
+
+@end

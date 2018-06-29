@@ -13,6 +13,8 @@
 #import "FFCreaditDVC.h"
 @interface FFSubCreditVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSString *_childrenAccountType;
+    NSString *_custId;
+
 }
 @property (assign, nonatomic) int pageSize;
 @property (assign, nonatomic) int currentPage;
@@ -22,10 +24,11 @@
 @end
 
 @implementation FFSubCreditVC
-- (instancetype)initWithNo:(NSString *)type {
+- (instancetype)initWithNo:(NSString *)type custId:(NSString *)custId{
     self = [super init];
     if (self) {
         _childrenAccountType = type;
+        _custId = custId;
     }
     return self;
     
@@ -112,8 +115,10 @@
     request.serviceType = @"01";
     request.childrenAccountType = _childrenAccountType;
 //    request.childrenAccountType = @"06";
+    if (_custId.length > 0) {
+        request.custId = _custId;
 
-    request.custId = @"CUST01174";
+    }
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         [_creaditTable.footer endRefreshing];

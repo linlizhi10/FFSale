@@ -154,7 +154,7 @@
     
     if (tableView == _creaditTable) {
         creaditSmallModel *model = _arrMMm[indexPath.row];
-        FFSubCreditVC *subVC = [[FFSubCreditVC alloc] initWithNo:model.childrenAccountType];
+        FFSubCreditVC *subVC = [[FFSubCreditVC alloc] initWithNo:model.childrenAccountType custId:_custId];
         [self.navigationController pushViewController:subVC animated:YES];
     }
 }
@@ -328,7 +328,7 @@
 }
 - (void)clickMore:(UIButton *)btn{
     creaditSmallModel *model = _arrMMm[btn.tag];
-    FFSubCreditVC *subVC = [[FFSubCreditVC alloc] initWithNo:model.childrenAccountType];
+    FFSubCreditVC *subVC = [[FFSubCreditVC alloc] initWithNo:model.childrenAccountType custId:_custId];
     [self.navigationController pushViewController:subVC animated:YES];
 }
 @end

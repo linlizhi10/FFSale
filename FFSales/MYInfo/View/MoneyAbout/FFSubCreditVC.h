@@ -9,6 +9,6 @@
 #import "DDCommonNaviVC.h"
 
 @interface FFSubCreditVC : DDCommonNaviVC
-- (instancetype)initWithNo:(NSString *)type;
+- (instancetype)initWithNo:(NSString *)type custId:(NSString *)custId;
 
 @end

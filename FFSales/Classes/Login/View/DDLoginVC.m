@@ -53,7 +53,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _customerTel = @"400-8188-2539";
+    _customerTel = @"400-110-3898";
 
     _coverView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     _info = [[FFInfo alloc] init];

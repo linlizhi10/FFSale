@@ -13,6 +13,8 @@
             <connections>
                 <outlet property="contentTF" destination="vDl-l2-1Ev" id="aK6-uc-aqm"/>
                 <outlet property="customerTable" destination="rai-Pn-5IZ" id="X5X-GC-dfV"/>
+                <outlet property="searchView" destination="reA-tn-coB" id="w3x-wv-l5B"/>
+                <outlet property="tableConstrint" destination="l2t-zG-DcF" id="WYi-Tm-jEU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

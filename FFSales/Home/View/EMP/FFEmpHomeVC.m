@@ -14,6 +14,7 @@
 #import "FFCustomerMVC.h"
 #import "FFCustomerListVC.h"
 #import "FFSetVC.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 @interface FFEmpHomeVC ()
 @property (weak, nonatomic) IBOutlet UILabel *customerNumber;
 @property (weak, nonatomic) IBOutlet UILabel *addCustomerNO;
@@ -21,9 +22,20 @@
 @property (strong, nonatomic) NSMutableArray *brandA;
 @property (strong, nonatomic) NSMutableArray *strainA;
 - (IBAction)noCheckA:(id)sender;
+
 - (IBAction)readySend:(id)sender;
+
 - (IBAction)completeAction:(id)sender;
+
 - (IBAction)myOrderAction:(id)sender;
+
+- (IBAction)customerAction:(id)sender;
+
+- (IBAction)addCustomerAction:(id)sender;
+
+- (IBAction)todayOrderAction:(id)sender;
+
+
 @end
 
 @implementation FFEmpHomeVC
@@ -49,7 +61,13 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.fd_interactivePopDisabled = YES;
     [self homeData];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.fd_interactivePopDisabled = NO;
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -76,9 +94,21 @@
 
 - (IBAction)myOrderAction:(id)sender {
     FFOrderVC *orderVC= [[FFOrderVC alloc] initWithType:0];
-    orderVC.hidesBottomBarWhenPushed = YES;
+//    orderVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:orderVC animated:YES];
 }
+
+- (IBAction)addCustomerAction:(id)sender {
+    FFCustomerListVC *customerMVC = [[FFCustomerListVC alloc] initWithNew:YES];
+    [self.navigationController pushViewController:customerMVC animated:YES];
+}
+
+- (IBAction)todayOrderAction:(id)sender {
+    FFOrderVC *orderVC= [[FFOrderVC alloc] initWithNew:YES];
+//    orderVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:orderVC animated:YES];
+}
+
 - (IBAction)priductAction:(id)sender {
     FFAllCategoryVC *inventoryVC = [[FFAllCategoryVC alloc] initWithId:_brandA strain:_strainA];
 //    inventoryVC.hidesBottomBarWhenPushed = YES;

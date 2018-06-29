@@ -7,15 +7,18 @@
 //
 
 #import "AppDelegate.h"
+//#import <objc/NSObjCRuntime.h>
 #import "DDLoginVC.h"
 #import <IQKeyboardManager.h>
 #import "DataManager.h"
 #import "MainTab.h"
 #import "GestureVerifyViewController.h"
 #import "FFEmpHomeVC.h"
-#import <UserNotifications/UserNotifications.h>
 #import "JPUSHService.h"
 #import "FFGestureData.h"
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
 static NSString *appKey = @"6d4bb35d9fc281788dc10a84";
 static NSString *channel = @"Publish channel";
 static BOOL isProduction = FALSE;
@@ -103,6 +106,8 @@ static BOOL isProduction = FALSE;
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    application.applicationIconBadgeNumber = 0;
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -169,6 +174,7 @@ forRemoteNotification:(NSDictionary *)userInfo
 didReceiveLocalNotification:(UILocalNotification *)notification {
     [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
 }
+
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #pragma mark- JPUSHRegisterDelegate
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {

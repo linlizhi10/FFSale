@@ -149,7 +149,6 @@
 		3EB84FC220BE75840022085F /* FIChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB84FC020BE75840022085F /* FIChangePasswordViewController.m */; };
 		3EB84FC320BE75840022085F /* FIChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB84FC120BE75840022085F /* FIChangePasswordViewController.xib */; };
 		3EB84FC720BE765E0022085F /* CCChangePRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB84FC620BE765E0022085F /* CCChangePRequest.m */; };
-		3EB84FC920BE98C80022085F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EB84FC820BE98C80022085F /* Images.xcassets */; };
 		3EB84FD620BE9B110022085F /* SearchRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB84FCF20BE9B110022085F /* SearchRCell.m */; };
 		3EB84FD720BE9B120022085F /* SearchRCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB84FD020BE9B110022085F /* SearchRCell.xib */; };
 		3EB84FDD20BFD4580022085F /* FFCHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB84FDB20BFD4580022085F /* FFCHeaderView.m */; };
@@ -204,6 +203,8 @@
 
 /* Begin PBXFileReference section */
 		1951479CE23B484D588B2AF4 /* Pods-FFSales.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FFSales.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FFSales/Pods-FFSales.debug.xcconfig"; sourceTree = "<group>"; };
+		3E602F7C20E630B70098FEA7 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		3E602F7D20E630B70098FEA7 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3EA61AA920C6243900871858 /* FFSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFSearchVC.h; sourceTree = "<group>"; };
 		3EA61AAA20C6243900871858 /* FFSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFSearchVC.m; sourceTree = "<group>"; };
 		3EA61AAB20C6243900871858 /* FFSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFSearchVC.xib; sourceTree = "<group>"; };
@@ -445,7 +446,6 @@
 		3EB84FC120BE75840022085F /* FIChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FIChangePasswordViewController.xib; sourceTree = "<group>"; };
 		3EB84FC520BE765E0022085F /* CCChangePRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCChangePRequest.h; sourceTree = "<group>"; };
 		3EB84FC620BE765E0022085F /* CCChangePRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCChangePRequest.m; sourceTree = "<group>"; };
-		3EB84FC820BE98C80022085F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3EB84FCE20BE9B110022085F /* SearchRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRCell.h; sourceTree = "<group>"; };
 		3EB84FCF20BE9B110022085F /* SearchRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRCell.m; sourceTree = "<group>"; };
 		3EB84FD020BE9B110022085F /* SearchRCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchRCell.xib; sourceTree = "<group>"; };
@@ -837,7 +837,6 @@
 				3EB84F4320BE4B820022085F /* LaunchScreen.storyboard */,
 				3EB84F4620BE4B820022085F /* Info.plist */,
 				3EB84F4720BE4B820022085F /* main.m */,
-				3EB84FC820BE98C80022085F /* Images.xcassets */,
 			);
 			path = FFSales;
 			sourceTree = "<group>";
@@ -1216,6 +1215,8 @@
 		657F52DF657C7ED533A0566E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E602F7D20E630B70098FEA7 /* UserNotifications.framework */,
+				3E602F7C20E630B70098FEA7 /* UserNotificationsUI.framework */,
 				F6EBF9CDB257D8C5563E376F /* libPods-FFSales.a */,
 			);
 			name = Frameworks;
@@ -1332,7 +1333,6 @@
 				3EAC469620DB92DE0099EBBC /* MessageCell.xib in Resources */,
 				3EF328DE20D25FCD00A9C6A1 /* MoneyListCell.xib in Resources */,
 				3EF328D920D2524000A9C6A1 /* FFBackMoneyVC.xib in Resources */,
-				3EB84FC920BE98C80022085F /* Images.xcassets in Resources */,
 				3EC6361620C9042D00C01E7F /* FIMyInfoCell.xib in Resources */,
 				3EAC466D20DA6A070099EBBC /* CustomerMCell.xib in Resources */,
 				3EADE22D20CF6D6D0079DE9C /* FFUseMoney.xib in Resources */,
@@ -1672,7 +1672,7 @@
 			baseConfigurationReference = 1951479CE23B484D588B2AF4 /* Pods-FFSales.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_ENTITLEMENTS = FFSales/FFSales.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -1697,7 +1697,7 @@
 			baseConfigurationReference = 60DE6468CFD34ACA1C945B9D /* Pods-FFSales.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CODE_SIGN_ENTITLEMENTS = FFSales/FFSales.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;

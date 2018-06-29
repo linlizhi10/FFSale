@@ -1,7 +1,3 @@
-/**
- * @class WToast
- */
-
 
 typedef enum{
 	//以下是枚举成员

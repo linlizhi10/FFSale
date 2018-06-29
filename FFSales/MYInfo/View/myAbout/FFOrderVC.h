@@ -10,5 +10,6 @@
 
 @interface FFOrderVC : DDCommonNaviVC
 - (instancetype)initWithType:(int)type;
+- (instancetype)initWithNew:(BOOL)newOrder;
 
 @end

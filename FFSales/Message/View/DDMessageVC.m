@@ -70,7 +70,10 @@
     productCell.number.hidden = !(item.unReadNum.intValue > 0);
     productCell.number.text = item.unReadNum;
     productCell.content.text = item.lastMessage;
-    productCell.time.text = [DDStringUtil toDateTimeString:item.lastMessageDate];
+    if (item.lastMessage > 0) {
+        productCell.time.text = [DDStringUtil toDateTimeString:item.lastMessageDate];
+
+    }
     return productCell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -105,8 +108,6 @@
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
         [MBProgressHUD hideHUDForView:ws.view animated:YES];
         [_messageTable.footer endRefreshing];
-        
-        
         if (isSuccess) {
             MessageHomeModel *model = [MessageHomeModel objectWithKeyValues:result.allDic];
             [_arrMeesage addObjectsFromArray:model.list];

@@ -13,6 +13,7 @@
 #import "FFTrainTransVC.h"
 #import "FFTransMethodVC.h"
 #import "DDTransInfoVC.h"
+#import "FFProductDetailVC.h"
 @interface DDOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     NSString *_orderNoS;
@@ -110,7 +111,11 @@ static NSString *refreshNoti = @"refreshOrderData";
 
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    OrderProduct *prodcutI = _detail.materials[indexPath.row];
+    FFProductDetailVC *inventoryVC = [[FFProductDetailVC alloc] initWithId:prodcutI.materialId];
+    [self.navigationController pushViewController:inventoryVC animated:YES];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _detail.materials.count;
 }
@@ -152,7 +157,7 @@ static NSString *refreshNoti = @"refreshOrderData";
 
 - (void)fillAmountDesAmount:(NSString *)number price:(NSString *)price{
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"订单结算金额" attributes:@{NSForegroundColorAttributeName:RGBCOLORV(0x1c1c20)}];
-    NSAttributedString *strT = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@",price?:@""] attributes:@{NSForegroundColorAttributeName:RGBCOLORV(0xed265a)}];
+    NSAttributedString *strT = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",price?:@""] attributes:@{NSForegroundColorAttributeName:RGBCOLORV(0xed265a)}];
     [str appendAttributedString:strT];
     _amountDes.attributedText =str;
     
@@ -210,8 +215,8 @@ static NSString *refreshNoti = @"refreshOrderData";
             _marginConstant.constant = 10;
         }
        else if ([detail.status isEqualToString:@"02"] || [detail.status isEqualToString:@"03"] ) {
-            _tipsMessage.text = [NSString stringWithFormat:@"已发货%@/%.2f",detail.sendQty,detail.qty];
-            _phone.text = [NSString stringWithFormat:@"%@吨商品已发货",detail.sendQty];
+            _tipsMessage.text = [NSString stringWithFormat:@"已发货%.2f吨/%.2f吨",detail.sendQty,detail.qty];
+            _phone.text = [NSString stringWithFormat:@"%.2f吨商品已发货",detail.sendQty];
 
             
         }else if([detail.status isEqualToString:@"05"] ){
@@ -228,12 +233,17 @@ static NSString *refreshNoti = @"refreshOrderData";
     _address.text = detail.receiveAdd?:@"暂无";
     _orderNo.text = detail.orderId;
     _orderType.text = detail.transport;
+    if ([detail.transport isEqualToString:@"客户自提"]) {
+        _orderType.text = detail.transport;
+
+    }else{
+        _orderType.text = [NSString stringWithFormat:@"%@,%@",detail.transport,detail.sendFactory];
+    }
     _memberName.text = detail.sapCode;
     _factory.text = [NSString stringWithFormat:@"发货工厂：%@",detail.sendFactory];
     _guide.text = [NSString stringWithFormat:@"下单时间：%@",[self toDateString: detail.createTime]];
     NSString *statusS = @"";
     
-        
     if ([detail.status isEqualToString:@"02"] || [detail.status isEqualToString:@"03"] ) {
         statusS = @"待完成";
         
@@ -244,10 +254,7 @@ static NSString *refreshNoti = @"refreshOrderData";
         statusS = @"已关闭";
     }
     
-    
     _orderState.text = statusS;
-    
-    
     _price.text = [NSString stringWithFormat:@"%.2f吨",detail.qty];
     _deduction.text = [NSString stringWithFormat:@"￥%.2f",detail.actualAmout];
     _couponDiscoutAmount.text = [NSString stringWithFormat:@"￥%.2f",detail.discountAmount];

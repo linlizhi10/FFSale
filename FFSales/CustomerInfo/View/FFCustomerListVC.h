@@ -9,5 +9,6 @@
 #import "DDCommonNaviVC.h"
 
 @interface FFCustomerListVC : DDCommonNaviVC
+- (instancetype)initWithNew:(BOOL)newCust;
 
 @end

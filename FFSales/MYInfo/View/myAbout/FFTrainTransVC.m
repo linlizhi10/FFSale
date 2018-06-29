@@ -38,7 +38,7 @@
     _factoryFrom.text = _order.sendFactory;
     _destination.text = _order.destination;
     _trainArrive.text = _order.destination;
-     _number.text = [NSString stringWithFormat:@"%@吨",_order.qty];
+    _number.text = [NSString stringWithFormat:@"%.2f吨",_order.qty];
 
     _transAmount
     .attributedText = [self originalContentNext:[NSString stringWithFormat:@"装卸费:%.2f/吨",_order.transportPrice] differentContent:[NSString stringWithFormat:@"￥%.2f",_order.transportAmout]];

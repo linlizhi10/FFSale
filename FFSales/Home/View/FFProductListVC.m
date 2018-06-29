@@ -71,6 +71,11 @@
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.view endEditing:YES];
+    _brand = @"";
+    _strain = @"";
+    _currentPage = 1;
+    [_arrP removeAllObjects];
+    [_productList reloadData];
     [self dataRequest];
     return YES;
 }
@@ -131,6 +136,14 @@
             product = _strainA[indexPath.row];
             _strain = product.brandId;
         }
+        self.title = product.levelName;
+        NSString *title = product.levelName;
+        if (product.levelName.length > 4) {
+            title = [product.levelName substringToIndex:4];
+        }
+        [_allBtn setTitle:title forState:UIControlStateNormal];
+        [_arrP removeAllObjects];
+        [_productList reloadData];
         [self dataRequest];
     }
    

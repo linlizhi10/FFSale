@@ -17,6 +17,7 @@
                 <outlet property="listTable" destination="UJ1-Yp-Jsw" id="nY9-6K-i7w"/>
                 <outlet property="sectionFooter" destination="VdR-Cu-2LL" id="xDR-UA-S90"/>
                 <outlet property="sectionHeaser" destination="l0n-Md-oyH" id="nJ7-1C-qo3"/>
+                <outlet property="topConstraint" destination="qdM-Ol-a8g" id="jrL-FE-AvS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UJ1-Yp-Jsw">
-                    <rect key="frame" x="0.0" y="0.5" width="375" height="666.5"/>
+                    <rect key="frame" x="0.0" y="64.5" width="375" height="602.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="hhr-cX-aJf"/>
@@ -46,7 +47,7 @@
                 <constraint firstItem="2JP-i8-dhI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="60m-bK-M5b"/>
                 <constraint firstItem="2JP-i8-dhI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jmc-i1-7ck"/>
                 <constraint firstItem="UJ1-Yp-Jsw" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="dlJ-sZ-Y7B"/>
-                <constraint firstItem="UJ1-Yp-Jsw" firstAttribute="top" secondItem="2JP-i8-dhI" secondAttribute="bottom" id="qdM-Ol-a8g"/>
+                <constraint firstItem="UJ1-Yp-Jsw" firstAttribute="top" secondItem="2JP-i8-dhI" secondAttribute="bottom" constant="64" id="qdM-Ol-a8g"/>
                 <constraint firstItem="UJ1-Yp-Jsw" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="rc7-Bb-hMu"/>
                 <constraint firstItem="UJ1-Yp-Jsw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sUs-B7-w90"/>
                 <constraint firstAttribute="trailing" secondItem="2JP-i8-dhI" secondAttribute="trailing" id="tyj-5x-C0g"/>

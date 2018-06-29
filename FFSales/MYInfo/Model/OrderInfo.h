@@ -70,7 +70,8 @@
 @property (copy, nonatomic) NSString *receiveAdd;
 @property (copy, nonatomic) NSString *smallpackageFee; //
 
-@property (copy, nonatomic) NSString *sendQty    ;
+@property (assign, nonatomic) float sendQty;
+
 @property (copy, nonatomic) NSString *priceBatch    ;//
 @property (assign, nonatomic) long postTime;//
 @property (assign, nonatomic) float transportPrice;

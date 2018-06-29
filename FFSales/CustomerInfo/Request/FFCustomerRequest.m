@@ -14,6 +14,7 @@
     self.METHOD = @"GET";
     self.params = @{@"accessToken":self.accessToken?:@"",
                     @"keyword":self.keyword?:@"",
+                    @"newCust":_newCust?@"true":@"false",
                     @"page":@(_page),
                     @"size":@(_size)
                     }

@@ -47,6 +47,7 @@
     [self.view endEditing:YES];
     [_arrMMm removeAllObjects];
     [_moneyTable reloadData];
+    _currentPage = 1;
     [self dataLoad];
     return YES;
 }

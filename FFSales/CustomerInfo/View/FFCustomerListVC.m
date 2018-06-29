@@ -11,7 +11,13 @@
 #import "FFCustomerRequest.h"
 #import "CustomerCell.h"
 #import "FFCustomerDetailVC.h"
-@interface FFCustomerListVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface FFCustomerListVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>{
+    BOOL _newCust;
+}
+@property (weak, nonatomic) IBOutlet UIView *searchView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableConstrint;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *customerTable;
 @property (weak, nonatomic) IBOutlet UITextField *contentTF;
 @property (assign, nonatomic) int pageSize;
@@ -20,10 +26,32 @@
 @end
 
 @implementation FFCustomerListVC
+- (instancetype)initWithNew:(BOOL)newCust{
+    self = [super init];
+    if (self) {
+        _newCust = newCust;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"客户信息";
+    if (_newCust) {
+        _tableConstrint.constant = -40;
+        _searchView.hidden = YES;
+        
+        UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        but1.frame =CGRectMake(0,0, 60, 44);
+        
+        [but1 setTitle:@"所有客户" forState:UIControlStateNormal];
+        [but1 addTarget:self action:@selector(allAction) forControlEvents:UIControlEventTouchUpInside];
+        but1.titleLabel.font = [UIFont systemFontOfSize:14];
+        UIBarButtonItem  *barBut1 = [[UIBarButtonItem alloc] initWithCustomView:but1];
+        
+        self.navigationItem.rightBarButtonItem = barBut1;
+    }
     _currentPage = 1;
     _pageSize = 10;
     _arrCustomer = [[NSMutableArray alloc] init];
@@ -40,6 +68,7 @@
     [self.view endEditing:YES];
     [_arrCustomer removeAllObjects];
     [_customerTable reloadData];
+    _currentPage = 1;
     [self dataLoadCust];
     return YES;
 }
@@ -120,6 +149,9 @@
     request.keyword = _contentTF.text;
     request.page = _currentPage;
     request.size = _pageSize;
+    if (_newCust) {
+        request.newCust = _newCust;
+    }
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [_customerTable.footer endRefreshing];
@@ -151,5 +183,9 @@
     _currentPage++;
     [self dataLoadCust];
 }
-
+- (void)allAction{
+    FFCustomerListVC *customerMVC = [[FFCustomerListVC alloc] init];
+    [self.navigationController pushViewController:customerMVC animated:YES];
+    
+}
 @end

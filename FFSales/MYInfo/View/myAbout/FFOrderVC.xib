@@ -12,9 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FFOrderVC">
             <connections>
                 <outlet property="orderTable" destination="nT1-oS-E0I" id="aAH-h9-J1E"/>
+                <outlet property="tableConstraint" destination="rCU-Yr-JRi" id="W4D-AJ-rVe"/>
                 <outlet property="tipView" destination="Ufc-7W-Uj4" id="NgX-h9-5D0"/>
                 <outlet property="tipViewLeftMargin" destination="p8m-2P-DvN" id="GHX-hx-mQp"/>
                 <outlet property="topConstraint" destination="pmi-9D-fIg" id="47a-Nb-e8n"/>
+                <outlet property="typeVIew" destination="U4X-Hh-Pj8" id="P1p-Ur-n36"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -98,13 +100,6 @@
                                 <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="gnb-fi-EXC"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-7W-Uj4">
-                            <rect key="frame" x="0.0" y="38" width="75" height="2"/>
-                            <color key="backgroundColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="2" id="I5x-oA-fyv"/>
-                            </constraints>
-                        </view>
                         <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OB2-xl-MAk">
                             <rect key="frame" x="299.5" y="0.0" width="75.5" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -123,6 +118,13 @@
                                 <action selector="topBtnAction:" destination="-1" eventType="touchUpInside" id="Xjx-5H-Ewd"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-7W-Uj4">
+                            <rect key="frame" x="0.0" y="38" width="75" height="2"/>
+                            <color key="backgroundColor" red="0.91764705879999997" green="0.32549019610000002" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="I5x-oA-fyv"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

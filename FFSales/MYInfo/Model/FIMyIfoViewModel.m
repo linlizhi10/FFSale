@@ -25,7 +25,7 @@
     FIContentModel *content3 = [[FIContentModel alloc] init];
     content3.imageName = @"icon-kfdh";
     content3.contentTitle = @"客服电话";
-    content3.contentSubtitle = @"400-800-8888";
+    content3.contentSubtitle = @"400-110-3898";
    
     
     FIContentModel *content4 = [[FIContentModel alloc] init];

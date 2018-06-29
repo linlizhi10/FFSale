@@ -58,7 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的";
-    _customerTel = @"400-8188-2539";
+    _customerTel = @"400-110-3898";
     _model= [[FFMHomeModel alloc] init];
     _arrData = [[NSMutableArray alloc] initWithArray:[FIMyIfoViewModel infoContentArray]];
     [_contentTable registerNib:[UINib nibWithNibName:@"FIMyInfoCell" bundle:nil] forCellReuseIdentifier:@"FIMyInfoCell"];

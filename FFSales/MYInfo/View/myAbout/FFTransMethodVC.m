@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipsMessage;
 @property (nonatomic, strong) UIAlertView *alert;
 @property (copy, nonatomic) NSString *customerTel;
+@property (weak, nonatomic) IBOutlet UILabel *factoryName;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraint1;//10
+@property (weak, nonatomic) IBOutlet UILabel *carrigeTitle;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heghtConstraint; //200
 
 @end
 
@@ -34,12 +38,22 @@
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"配送方式";
-    _customerTel = @"400-8188-2539";
+    _tipsMessage.text = @"火车运输客户自己承担运输费用";
+
+    if ([_order.transport isEqualToString:@"客户自提"]) {
+        _carrageFee.hidden = YES;
+        _carrigeTitle.hidden = YES;
+        _constraint1.constant = 10;
+        _heghtConstraint.constant = 200;
+        _tipsMessage.text = @"自提客户自己承担运输费用";
+    }
+    _customerTel = @"400-110-3898";
     _transMethod.text = _order.transport;
-    _tipsMessage.text = [NSString stringWithFormat:@"%@客户自己承担运输费用",_order.transport];
+    _factoryName.text = _order.sendFactory;
     _wayOfTrans.text = _order.transport;
     _number.text = [NSString stringWithFormat:@"%.2f吨",_order.qty];
     _carrageFee.attributedText = [self originalContentNext:[NSString stringWithFormat:@"装卸费:%.2f/吨",_order.transportPrice] differentContent:[NSString stringWithFormat:@"￥%.2f",_order.transportAmout]];

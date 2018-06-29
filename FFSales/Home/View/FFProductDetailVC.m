@@ -38,6 +38,17 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *contentScroll;
 @property (weak, nonatomic) IBOutlet SDCycleScrollView *headImageView;
 @property (strong, nonatomic) NSMutableArray *arrMessage;
+
+@property (strong, nonatomic) IBOutlet UIView *navView;
+- (IBAction)priductAction:(id)sender;
+- (IBAction)detailAction:(id)sender;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet UIButton *productBtn;
+@property (weak, nonatomic) IBOutlet UIButton *detailBtn;
+
+- (IBAction)backAction:(id)sender;
+
+
 @end
 
 @implementation FFProductDetailVC
@@ -48,9 +59,12 @@
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"商品详情";
+    [_productBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+
     _coverView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH + 280);
@@ -66,7 +80,20 @@
     _contentScroll.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH + 280);
     [self detailRequest];
 }
-
+- (void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = YES;
+    self.navView.frame = CGRectMake(0, 20, SCREEN_WIDTH, 44);
+    if (kDevice_Is_iPhoneX) {
+        self.navView.frame = CGRectMake(0, 44, SCREEN_WIDTH, 44);
+        _topConstraint.constant = 88;
+    }
+    [self.view addSubview:self.navView];
+    
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -139,14 +166,18 @@
 
     for (int i = 0; i < detail.detailUrls.count; i ++) {
         NSString *imgUrl = detail.detailUrls[i];
+        if (!imgUrl) {
+            imgUrl = @"";
+        }
+        imgUrl = [imgUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //        imgUrl = [imgUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         UIImageView *imageV = [[UIImageView alloc] init];
         imageV.frame = CGRectMake(0, SCREEN_WIDTH + 288, SCREEN_WIDTH, 0);
-        [imageV sd_setImageWithURL:[NSURL URLWithString:imgUrl?:@""] placeholderImage:[UIImage imageNamed:@"goodDefault"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [imageV sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"goodDefault"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if (error) {
                 NSLog(@"error is %@",error.description);
             }else{
-
+//890130
                 imageV.frame = CGRectMake(0, heightTemp, SCREEN_WIDTH, SCREEN_WIDTH*(image.size.height / image.size.width));
                 heightTemp = imageV.frame.origin.y + imageV.frame.size.height;
                 [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, imageV.frame.origin.y + imageV.frame.size.height)];
@@ -185,6 +216,7 @@
 
 - (IBAction)factoryChooseA:(id)sender {
 }
+
 - (NSAttributedString *)originalContent:(NSString *)str1 differentContent:(NSString *)str2{
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"￥%@",str1?:@""] attributes:@{NSForegroundColorAttributeName:[UIColor redColor]}];
     NSAttributedString *strT = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",str2?:@""] attributes:@{NSForegroundColorAttributeName:[UIColor darkGrayColor],NSFontAttributeName:[UIFont systemFontOfSize:13]}];
@@ -221,5 +253,19 @@
 - (IBAction)closeAction:(id)sender {
     [_coverView removeFromSuperview];
 
+}
+- (IBAction)priductAction:(id)sender {
+    [_productBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [_detailBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [_contentScroll setContentOffset:CGPointMake(0, 0)];
+}
+
+- (IBAction)detailAction:(id)sender {
+    [_productBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [_detailBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [_contentScroll setContentOffset:CGPointMake(0, SCREEN_WIDTH + 288)];
+}
+- (IBAction)backAction:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

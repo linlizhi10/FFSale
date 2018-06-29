@@ -110,8 +110,8 @@
     FFCreaditSubRequest *request = [FFCreaditSubRequest Request];
     request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
     request.serviceType = @"01";
-//    request.childrenAccountType = _childrenAccountType;
-    request.childrenAccountType = @"06";
+    request.childrenAccountType = _childrenAccountType;
+//    request.childrenAccountType = @"06";
 
     request.custId = @"CUST01174";
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {

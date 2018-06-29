@@ -55,11 +55,11 @@ alpha:1.0]
 
 //#define ServerAddressURL @"http://172.31.255.13/interf-rf"
 ////测试
-#define ServerAddressURL @"http://10.13.3.202:8080/npk"
+//#define ServerAddressURL @"http://10.13.3.202:8080/npk"
 //#define ServerH5AddressURL @"http://uatdaogou.dusto.cn"
 
 //正式
-//#define ServerAddressURL @"http://crm.wintrueholding.com:9090/npk"
+#define ServerAddressURL @"http://crm.wintrueholding.com:9090/npk"
 
 
 //html 地址域

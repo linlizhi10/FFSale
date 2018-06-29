@@ -25,6 +25,7 @@
 @property (nonatomic, assign) BOOL searchBegin;
 @property (weak, nonatomic) IBOutlet UITableView *listTable;
 @property (assign, nonatomic) int pageSize;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
 @property (assign, nonatomic) int currentPage;
 @end
 
@@ -57,6 +58,7 @@
     self.headerView.frame = CGRectMake(0, 20, SCREEN_WIDTH, 44);
     if (kDevice_Is_iPhoneX) {
         self.headerView.frame = CGRectMake(0, 44, SCREEN_WIDTH, 44);
+        _topConstraint.constant = 88;
     }
     [self.view addSubview:self.headerView];
     
@@ -83,12 +85,13 @@
         
     }else{
         self.searchBegin = YES;
-        NSLog(@"text is %@,",textField.text);
+//        NSLog(@"text is %@,",textField.text);
 //        [self getSearchResult:[textField.text pureString]];
     }
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self.view endEditing:YES];
+    _currentPage = 1;
     [self searchRequest];
     return YES;
 }
@@ -201,7 +204,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:keyString];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     FFProductListRequest *request = [FFProductListRequest Request];
     request.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     request.page = _currentPage;
@@ -223,6 +225,7 @@
                 
             }
         }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];

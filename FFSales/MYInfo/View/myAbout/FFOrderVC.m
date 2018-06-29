@@ -17,8 +17,11 @@
 @interface FFOrderVC ()<UITableViewDelegate,UITableViewDataSource,StateOrderClickDelegate>
 {
     int _type;
+    BOOL _newOrder;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+@property (weak, nonatomic) IBOutlet UIView *typeVIew;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableConstraint;
 
 - (IBAction)topBtnAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *tipView;
@@ -38,9 +41,22 @@ static NSString *refreshNoti = @"refreshOrderData";
     }
     return self;
 }
+- (instancetype)initWithNew:(BOOL)newOrder{
+    self = [super init];
+    if (self) {
+        _newOrder = newOrder;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的订单";
+    if (_newOrder) {
+        self.title = @"今日订单";
+        _tableConstraint.constant = -40;
+        _typeVIew.hidden = YES;
+    }
     if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {
         _topConstraint.constant = 0;
         _tipView.backgroundColor = RGBCOLORV(0x4BAE4F);
@@ -92,6 +108,8 @@ static NSString *refreshNoti = @"refreshOrderData";
         productCell.sapNp.text = [NSString stringWithFormat:@"SAP编号:%@",orInfo.sapCode];
         productCell.createDate.text = [NSString stringWithFormat:@"创建时间:%@",[DDStringUtil toDateTimeString:orInfo.createTime]];
         productCell.pay.text = [NSString stringWithFormat:@"实付款:￥%.2f",orInfo.payAmout];
+        productCell.btn.tag = indexPath.row;
+        [productCell.btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         if ([orInfo.auditStatus isEqualToString:@"WAIT_AUDIT"] ) {
             productCell.state.text = @"等待后台管理员审核";
             productCell.state.textColor = [UIColor darkGrayColor];
@@ -137,6 +155,8 @@ static NSString *refreshNoti = @"refreshOrderData";
     DDOrderDetailVC *orderD = [[DDOrderDetailVC alloc] initWithNo:orderInfo.orderId audit:audit];
     [self.navigationController pushViewController:orderD animated:YES];
 }
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_cust) {
         return 167;
@@ -177,8 +197,13 @@ static NSString *refreshNoti = @"refreshOrderData";
         default:
             break;
     }
-    request.status = statusS;
-    request.auditStatus = auditS;
+    
+    if (_newOrder) {
+        request.OrderNew = @"true";
+    }else{
+        request.status = statusS;
+        request.auditStatus = auditS;
+    }
     request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
     request.page = _currentPage;
     request.size = _pageSize;
@@ -218,5 +243,14 @@ static NSString *refreshNoti = @"refreshOrderData";
     OrderInfo *infoO = _arrMMm[btn.tag];
     DDTransInfoVC *trans = [[DDTransInfoVC alloc] initWithNo:infoO.orderId];
     [self.navigationController pushViewController:trans animated:YES];
+}
+- (void)buttonClick:(UIButton *)btn{
+    OrderInfo *orderInfo = _arrMMm[btn.tag];
+    BOOL audit = YES;
+    if (_type == 1) {
+        audit = NO;
+    }
+    DDOrderDetailVC *orderD = [[DDOrderDetailVC alloc] initWithNo:orderInfo.orderId audit:audit];
+    [self.navigationController pushViewController:orderD animated:YES];
 }
 @end

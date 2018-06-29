@@ -83,13 +83,17 @@
     [self setViewControlerTarbar:sub2 andNormalImage:Img(@"icon-xx-wdj") andSelectImage:Img(@"icon-xx-dj")];
 //    [self setViewControlerTarbar:sub3 andNormalImage:Img(@"icon-shanjia-wdj") andSelectImage:Img(@"icon-shanjia-dj")];
     [self setViewControlerTarbar:sub4 andNormalImage:Img(@"icon-wd-wdj") andSelectImage:Img(@"icon-wd-dj")];
+    
+    
+    UINavigationController *nav1 = [self rootVc:sub1];
+    nav1.navigationBar.translucent = NO;
     UINavigationController *nav2 = [self rootVc:sub2];
     nav2.navigationBar.translucent = NO;
 
     UINavigationController *nav3 = [self rootVc:sub4];
     
     nav3.navigationBar.translucent = NO;
-    NSArray *array = @[[self rootVc:sub1],
+    NSArray *array = @[nav1,
                        nav2,
 //                       [self rootVc:sub3],
                        nav3];

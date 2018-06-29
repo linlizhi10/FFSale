@@ -138,7 +138,7 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="oVO-tU-mFR">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oVO-tU-mFR">
                             <rect key="frame" x="370" y="98" width="6" height="10"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="10" id="Bur-4n-hmQ"/>
@@ -405,7 +405,6 @@
     </objects>
     <resources>
         <image name="CKC-img-shose1" width="16" height="16"/>
-        <image name="icon-arrow" width="16" height="16"/>
         <image name="icon-xqingguanb" width="19" height="24"/>
     </resources>
 </document>

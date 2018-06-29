@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fbr-gf-SOf">
-                    <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="627"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="XfK-6P-w0h"/>
@@ -34,7 +34,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLn-HI-6WN">
-                    <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVK-i4-lzq">
                             <rect key="frame" x="299" y="0.0" width="76" height="40"/>
@@ -96,7 +96,7 @@
                     </constraints>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PQQ-bi-GEh">
-                    <rect key="frame" x="259" y="114" width="100" height="260"/>
+                    <rect key="frame" x="259" y="50" width="100" height="260"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-syfn-up" translatesAutoresizingMaskIntoConstraints="NO" id="5MY-Aw-by4">
                             <rect key="frame" x="67" y="0.0" width="14" height="14"/>
@@ -135,7 +135,7 @@
                 <constraint firstItem="mLn-HI-6WN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TfR-9T-SqC"/>
                 <constraint firstItem="PQQ-bi-GEh" firstAttribute="top" secondItem="mLn-HI-6WN" secondAttribute="bottom" constant="10" id="Xr0-zM-gM2"/>
                 <constraint firstAttribute="trailing" secondItem="PQQ-bi-GEh" secondAttribute="trailing" constant="16" id="aPI-Bs-Rxq"/>
-                <constraint firstItem="mLn-HI-6WN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="neE-HO-iGm"/>
+                <constraint firstItem="mLn-HI-6WN" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="neE-HO-iGm"/>
                 <constraint firstAttribute="trailing" secondItem="fbr-gf-SOf" secondAttribute="trailing" id="uSf-ho-dEZ"/>
                 <constraint firstItem="fbr-gf-SOf" firstAttribute="top" secondItem="mLn-HI-6WN" secondAttribute="bottom" id="yOI-mf-zhd"/>
             </constraints>

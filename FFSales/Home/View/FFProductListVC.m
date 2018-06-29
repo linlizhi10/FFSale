@@ -10,7 +10,7 @@
 #import "FFProductDetailRequest.h"
 #import "FFProductModel.h"
 #import "FFProductDetailVC.h"
-#import "TableGoodsCell.h"
+#import "TableGoodCell.h"
 #import "FilterCell.h"
 #import "FFHomeBModel.h"
 @interface FFProductListVC ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>{
@@ -52,7 +52,7 @@
         _topConstraint.constant = 0;
     
     }
-    [_productList registerNib:[UINib nibWithNibName:@"TableGoodsCell" bundle:nil] forCellReuseIdentifier:@"goods"];
+    [_productList registerNib:[UINib nibWithNibName:@"TableGoodCell" bundle:nil] forCellReuseIdentifier:@"goods"];
     [_filterTable registerNib:[UINib nibWithNibName:@"FilterCell" bundle:nil] forCellReuseIdentifier:@"filter"];
 
     _productList.footer = [MJRefreshAutoStateFooter footerWithRefreshingTarget:self refreshingAction:@selector(addPage)];
@@ -94,7 +94,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == _productList) {
-        TableGoodsCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"goods"];
+        TableGoodCell *productCell = [tableView dequeueReusableCellWithIdentifier:@"goods"];
         
         FFProductModel *product = _arrP[indexPath.row];
         [productCell.goodsImage sd_setImageWithURL:[NSURL URLWithString:product.picUrl?:@""] placeholderImage:[UIImage imageNamed:@"goodDefault"]];

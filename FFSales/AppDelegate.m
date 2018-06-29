@@ -76,7 +76,7 @@ static BOOL isProduction = FALSE;
     
 //    [nav.navigationBar setBarTintColor:[UIColor whiteColor]];
 //    nav.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor darkTextColor] forKey:NSForegroundColorAttributeName];
-
+    application.applicationIconBadgeNumber = 0;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     [self gestureVerify];
@@ -150,12 +150,12 @@ forLocalNotification:(UILocalNotification *)notification
 handleActionWithIdentifier:(NSString *)identifier
 forRemoteNotification:(NSDictionary *)userInfo
   completionHandler:(void (^)())completionHandler {
+    
 }
 #endif
-- (void)application:(UIApplication *)application
-didReceiveRemoteNotification:(NSDictionary *)userInfo
-fetchCompletionHandler:
-(void (^)(UIBackgroundFetchResult))completionHandler {
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:
+(void (^)(UIBackgroundFetchResult))completionHandler
+{
     [JPUSHService handleRemoteNotification:userInfo];
     NSLog(@"iOS7及以上系统，收到通知:%@", [self logDic:userInfo]);
     
@@ -164,6 +164,7 @@ fetchCompletionHandler:
     
     completionHandler(UIBackgroundFetchResultNewData);
 }
+
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification {
     [JPUSHService showLocalNotificationAtFront:notification identifierKey:nil];
@@ -185,7 +186,8 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
         NSLog(@"iOS10 前台收到远程通知:%@", [self logDic:userInfo]);
-        
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
         
     }
     else {

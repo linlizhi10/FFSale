@@ -12,6 +12,7 @@
 #import "OrderInfo.h"
 #import "FFTrainTransVC.h"
 #import "FFTransMethodVC.h"
+#import "DDTransInfoVC.h"
 @interface DDOrderDetailVC ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     NSString *_orderNoS;
@@ -61,6 +62,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstant;
 @property (weak, nonatomic) IBOutlet UILabel *factory;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+- (IBAction)trackAction:(id)sender;
 
 @end
 static NSString *refreshNoti = @"refreshOrderData";
@@ -127,9 +129,9 @@ static NSString *refreshNoti = @"refreshOrderData";
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     if([_detail.status isEqualToString:@"05"] ){
-        return 466;
+        return 436;
     }
-    return 430;
+    return 400;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if([_detail.status isEqualToString:@"05"] ){
@@ -291,5 +293,9 @@ static NSString *refreshNoti = @"refreshOrderData";
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = _detail.sapCode;;
     
+}
+- (IBAction)trackAction:(id)sender {
+    DDTransInfoVC *trans = [[DDTransInfoVC alloc] initWithNo:_detail.orderId];
+    [self.navigationController pushViewController:trans animated:YES];
 }
 @end

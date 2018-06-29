@@ -6,9 +6,9 @@
 //  Copyright © 2018年 lin. All rights reserved.
 //
 
-#import "TableGoodsCell.h"
+#import "TableGoodCell.h"
 
-@implementation TableGoodsCell
+@implementation TableGoodCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -8,6 +8,7 @@
 
 #import "OrderCell.h"
 #import "OrderInfo.h"
+#import "DDStringUtil.h"
 @implementation OrderCell
 
 - (void)awakeFromNib {
@@ -45,7 +46,7 @@
 //        _commission.attributedText =str;
     
     
-    _orderTime.text = [NSString stringWithFormat:@"下单时间:%@",orInfo.createTime];
+    _orderTime.text = [NSString stringWithFormat:@"下单时间:%@",[DDStringUtil toDateTimeString:orInfo.createTime]];
     _money.text = [NSString stringWithFormat:@"共%ld件商品,总计%.2f吨，实付金额￥%.2f",orInfo.materials.count,orInfo.sendQty,orInfo.actualAmout];
     /*
     switch (_type) {

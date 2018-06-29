@@ -156,7 +156,6 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4RM-hN-8vl">
                                     <rect key="frame" x="0.0" y="-8" width="375" height="50"/>
                                     <connections>
-                                        <action selector="changePassA:" destination="-1" eventType="touchUpInside" id="OjN-0t-cMf"/>
                                         <action selector="cleanDiskA:" destination="-1" eventType="touchUpInside" id="gWE-9F-xvk"/>
                                     </connections>
                                 </button>
@@ -204,9 +203,6 @@
                                 </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pnv-lf-S1t">
                                     <rect key="frame" x="0.0" y="-8" width="375" height="50"/>
-                                    <connections>
-                                        <action selector="changePassA:" destination="-1" eventType="touchUpInside" id="cGs-32-nhF"/>
-                                    </connections>
                                 </button>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFi-1V-2Kf">
                                     <rect key="frame" x="0.0" y="49.5" width="375" height="0.5"/>
@@ -326,7 +322,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.92941176469999998" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="v7G-cS-J7D" firstAttribute="top" secondItem="vM4-aO-31G" secondAttribute="bottom" constant="60" id="9Wf-98-ga0"/>
                 <constraint firstItem="vM4-aO-31G" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="E9E-PL-Ax0"/>

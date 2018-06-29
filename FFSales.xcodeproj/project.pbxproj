@@ -14,8 +14,6 @@
 		3EA61AB520C78E5300871858 /* DicBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61AB320C78E5300871858 /* DicBtn.m */; };
 		3EA61AB920C7C2AB00871858 /* FFAllCategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61AB720C7C2AB00871858 /* FFAllCategoryVC.m */; };
 		3EA61ABA20C7C2AB00871858 /* FFAllCategoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA61AB820C7C2AB00871858 /* FFAllCategoryVC.xib */; };
-		3EA61AC320C7D72800871858 /* TableGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA61AC120C7D72800871858 /* TableGoodsCell.m */; };
-		3EA61AC420C7D72800871858 /* TableGoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA61AC220C7D72800871858 /* TableGoodsCell.xib */; };
 		3EAC462020D8D71B0099EBBC /* FFMyinfoDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC461E20D8D71B0099EBBC /* FFMyinfoDetailVC.m */; };
 		3EAC462120D8D71B0099EBBC /* FFMyinfoDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EAC461F20D8D71B0099EBBC /* FFMyinfoDetailVC.xib */; };
 		3EAC462520D8EED20099EBBC /* FFInvoiceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EAC462320D8EED20099EBBC /* FFInvoiceVC.m */; };
@@ -106,6 +104,8 @@
 		3EADE23C20CFB2CC0079DE9C /* MoneyHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EADE23A20CFB2CC0079DE9C /* MoneyHistoryCell.xib */; };
 		3EADE24020CFB6800079DE9C /* FFHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EADE23E20CFB6800079DE9C /* FFHistoryVC.m */; };
 		3EADE24120CFB6800079DE9C /* FFHistoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EADE23F20CFB6800079DE9C /* FFHistoryVC.xib */; };
+		3EB10C9E20E1C61D00ED194A /* TableGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB10C9C20E1C61D00ED194A /* TableGoodCell.m */; };
+		3EB10C9F20E1C61D00ED194A /* TableGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB10C9D20E1C61D00ED194A /* TableGoodCell.xib */; };
 		3EB84F3A20BE4B820022085F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB84F3920BE4B820022085F /* AppDelegate.m */; };
 		3EB84F3D20BE4B820022085F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EB84F3C20BE4B820022085F /* ViewController.m */; };
 		3EB84F4020BE4B820022085F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EB84F3E20BE4B820022085F /* Main.storyboard */; };
@@ -215,9 +215,6 @@
 		3EA61AB620C7C2AB00871858 /* FFAllCategoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFAllCategoryVC.h; sourceTree = "<group>"; };
 		3EA61AB720C7C2AB00871858 /* FFAllCategoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFAllCategoryVC.m; sourceTree = "<group>"; };
 		3EA61AB820C7C2AB00871858 /* FFAllCategoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFAllCategoryVC.xib; sourceTree = "<group>"; };
-		3EA61AC020C7D72800871858 /* TableGoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableGoodsCell.h; sourceTree = "<group>"; };
-		3EA61AC120C7D72800871858 /* TableGoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableGoodsCell.m; sourceTree = "<group>"; };
-		3EA61AC220C7D72800871858 /* TableGoodsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableGoodsCell.xib; sourceTree = "<group>"; };
 		3EAC461D20D8D71B0099EBBC /* FFMyinfoDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFMyinfoDetailVC.h; sourceTree = "<group>"; };
 		3EAC461E20D8D71B0099EBBC /* FFMyinfoDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFMyinfoDetailVC.m; sourceTree = "<group>"; };
 		3EAC461F20D8D71B0099EBBC /* FFMyinfoDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFMyinfoDetailVC.xib; sourceTree = "<group>"; };
@@ -366,6 +363,9 @@
 		3EADE23D20CFB6800079DE9C /* FFHistoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FFHistoryVC.h; sourceTree = "<group>"; };
 		3EADE23E20CFB6800079DE9C /* FFHistoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFHistoryVC.m; sourceTree = "<group>"; };
 		3EADE23F20CFB6800079DE9C /* FFHistoryVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FFHistoryVC.xib; sourceTree = "<group>"; };
+		3EB10C9B20E1C61D00ED194A /* TableGoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableGoodCell.h; sourceTree = "<group>"; };
+		3EB10C9C20E1C61D00ED194A /* TableGoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableGoodCell.m; sourceTree = "<group>"; };
+		3EB10C9D20E1C61D00ED194A /* TableGoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableGoodCell.xib; sourceTree = "<group>"; };
 		3EB1B1E320DD096F008BED20 /* FFSales.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FFSales.entitlements; sourceTree = "<group>"; };
 		3EB84F3520BE4B820022085F /* FFSales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFSales.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EB84F3820BE4B820022085F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1075,6 +1075,9 @@
 		3EB84FCA20BE9B110022085F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				3EB10C9B20E1C61D00ED194A /* TableGoodCell.h */,
+				3EB10C9C20E1C61D00ED194A /* TableGoodCell.m */,
+				3EB10C9D20E1C61D00ED194A /* TableGoodCell.xib */,
 				3EB84FCE20BE9B110022085F /* SearchRCell.h */,
 				3EB84FCF20BE9B110022085F /* SearchRCell.m */,
 				3EB84FD020BE9B110022085F /* SearchRCell.xib */,
@@ -1090,9 +1093,6 @@
 				3ED3D25420C5404500C4AFE8 /* FFFactoryACell.h */,
 				3ED3D25520C5404500C4AFE8 /* FFFactoryACell.m */,
 				3ED3D25620C5404500C4AFE8 /* FFFactoryACell.xib */,
-				3EA61AC020C7D72800871858 /* TableGoodsCell.h */,
-				3EA61AC120C7D72800871858 /* TableGoodsCell.m */,
-				3EA61AC220C7D72800871858 /* TableGoodsCell.xib */,
 				3EC62C7720C8E0B800C01E7F /* FilterCell.h */,
 				3EC62C7820C8E0B800C01E7F /* FilterCell.m */,
 				3EC62C7920C8E0B800C01E7F /* FilterCell.xib */,
@@ -1339,7 +1339,7 @@
 				3EAC463A20D9E33A0099EBBC /* FFGetGoodsVC.xib in Resources */,
 				3EAC465D20DA628E0099EBBC /* OrderEMPCell.xib in Resources */,
 				3EB84FAF20BE4F7D0022085F /* DDHomeVC.xib in Resources */,
-				3EA61AC420C7D72800871858 /* TableGoodsCell.xib in Resources */,
+				3EB10C9F20E1C61D00ED194A /* TableGoodCell.xib in Resources */,
 				3EA61AB220C685B200871858 /* FFProductListVC.xib in Resources */,
 				3EB84FC320BE75840022085F /* FIChangePasswordViewController.xib in Resources */,
 				3EAC464220D9E92B0099EBBC /* FFGetGoodsHistory.xib in Resources */,
@@ -1437,6 +1437,7 @@
 				3EAC466720DA68A10099EBBC /* MessageOtherCell.m in Sources */,
 				3EAC469520DB92DE0099EBBC /* MessageCell.m in Sources */,
 				3EB84F9820BE4BFF0022085F /* AddressPickerView.m in Sources */,
+				3EB10C9E20E1C61D00ED194A /* TableGoodCell.m in Sources */,
 				3ED3D23420C4E42700C4AFE8 /* FFProductDetailRequest.m in Sources */,
 				3EADE1E320CA1D550079DE9C /* HomeViewController.m in Sources */,
 				3EF328CE20D2463100A9C6A1 /* OtherMoneyCell.m in Sources */,
@@ -1458,7 +1459,6 @@
 				3EADE21E20CE755D0079DE9C /* TransDetailCell.m in Sources */,
 				3EA61AB520C78E5300871858 /* DicBtn.m in Sources */,
 				3EB84F7520BE4BC80022085F /* DDForgetPasswordVC.m in Sources */,
-				3EA61AC320C7D72800871858 /* TableGoodsCell.m in Sources */,
 				3EF328BE20D1154C00A9C6A1 /* FFSubCreditVC.m in Sources */,
 				3EAC463D20D9E7F30099EBBC /* FFGetGoodsRequest.m in Sources */,
 				3EADE20320CE0D500079DE9C /* OrderInfo.m in Sources */,
@@ -1674,33 +1674,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = FFSales/FFSales.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 83U3LBKD74;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/map",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/OneSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/Optional",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformConnector",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/QQSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/Required",
-				);
+				DEVELOPMENT_TEAM = 6G9262YH5N;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "/Users/lin/Desktop/未命名文件夹/FFSales/PrefixHeader.pch";
 				INFOPLIST_FILE = FFSales/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/Baidu_MTJ_SDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/WeChatSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/UnitedBankSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ytrz.FFSales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4cb11078-8cc0-48bf-8f29-8dd71fe0653f";
-				PROVISIONING_PROFILE_SPECIFIER = "ffsale-dev";
+				PROVISIONING_PROFILE = "70bb4177-5caf-464a-8c76-138c506a81ca";
+				PROVISIONING_PROFILE_SPECIFIER = ffsale_distribution;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1712,33 +1699,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = FFSales/FFSales.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/map",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/OneSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/Optional",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformConnector",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/QQSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/Required",
-				);
+				DEVELOPMENT_TEAM = 6G9262YH5N;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREFIX_HEADER = "/Users/lin/Desktop/未命名文件夹/FFSales/PrefixHeader.pch";
 				INFOPLIST_FILE = FFSales/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/Baidu_MTJ_SDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/ShareSDK/Support/PlatformSDK/WeChatSDK",
-					"$(PROJECT_DIR)/FFSales/MYInfo/View/finance-云图金融/finance/Libs/UnitedBankSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ytrz.FFSales;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "70bb4177-5caf-464a-8c76-138c506a81ca";
+				PROVISIONING_PROFILE_SPECIFIER = ffsale_distribution;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

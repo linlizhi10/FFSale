@@ -307,8 +307,8 @@
 
                     [_headerV.brandVIew addSubview:btn];
                     btn.tag = 6 + i;
-                    [btn setTitle:modelT.levelName forState:UIControlStateNormal];
-                    //                [btn sd_setImageWithURL:[NSURL URLWithString:modelT.picUrl?:@""] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"goodDefault"]];
+//                    [btn setTitle:modelT.levelName forState:UIControlStateNormal];
+                    [btn sd_setImageWithURL:[NSURL URLWithString:modelT.picUrl?:@""] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"goodDefault"]];
                     
                 }
             }else if ([type isEqualToString:@"2"]){
@@ -322,6 +322,7 @@
                     btn.frame = CGRectMake(0 + (i % 3)*(SCREEN_WIDTH) / 3, (i/3)*40, (SCREEN_WIDTH) / 3, 40);
                     [_headerV.brandVIew addSubview:btn];
                     btn.tag = i;
+                    btn.titleLabel.font = [UIFont systemFontOfSize:14];
                     [btn addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
                     [btn setTitle:modelT.levelName forState:UIControlStateNormal];
                     //                [btn sd_setImageWithURL:[NSURL URLWithString:modelT.picUrl?:@""] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"goodDefault"]];
@@ -392,9 +393,14 @@
             [FFGestureData insertGestureState:gesture.state key:GestureStateString];
             
         }else{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if ([result.status isEqualToString:@"404"]) {
+                
+            }else{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-            [WToast showWithTextCenter:result.message];
+                [WToast showWithTextCenter:result.message];
+                
+            }
         }
     }];
     

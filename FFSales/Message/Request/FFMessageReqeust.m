@@ -32,3 +32,26 @@
     [super startCallBack:_callBack];
 }
 @end
+
+@implementation FFMessageSetReadReqeust
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = @"/appMessages/readed";
+    self.METHOD = @"POST";
+    self.params = @{@"accessToken":self.accessToken?:@"",
+                    @"type":self.type?:@""
+                    };
+    
+    [super startCallBack:_callBack];
+}
+@end
+
+@implementation FFMessageDeleteReqeust
+- (void)startCallBack:(RequestCallBackBlock)_callBack{
+    self.PATH = [NSString stringWithFormat:@"/appMessages/%@",_messageNo];
+    self.METHOD = @"DELETE";
+    self.params = @{@"accessToken":self.accessToken?:@""
+                    };
+    
+    [super startCallBack:_callBack];
+}
+@end

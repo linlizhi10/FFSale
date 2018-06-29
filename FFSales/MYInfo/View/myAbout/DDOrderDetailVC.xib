@@ -115,7 +115,7 @@
             </constraints>
         </view>
         <view contentMode="scaleToFill" id="aPt-gM-ATJ">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="466"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="436"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lxa-AS-mhk">
@@ -359,7 +359,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7i-Zu-eof">
-                    <rect key="frame" x="0.0" y="290" width="375" height="165"/>
+                    <rect key="frame" x="0.0" y="290" width="375" height="135"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单SAP编号:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QeT-9P-gNV">
                             <rect key="frame" x="10" y="10" width="95" height="20"/>
@@ -399,7 +399,7 @@
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxQ-Fn-25s">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WxQ-Fn-25s">
                             <rect key="frame" x="10" y="100" width="355" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="wkg-rv-SEx"/>
@@ -409,7 +409,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单完成:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-I4-fJG">
-                            <rect key="frame" x="10" y="130" width="355" height="20"/>
+                            <rect key="frame" x="10" y="100" width="355" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="7qo-78-krL"/>
                             </constraints>
@@ -434,9 +434,9 @@
                         <constraint firstItem="TTn-Rx-oBp" firstAttribute="leading" secondItem="A7i-Zu-eof" secondAttribute="leading" constant="10" id="9qL-bx-pMn"/>
                         <constraint firstItem="TTn-Rx-oBp" firstAttribute="top" secondItem="oz3-lH-ghK" secondAttribute="bottom" constant="10" id="LdC-RE-tL9"/>
                         <constraint firstItem="QeT-9P-gNV" firstAttribute="leading" secondItem="A7i-Zu-eof" secondAttribute="leading" constant="10" id="SDn-w1-wJJ"/>
-                        <constraint firstItem="NeF-I4-fJG" firstAttribute="top" secondItem="WxQ-Fn-25s" secondAttribute="bottom" constant="10" id="Sjc-q0-IYc"/>
                         <constraint firstItem="NeF-I4-fJG" firstAttribute="leading" secondItem="WxQ-Fn-25s" secondAttribute="leading" id="Xdx-Ed-uTV"/>
                         <constraint firstItem="P8g-x1-I7g" firstAttribute="centerY" secondItem="QeT-9P-gNV" secondAttribute="centerY" id="Xhg-W7-0BO"/>
+                        <constraint firstItem="NeF-I4-fJG" firstAttribute="top" secondItem="TTn-Rx-oBp" secondAttribute="bottom" constant="10" id="Yt3-cH-evI"/>
                         <constraint firstItem="WxQ-Fn-25s" firstAttribute="top" secondItem="TTn-Rx-oBp" secondAttribute="bottom" constant="10" id="a5g-9b-8mf"/>
                         <constraint firstAttribute="trailing" secondItem="P8g-x1-I7g" secondAttribute="trailing" constant="10" id="coc-7A-PzL"/>
                         <constraint firstItem="NeF-I4-fJG" firstAttribute="trailing" secondItem="WxQ-Fn-25s" secondAttribute="trailing" id="esH-ub-Ghi"/>
@@ -515,6 +515,9 @@
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zz2-6X-XWx">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <connections>
+                                <action selector="trackAction:" destination="-1" eventType="touchUpInside" id="gPP-Sj-g67"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-car" translatesAutoresizingMaskIntoConstraints="NO" id="RrL-ct-SUn">
                             <rect key="frame" x="6" y="28.5" width="16" height="16"/>

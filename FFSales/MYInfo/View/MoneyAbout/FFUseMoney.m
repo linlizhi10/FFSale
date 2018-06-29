@@ -46,6 +46,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"可用资金";
+    _tipViewLeftMargin.constant = (SCREEN_WIDTH / 3 - 40)/2;
+
     _arrMMm = [[NSMutableArray alloc] init];
     _currentPage = 1;
     _pageSize = 10;
@@ -62,7 +64,6 @@
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    _tipViewLeftMargin.constant = (SCREEN_WIDTH / 3 - 40)/2;
 
 }
 - (void)didReceiveMemoryWarning {

@@ -40,7 +40,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2T8-Pa-t1V">
                         <rect key="frame" x="0.0" y="40" width="325" height="94"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="GmA-Sl-XEO">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GmA-Sl-XEO">
                                 <rect key="frame" x="310" y="42" width="5" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="10" id="B1e-3a-JBL"/>
@@ -130,7 +130,4 @@
             <point key="canvasLocation" x="37.5" y="48.5"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="icon-arrow" width="5" height="10"/>
-    </resources>
 </document>

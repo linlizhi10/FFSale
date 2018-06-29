@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FFFactoryACell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIButton *factoryABtn;
+
+@property (weak, nonatomic) IBOutlet UILabel *factoryName;
 
 @end

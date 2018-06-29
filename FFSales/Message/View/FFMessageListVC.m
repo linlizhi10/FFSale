@@ -16,7 +16,7 @@
 #import "DDOrderDetailVC.h"
 #import "FFUseMoney.h"
 #import "FFOtherMoneyVC.h"
-@interface FFMessageListVC (){
+@interface FFMessageListVC ()<UITableViewDelegate,UITableViewDataSource>{
     NSString *_type;
 }
 @property (weak, nonatomic) IBOutlet UITableView *messageTalbe;
@@ -54,8 +54,10 @@
     
     _messageTalbe.estimatedSectionFooterHeight = 1;
     _messageTalbe.estimatedSectionHeaderHeight = 1;
+    _messageTalbe.sectionFooterHeight = 0;
+    _messageTalbe.sectionHeaderHeight = 0;
     _messageTalbe.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(addPage)];
-    [self dataLoadCust];
+    [self dataSetToRead];
     
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -86,11 +88,7 @@
         return productCell;
     }
     
-    
     return nil;
-    
-    
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -112,8 +110,34 @@
         
     }
 }
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    MessageItemModel *itemModel = _arrMeesage[indexPath.row];
+
+    if (editingStyle ==UITableViewCellEditingStyleDelete) {
+        [self deleteMessage:itemModel.messageNo index:indexPath.row];
+    }
+}
+- (void)deleteMessage:(NSString *)messageNO index:(NSInteger)index{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    FFMessageDeleteReqeust *request = [FFMessageDeleteReqeust Request];
+    request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
+    request.messageNo = messageNO;
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [_messageTalbe.footer endRefreshing];
+        
+        [_arrMeesage removeObjectAtIndex:index];
+        [_messageTalbe reloadData];
+        if (isSuccess) {
+            [WToast showWithTextCenter:@"删除成功"];
+        }else{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [WToast showWithTextCenter:result.message];
+        }
+    }];
+}
 - (void)dataLoadCust{
-    
+    WS(ws);
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     FFMessageReqeust *request = [FFMessageReqeust Request];
     request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
@@ -121,7 +145,7 @@
     request.page = _currentPage;
     request.size = _pageSize;
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:ws.view animated:YES];
         [_messageTalbe.footer endRefreshing];
         
         
@@ -142,10 +166,29 @@
             }
             [_messageTalbe reloadData];
         }else{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [MBProgressHUD hideHUDForView:ws.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];
+}
+- (void)dataSetToRead{
+    WS(ws);
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    FFMessageSetReadReqeust *request = [FFMessageSetReadReqeust Request];
+    request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
+    request.type = _type;
+    [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
+        [MBProgressHUD hideHUDForView:ws.view animated:YES];
+        
+        
+        if (isSuccess) {
+            [ws dataLoadCust];
+        }else{
+            [MBProgressHUD hideHUDForView:ws.view animated:YES];
+            [WToast showWithTextCenter:result.message];
+        }
+    }];
+    
 }
 - (void)addPage{
     _currentPage++;

@@ -127,7 +127,7 @@
 }
 
 - (void)brandRequestType:(NSString *)type{
-    if (type == 2) {
+    if ([type isEqualToString:@"2"]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     }

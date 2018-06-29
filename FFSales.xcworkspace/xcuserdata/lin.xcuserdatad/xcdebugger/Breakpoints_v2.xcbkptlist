@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FFSales/MYInfo/View/GetGoods/FFGetGoodsDVC.m"
-            timestampString = "551347443.341565"
+            filePath = "FFSales/Home/View/DDHomeVC.m"
+            timestampString = "551930275.4756939"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-fillContent:"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
+            landmarkName = "-brandRequestType:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -67,13 +67,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FFSales/AppDelegate.m"
-            timestampString = "551357319.465524"
+            filePath = "FFSales/Home/View/DDHomeVC.m"
+            timestampString = "551930275.475789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
-            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
+            startingLineNumber = "278"
+            endingLineNumber = "278"
+            landmarkName = "-recentlyRequest"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -83,13 +83,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FFSales/AppDelegate.m"
-            timestampString = "551357319.466576"
+            filePath = "FFSales/MYInfo/View/GetGoods/FFGetGoodsVC.m"
+            timestampString = "551928850.573055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "271"
-            endingLineNumber = "271"
-            landmarkName = "-networkDidReceiveMessage:"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "-uploadAdvice"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FFSales/Home/View/Cell/FFFactoryACell.m"
+            timestampString = "551930275.475896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "-setSelected:animated:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

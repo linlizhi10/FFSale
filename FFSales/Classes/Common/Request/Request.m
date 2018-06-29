@@ -139,6 +139,7 @@
     if ([self.METHOD isEqualToString:@"GET"]) {
         [manager GET:url parameters:self.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"res is ---->%@",responseObject);
+            
             [ws sucessDataDeal:responseObject CallBack:_callBack];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"error is %@",error);
@@ -175,9 +176,20 @@
             nm.message = @"网络状况不佳";
             _callBack(NO,nm);
         }];
+    }else if ([self.METHOD isEqualToString:@"DELETE"]){
+        [manager DELETE:url parameters:self.params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"res is ---->%@",responseObject);
+            [ws sucessDataDeal:responseObject CallBack:_callBack];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error is %@",error);
+            NetworkModel *nm = [[NetworkModel alloc] init];
+            nm.message = @"网络状况不佳";
+            _callBack(NO,nm);
+        }];
     }
 }
 - (void)sucessDataDeal:(id)responseObject CallBack:(RequestCallBackBlock)_callBack{
+   
     NetworkModel *nm = [[NetworkModel alloc] initWithJsonData:responseObject];
     if ([nm.status isEqualToString:@"0"]) {
         _callBack(YES,nm);
@@ -319,8 +331,8 @@
     NSDictionary *dic = _jsonData;
     if (!dic || [dic count] <= 0) {
         self = [super init];
-        self.isJsonError = YES;
-        self.status = @"-1";
+        self.isJsonError = NO;
+        self.status = @"0";
     }
     else{
         self = [self initWithDictionary:dic];

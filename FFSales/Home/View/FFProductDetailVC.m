@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *productName;
 @property (weak, nonatomic) IBOutlet UILabel *unitPRICE;
 
-- (IBAction)factoryChooseA:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *inventory;
 @property (weak, nonatomic) IBOutlet UILabel *factoryName;
 @property (weak, nonatomic) IBOutlet UILabel *brand;
@@ -64,7 +63,7 @@
     _arrMessage = [[NSMutableArray alloc] init];
 
     [_factoryTable registerNib:[UINib nibWithNibName:@"FFFactoryACell" bundle:nil] forCellReuseIdentifier:@"cellF"];
-    
+    _contentScroll.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH + 280);
     [self detailRequest];
 }
 
@@ -87,11 +86,13 @@
     FFFactoryACell *productCell = [tableView dequeueReusableCellWithIdentifier:@"cellF"];
     //    productCell.delegate = self;
     FFProductFactoryModel *infom = _arrMessage[indexPath.row];
-    [productCell.factoryABtn setTitle:infom.factoryName forState:UIControlStateNormal];
-   
+    productCell.factoryName.text = infom.factoryName;
     return productCell;
     
     
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FFProductFactoryModel *info = _arrMessage[indexPath.row];
@@ -104,7 +105,8 @@
 }
 
 - (void)fillContent:(FFProductDetailModel *)detail{
-    if (detail.picUrls) {
+//    _headImageView.backgroundColor = [UIColor redColor];
+    if (detail.picUrls && detail.picUrls.count > 0) {
         NSArray *imagesURLStrings = detail.picUrls;
         _headImageView.imageURLStringsGroup = imagesURLStrings;
     }
@@ -132,14 +134,14 @@
     __block CGFloat heightTemp = _headerView.frame.size.height;
     
     //test
-    detail.detailUrls = [NSArray arrayWithObjects:@"http://uatimage.dusto.cn/uat/804029/ce863827693249d1bcc8a28a49f1efc4.jpg",@"http://uatimage.dusto.cn/uat/804029/ce863827693249d1bcc8a28a49f1efc4.jpg", nil];
-    [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, 660 + 200 *detail.detailUrls.count)];
+//    detail.detailUrls = [NSArray arrayWithObjects:@"http://uatimage.dusto.cn/uat/804029/ce863827693249d1bcc8a28a49f1efc4.jpg",@"http://uatimage.dusto.cn/uat/804029/ce863827693249d1bcc8a28a49f1efc4.jpg", nil];
+    [_contentScroll setContentSize:CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH + 288 + 200 *detail.detailUrls.count)];
 
     for (int i = 0; i < detail.detailUrls.count; i ++) {
         NSString *imgUrl = detail.detailUrls[i];
 //        imgUrl = [imgUrl stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         UIImageView *imageV = [[UIImageView alloc] init];
-        imageV.frame = CGRectMake(0, 660, SCREEN_WIDTH, 0);
+        imageV.frame = CGRectMake(0, SCREEN_WIDTH + 288, SCREEN_WIDTH, 0);
         [imageV sd_setImageWithURL:[NSURL URLWithString:imgUrl?:@""] placeholderImage:[UIImage imageNamed:@"goodDefault"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             if (error) {
                 NSLog(@"error is %@",error.description);

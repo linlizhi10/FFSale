@@ -57,7 +57,7 @@
             [WToast showWithTextCenter:@"设置成功"];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
-            //                [MBProgressHUD showError:result.message toView:self.view];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];

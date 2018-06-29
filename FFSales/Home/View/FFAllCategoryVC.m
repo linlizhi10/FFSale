@@ -34,7 +34,7 @@
     [super viewDidLoad];
     self.title = @"所有分类";
 //    self.view.backgroundColor = RGBCOLORV(0xdbdbdb);
-    self.contentScroll.backgroundColor = RGBCOLORV(0xdbdbdb);
+    self.contentScroll.backgroundColor = RGBCOLORV(0xE1E3E3);
     UIView *viewTT = [self titleView:@"所有品系" image:[UIImage imageNamed:@"img-sypx"]];
     
     if ([[[NSUserDefaults standardUserDefaults]objectForKey:@"sourceChannel"]isEqualToString:@"EMP"]) {

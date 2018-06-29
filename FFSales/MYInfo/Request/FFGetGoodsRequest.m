@@ -11,11 +11,9 @@
 @implementation FFGetGoodsRequest
 - (void)startCallBack:(RequestCallBackBlock)_callBack{
     self.PATH = @"/pickups";
-    self.METHOD = @"GET";
+    self.METHOD = @"POST";
     self.params = @{@"accessToken":self.accessToken?:@"",
                     @"note":self.note?:@""
-                    
-                    
                     };
     
     [super startCallBack:_callBack];

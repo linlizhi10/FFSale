@@ -18,3 +18,15 @@
 @property (assign, nonatomic) int page; //
 @property (assign, nonatomic) int size; //
 @end
+
+@interface FFMessageSetReadReqeust : Request
+@property (nonatomic, copy) NSString *accessToken; //
+@property (nonatomic, copy) NSString *type; //
+
+@end
+@interface FFMessageDeleteReqeust : Request
+@property (nonatomic, copy) NSString *accessToken; //
+@property (nonatomic, copy) NSString *messageNo; //
+
+@end
+

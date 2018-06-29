@@ -23,7 +23,7 @@
 @implementation DDMessageVC
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self dataLoadCust];
+    [self dataLoadHome];
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [super viewDidDisappear:animated];
@@ -37,6 +37,9 @@
     [_messageTable registerNib:[UINib nibWithNibName:@"MessageCell" bundle:nil] forCellReuseIdentifier:@"cellMess"];
 //    [self dataLoadCust];
 
+}
+- (void)dealloc{
+    
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -91,7 +94,7 @@
     listVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:listVC animated:YES];
 }
-- (void)dataLoadCust{
+- (void)dataLoadHome{
     _arrMeesage = [[NSMutableArray alloc] init];
 
     WS(ws);
@@ -100,7 +103,7 @@
     request.accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
     
     [request startCallBack:^(BOOL isSuccess, NetworkModel *result) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD hideHUDForView:ws.view animated:YES];
         [_messageTable.footer endRefreshing];
         
         
@@ -123,15 +126,15 @@
             }
             [_messageTable reloadData];
         }else{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [MBProgressHUD hideHUDForView:ws.view animated:YES];
             [WToast showWithTextCenter:result.message];
         }
     }];
 }
-- (void)addPage{
-    _currentPage++;
-    [self dataLoadCust];
-}
+//- (void)addPage{
+//    _currentPage++;
+//    [self dataLoadCust];
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

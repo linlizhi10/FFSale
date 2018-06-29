@@ -11,33 +11,29 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FFFactoryACell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="FFFactoryACell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaY-o5-blb">
-                        <rect key="frame" x="10" y="6" width="300" height="31.5"/>
-                        <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <state key="normal" title="Button">
-                            <color key="titleColor" red="0.12856217619999999" green="0.12856217619999999" blue="0.12856217619999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                        <state key="selected">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgJ-ih-37Z">
+                        <rect key="frame" x="10" y="4" width="300" height="35.5"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="PaY-o5-blb" secondAttribute="bottom" constant="6" id="Mcq-h6-fbS"/>
-                    <constraint firstItem="PaY-o5-blb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Yrh-Bd-JgO"/>
-                    <constraint firstAttribute="trailing" secondItem="PaY-o5-blb" secondAttribute="trailing" constant="10" id="pI9-Fc-xSb"/>
-                    <constraint firstItem="PaY-o5-blb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="sRS-mC-whE"/>
+                    <constraint firstItem="PgJ-ih-37Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="AK9-FB-0AR"/>
+                    <constraint firstAttribute="trailing" secondItem="PgJ-ih-37Z" secondAttribute="trailing" constant="10" id="Dwz-mr-IJS"/>
+                    <constraint firstAttribute="bottom" secondItem="PgJ-ih-37Z" secondAttribute="bottom" constant="4" id="PlK-Oe-ucx"/>
+                    <constraint firstItem="PgJ-ih-37Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="lLN-CQ-NZZ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="factoryABtn" destination="PaY-o5-blb" id="UGs-9w-5lC"/>
+                <outlet property="factoryName" destination="PgJ-ih-37Z" id="a4E-mD-UVS"/>
             </connections>
         </tableViewCell>
     </objects>

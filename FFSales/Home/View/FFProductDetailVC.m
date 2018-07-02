@@ -77,6 +77,8 @@
     _arrMessage = [[NSMutableArray alloc] init];
 
     [_factoryTable registerNib:[UINib nibWithNibName:@"FFFactoryACell" bundle:nil] forCellReuseIdentifier:@"cellF"];
+    _factoryTable.estimatedRowHeight = 40;
+    
     _contentScroll.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_WIDTH + 280);
     [self detailRequest];
 }
@@ -113,14 +115,15 @@
     FFFactoryACell *productCell = [tableView dequeueReusableCellWithIdentifier:@"cellF"];
     //    productCell.delegate = self;
     FFProductFactoryModel *infom = _arrMessage[indexPath.row];
-    productCell.factoryName.text = infom.factoryName;
+    productCell.factoryName.text = [NSString stringWithFormat:@"%@-%@",infom.factoryName,infom.factoryId];
     return productCell;
     
     
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    return 40;
+//}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FFProductFactoryModel *info = _arrMessage[indexPath.row];
     _coverInventory.text = [NSString stringWithFormat:@"库存:%@",info.saleTun];

@@ -126,10 +126,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FFProductFactoryModel *info = _arrMessage[indexPath.row];
-    _coverInventory.text = [NSString stringWithFormat:@"库存:%@",info.saleTun];
-    _coverUnitPrice.attributedText = [self originalContent:info.price differentContent:@"/吨"];
+    _coverInventory.text = @"";
+    _coverUnitPrice.text = [NSString stringWithFormat:@"库存:%@吨",info.saleTun];
     _factoryName.text = info.factoryName;
-    _inventory.text = [NSString stringWithFormat:@"库存:%@",info.saleTun];
+    _inventory.text = [NSString stringWithFormat:@"库存:%@吨",info.saleTun];
 
     [_coverView removeFromSuperview];
 }
@@ -149,7 +149,6 @@
     _coverTitle.text = detail.name;
     
     _unitPRICE.attributedText = [self originalContent:detail.price differentContent:@"/吨"];
-    _coverUnitPrice.attributedText = _unitPRICE.attributedText;
     
     FFProductPropertiesModel *property = detail.properties;
     _brand.attributedText = [self originalContentNext:@"品牌:" differentContent:property.brandName];
@@ -159,7 +158,8 @@
     _pureAmount.attributedText = [self originalContentNext:@"规格:" differentContent:property.spec];
     _strain.attributedText = [self originalContentNext:@"品系:" differentContent:detail.strain];
     _factoryName.text = detail.factory;
-    _inventory.text = [NSString stringWithFormat:@"库存:%@",detail.saleTun];
+    _inventory.text = [NSString stringWithFormat:@"库存:%@吨",detail.saleTun];
+    _coverUnitPrice.text = _inventory.text;
 
     __block CGFloat heightTemp = _headerView.frame.size.height;
     

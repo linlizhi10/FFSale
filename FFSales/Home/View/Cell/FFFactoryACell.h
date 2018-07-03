@@ -11,5 +11,6 @@
 @interface FFFactoryACell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *factoryName;
+@property (weak, nonatomic) IBOutlet UIView *shadowvIEW;
 
 @end

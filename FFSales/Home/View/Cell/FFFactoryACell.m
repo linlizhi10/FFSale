@@ -21,10 +21,12 @@
         self.backgroundColor = [UIColor redColor];
         _factoryName.textColor = [UIColor whiteColor];
         _factoryName.backgroundColor = [UIColor redColor];
+        _shadowvIEW.backgroundColor = [UIColor redColor];
     }else{
         self.backgroundColor = [UIColor whiteColor];
         _factoryName.textColor = RGBCOLORV(0x333333);
         _factoryName.backgroundColor = RGBCOLORV(0xF2F2F2);
+        _shadowvIEW.backgroundColor = RGBCOLORV(0xf2f2f2);
     }
     // Configure the view for the selected state
 }
